@@ -3,6 +3,7 @@ package com.hospital.controller;
 import com.hospital.common.JsonUtils;
 import com.hospital.model.User;
 import com.hospital.service.UserService;
+import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -67,10 +68,20 @@ public class UserController {
      * @author zhou.zhengkun
      * @date 2017/12/13 0013 10:54
      */
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/login",produces = "application/json;charset=UTF-8")
+    @ResponseBody
     public String login(String phoneNum,String password,String yzm){
-        //todo 1 参数验证 2 验证码对比 3 数据库验证
-        return null;
+        //todo  yzm验证
+        if (StringUtils.isBlank(phoneNum) || StringUtils.isBlank(password)){
+            return JsonUtils.turnJson(false,"参数错误",null);
+        }else{
+            User user = userService.login(phoneNum,password);
+            if (user == null){
+                return JsonUtils.turnJson(false,"帐号密码错误",null);
+            }
+            JSONObject jsonObject = JSONObject.fromObject(user);
+            return JsonUtils.turnJson(true,"success",jsonObject);
+        }
     }
 
     /**

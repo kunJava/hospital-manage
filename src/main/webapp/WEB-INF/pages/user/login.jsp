@@ -12,6 +12,8 @@
     <script src="${base}/resources/layui/layui.js"></script>
     <script src="${base}/resources/layui/layuiUtil.js"></script>
     <script src="${base}/resources/jquery.min.js"></script>
+    <script src="${base}/resources/andyui/admin/js/stringUtil.js"></script>
+    <script src="${base}/resources/andyui/admin/js/cookieUtil.js"></script>
     <style>
         body{background-color: #ECECEC}
         .head{ height: auto}
@@ -120,7 +122,7 @@
     </li>
 </ul>
 <div class="login-box">
-    <form>
+    <form id="loginForm">
         <div class="tName f-clear">
             <div class="u-group">
                 <div class="item item-l"><img src="${base}/resources/andyui/admin/skin/img/user.png"></div>
@@ -132,13 +134,6 @@
                 <div class="item item-l"><img src="${base}/resources/andyui/admin/skin/img/password.png"></div>
                 <input type="password" class="item item-r u-input nohover"  placeholder="请输入密码" name="password">
             </div>
-        </div>
-        <div class="tVer f-clear">
-            <div class="u-group">
-                <div class="item item-l"><img src="${base}/resources/andyui/admin/skin/img/Verification.png"></div>
-                <input type="text" class="item item-r u-input nohover" id="passCode" placeholder="请输入验证码" name="imageValidate" >
-            </div>
-            <a id="codeSpan" class="f-p-xs" style="color: #0051F5">获取验证码</a>
         </div>
         <div class="yBtn"><a onclick="login();" id="loginA">登 录</a></div>
         <div class="yCheck f-clear">
@@ -166,68 +161,38 @@
             LayuiUtil.msg("密码不能为空。");
             return false;
         }
-        //var url = "http://124.161.16.164:11888/trip-member/user/login";
         var url = location.protocol + "//" + location.host + "/user/login";
-        //var url = "http://124.161.16.164:11888/trip-member/user/login";
-        if(num>2){
-            var yzm = $("input[name='imageValidate']").val();
-            if(yzm == ''){
-                LayuiUtil.msg("验证码不能为空！");
-                return false;
-            }
-        }
         if($("#remeberPwd").is(':checked')){
-            CookieUtil.setCookie("tjb_acount",acount);
-            CookieUtil.setCookie("tjb_pwd",pwd);
+            CookieUtil.setCookie("user_account",acount);
+            CookieUtil.setCookie("user_password",pwd);
         }
         $('#loginA').attr('disabled',"true");
         $.post(url, $("#loginForm").serializeArray(), function (json) {
-            var code = json.code;
-            if (json.code != 20) {
-                layui.use('layer', function(){
-                    var layer = layui.layer;
-                    layer.msg(json.message);
-                });
-                num+=1;
-                if(num>2){
-                    var inpVal=$(".phoneNum input").val();
-                    loadXMLDoc(inpVal);
-                    $("#codeSpan").click(function(inpVal){
-                        loadXMLDoc(inpVal);
-                    });
-                    $(".tVer").css("display","block");
-                    //  $("#codeSpan").trigger("click");
-                }
-            } else {
-                var token = json.token;
-                var user = eval('(' + json.info + ')');
-                //console.log(user.nickname)
-                var nickname = user.nickname || '';
-                if(nickname == ''){
-                    nickname = user.account;
+            if (json.state) {
+                var user = json.result;
+                var nickName = user.nickName || '';
+                if(nickName == ''){
+                    nickName = user.account;
                 }
                 var user_id = user.id||'';
                 var headImg = user.headImg||'';
                 var phoneNum = user.phoneNum||'';
                 var userType = user.userType;
                 var seller_id = user.merchatId || '';
-                CookieUtil.setCookie("tjb_token", token);
-                CookieUtil.setCookie("user_name",nickname);
+                CookieUtil.setCookie("user_name",nickName);
                 CookieUtil.setCookie("user_id", user_id);
                 CookieUtil.setCookie("head_img",headImg);
                 CookieUtil.setCookie("phoneNum",phoneNum);
                 CookieUtil.setCookie("userType",userType);
                 CookieUtil.setCookie("seller_id",seller_id);
-                var redirctUrl = "${basePath}/";
-                //  var redirctUrl = "${basePath}/personal/myinfo?userId="+user_id;
-                layui.use('layer', function () {
-                    alertdemo();
-                });
+                var redirectUrl = "${base}/user/userCenter?userId="+user_id;
                 setTimeout(function () {
-                    window.location.href = redirctUrl;
+                    window.location.href = redirectUrl;
                 }, 2000);
+            }else{
+                LayuiUtil.msg(json.msg);
+                $('#loginA').removeAttr("disabled");
             }
-            $('#loginA').removeAttr("disabled");
         }, "json");
 
     }

@@ -13,6 +13,12 @@ public interface UserMapper {
 
     int insertUser(User user);
 
-    int insertUserBalance(Map map);
+    User userLogin(Map map);
+
+    int insertSelective(User record);
+
+    int updateByPrimaryKeySelective(User record);
+
+    User selectByPrimaryKey(String id);
 
 }

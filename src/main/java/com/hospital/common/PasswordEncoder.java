@@ -63,11 +63,22 @@ public class PasswordEncoder {
 
     private static String byteToHexString(byte b) {
         int n = b;
-        if (n < 0)
+        if (n < 0){
             n = 256 + n;
+        }
         int d1 = n / 16;
         int d2 = n % 16;
         return hexDigits[d1] + hexDigits[d2];
     }
 
+    public static String getMd5Str(String code){
+        try {
+            PasswordEncoder encoderMd5 = new PasswordEncoder("wisesoft", "MD5");
+            String encode = encoderMd5.encode(code);
+            return encode;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

@@ -200,15 +200,14 @@
     function register(){
         var url="${base}/user/register";
         $.post(url,$("#registerForm").serializeArray(),function(json){
-            LayuiUtil.msg(json.message);
             if(json.msg == 'success'){
                 var user = json.result;
-                var userName = user.userName||'';
+                var nickName = user.nickName||'';
                 var user_id = user.id||'';
                 var headImg = user.headImg||'';
                 var phoneNum = user.phoneNum||'';
                 var userType = user.userType;
-                CookieUtil.setCookie("user_name",userName);
+                CookieUtil.setCookie("user_name",nickName);
                 CookieUtil.setCookie("user_id", user_id);
                 CookieUtil.setCookie("head_img",headImg);
                 CookieUtil.setCookie("phoneNum",phoneNum);
@@ -216,6 +215,7 @@
                 var redirectUrl = "${base}/user/userCenter?userId="+user_id;
                 window.location.href = redirectUrl;
             }else{
+                LayuiUtil.msg(json.msg);
                 $('#loginA').removeAttr("disabled");
             }
         },"json");

@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Kun on 2017/04/25 0025.
@@ -52,11 +54,10 @@ public class UserServiceImpl implements UserService {
                 }
 
                 user.setId(StringUtils.getUUid());
-                String createTime = DateUtils.changeDateToStr(new Date(),"");
-                user.setCreateTime(createTime);
+                user.setCreateTime(new Date());
                 user.setPhone(user.getAccount());
-                user.setUserName(user.getAccount());
-                user.setStatus("1");
+                user.setNickName(user.getAccount());
+                user.setStatus(1);
                 userMapper.insertUser(user);
                 JSONObject jsonObject = JSONObject.fromObject(user);
                 return JsonUtils.turnJson(true,"success",jsonObject);
@@ -76,5 +77,15 @@ public class UserServiceImpl implements UserService {
         }else{
             return JsonUtils.turnJson(false,"未查询到用户",null);
         }
+    }
+
+    @Override
+    public User login(String phoneNum, String password) {
+        password = PasswordEncoder.getMd5Str(password);
+        Map<String,Object> paraMap = new HashMap<String,Object>(4);
+        paraMap.put("account",phoneNum);
+        paraMap.put("password",password);
+        User user = userMapper.userLogin(paraMap);
+        return user;
     }
 }

@@ -1,150 +1,222 @@
 package com.hospital.model;
 
-/**
- * Created by Kun on 2017/04/25 0025.
- */
-public class User {
+import java.util.Date;
 
+/**
+ * 所属类别:实体类 <br/>
+ * 用途: 用户表的实体类<br/>
+ * @author：Kun
+ * @date：2017-12-14 10:50
+ */
+public class User{
     /**
      * 主键ID
-     **/
+     */
     private String id;
-    public String getId() {
+    public String getId(){
         return id;
     }
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String id){
+        this.id=id== null ? null : id.trim();
     }
-
     /**
      * 登录帐号
-     **/
+     */
     private String account;
-    public String getAccount() {
+    public String getAccount(){
         return account;
     }
-    public void setAccount(String account) {
-        this.account = account;
+    public void setAccount(String account){
+        this.account=account== null ? null : account.trim();
     }
-
     /**
-     * 登录密码
-     **/
+     * 密码
+     */
     private String password;
-    public String getPassword() {
+    public String getPassword(){
         return password;
     }
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String password){
+        this.password=password== null ? null : password.trim();
     }
-
     /**
-     * 用户名
-     **/
-    private String userName;
-    public String getUserName() {
-        return userName;
+     * 昵称
+     */
+    private String nickName;
+    public String getNickName(){
+        return nickName;
     }
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setNickName(String nickName){
+        this.nickName=nickName== null ? null : nickName.trim();
     }
-
     /**
-     * 状态
-     **/
-    private String status;
-    public String getStatus() {
-        return status;
-    }
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    /**
-     * 创建时间
-     **/
-    private String createTime;
-    public String getCreateTime() {
-        return createTime;
-    }
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    /**
-     * 更新时间
-     **/
-    private String updateTime;
-    public String getUpdateTime() {
-        return updateTime;
-    }
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    /**
-     * 手机号
-     **/
+     * 电话
+     */
     private String phone;
-    public String getPhone() {
+    public String getPhone(){
         return phone;
     }
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhone(String phone){
+        this.phone=phone== null ? null : phone.trim();
     }
-
     /**
-     * 邮箱
-     **/
-    private String email;
-    public String getEmail() {
-        return email;
+     * 地址
+     */
+    private String address;
+    public String getAddress(){
+        return address;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAddress(String address){
+        this.address=address== null ? null : address.trim();
     }
-
     /**
-     * 开始玩LOL的时间
-     **/
-    private String joinLolDate;
-    public String getJoinLolDate() {
-        return joinLolDate;
+     * 纬度
+     */
+    private String lat;
+    public String getLat(){
+        return lat;
     }
-    public void setJoinLolDate(String joinLolDate) {
-        this.joinLolDate = joinLolDate;
+    public void setLat(String lat){
+        this.lat=lat== null ? null : lat.trim();
     }
-
+    /**
+     * 经度
+     */
+    private String lon;
+    public String getLon(){
+        return lon;
+    }
+    public void setLon(String lon){
+        this.lon=lon== null ? null : lon.trim();
+    }
     /**
      * 性别
-     **/
-    private String sex;
-    public String getSex() {
-        return sex;
+     */
+    private int gender;
+    public int getGender(){
+        return gender;
     }
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setGender(int gender){
+        this.gender=gender;
     }
-
+    /**
+     * 生日
+     */
+    private Date birthday;
+    public Date getBirthday(){
+        return birthday;
+    }
+    public void setBirthday(Date birthday){
+        this.birthday=birthday;
+    }
+    /**
+     * 年龄
+     */
+    private int age;
+    public int getAge(){
+        return age;
+    }
+    public void setAge(int age){
+        this.age=age;
+    }
+    /**
+     * 邮箱
+     */
+    private String email;
+    public String getEmail(){
+        return email;
+    }
+    public void setEmail(String email){
+        this.email=email== null ? null : email.trim();
+    }
+    /**
+     * 微信
+     */
+    private String weixin;
+    public String getWeixin(){
+        return weixin;
+    }
+    public void setWeixin(String weixin){
+        this.weixin=weixin== null ? null : weixin.trim();
+    }
+    /**
+     * QQ
+     */
+    private String qq;
+    public String getQq(){
+        return qq;
+    }
+    public void setQq(String qq){
+        this.qq=qq== null ? null : qq.trim();
+    }
     /**
      *
-     **/
-    private String like;
-    public String getLike() {
-        return like;
+     */
+    private Date createTime;
+    public Date getCreateTime(){
+        return createTime;
     }
-    public void setLike(String like) {
-        this.like = like;
+    public void setCreateTime(Date createTime){
+        this.createTime=createTime;
     }
-
     /**
-     * 排序
-     **/
-    private String sort;
-    public String getSort() {
-        return sort;
+     *
+     */
+    private Date updateTime;
+    public Date getUpdateTime(){
+        return updateTime;
     }
-    public void setSort(String sort) {
-        this.sort = sort;
+    public void setUpdateTime(Date updateTime){
+        this.updateTime=updateTime;
+    }
+    /**
+     * -1 删除 1未删除
+     */
+    private int status;
+    public int getStatus(){
+        return status;
+    }
+    public void setStatus(int status){
+        this.status=status;
+    }
+    /**
+     * 部门ID
+     */
+    private String departmentId;
+    public String getDepartmentId(){
+        return departmentId;
+    }
+    public void setDepartmentId(String departmentId){
+        this.departmentId=departmentId== null ? null : departmentId.trim();
+    }
+    /**
+     * 角色ID
+     */
+    private String roleId;
+    public String getRoleId(){
+        return roleId;
+    }
+    public void setRoleId(String roleId){
+        this.roleId=roleId== null ? null : roleId.trim();
+    }
+    /**
+     * 介绍
+     */
+    private String userDesc;
+    public String getUserDesc(){
+        return userDesc;
+    }
+    public void setUserDesc(String userDesc){
+        this.userDesc=userDesc== null ? null : userDesc.trim();
+    }
+    /**
+     *
+     */
+    private String realName;
+    public String getRealName(){
+        return realName;
+    }
+    public void setRealName(String realName){
+        this.realName=realName== null ? null : realName.trim();
     }
 }

@@ -68,7 +68,7 @@
                 var username = CookieUtil.getUserName();
                 var headimg = CookieUtil.getHeadImg();
                 var userId = CookieUtil.getUserId();
-                var personalLink = "#";
+                var personalLink = "${base}/user/userCenter";
                 /*if (headimg.indexOf(fileBaseUrl) == -1) {
                     headimg = fileBaseUrl + headimg;
                 }*/
@@ -196,8 +196,7 @@
         </div>
     </div>
     <div class="sytj">
-        <p class="p1"><span>9月</span><span>推荐<br/>
-      目的地</span></p>
+        <p class="p1"><span>9月</span><span>推荐<br/>目的地</span></p>
         <p class="p2">September</p>
     </div>
     <div class="m-carousel li-inline">
