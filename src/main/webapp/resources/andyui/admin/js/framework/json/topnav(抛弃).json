@@ -1,0 +1,60 @@
+[{
+    "id": "system04",
+    "text": "个人工作台",
+    "icons": "&#xe680;",
+    "url": "http://www.163.com",
+    "show": "top",
+    "target": "stage",
+    "children": [
+        {
+            "id": "sidemenu31",
+            "text": "待办中心fortop",
+            "icons": "&#xe693;",
+            "data": "",
+            "url": "html",
+            "target": "stage"
+        }
+    ]
+},
+{
+    "id": "system05",
+    "text": "部门门户",
+    "icons": "&#xe678;",
+    "url": "#",
+    "show": "top",
+    "target": "stage",
+    "children": [
+        {
+            "id": "sidemenu51",
+            "text": "部门门户fortop",
+            "icons": "&#xe693;",
+            "data": "",
+            "url": "html",
+            "target": "stage"
+        },
+        {
+            "id": "sidemenu52",
+            "text": "部门门户fortop",
+            "icons": "&#xe693;",
+            "data": "",
+            "url": "html",
+            "target": "stage"
+        }
+    ]
+},
+{
+    "id": "system06",
+    "text": "公司门户",
+    "icons": "&#xe699;",
+    "url": "http://www.163.com",
+    "show": "top",
+    "target": "stage"
+},
+{
+    "id": "system07",
+    "text": "应用",
+    "icons": "&#xe6e4;",
+    "url": "#",
+    "show": "top",
+    "target": "stage"
+}]

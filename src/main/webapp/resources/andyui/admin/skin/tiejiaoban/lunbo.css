@@ -1,0 +1,133 @@
+/*轮播*/
+ .m-carousel{ position:relative;}
+ .m-carousel, .m-carousel ul, .m-carousel li{ display:block;height: 100%!important;}
+ .m-carousel.li-inline li{ float:left; overflow:hidden; }
+ /*.m-carousel .pager{ clear:both; position:absolute; z-index:9; bottom:8px; left:8px}
+ .m-carousel .pager a{ width:16px; height:1px; display:block; overflow:hidden; padding-top:15px; float:left; margin:0 3px; border-radius:50%; background-color:#C5C5C5}
+ .m-carousel .pager a.selected{ background-color:#FF9E00}
+ .m-carousel .prev, .m-carousel .next{ font-size:52px; color:rgba(255,255,255,.5); display:none!important;}
+ .m-carousel .next{ z-index:99; left:10px; position:absolute; top:50%; margin-top:-26px}
+ .m-carousel .prev{ z-index:99; right:10px; position:absolute; top:50%; margin-top:-26px}
+ .m-carousel:hover .prev, .m-carousel:hover .next{ display:block!important;}
+ .m-carousel .prev:hover, .m-carousel .next:hover{color:rgba(255,255,255,1); cursor:pointer}*/
+
+/*首页轮播*/
+.sy-lunbo{height:550px;position:relative;}
+.sy-lunbo .pager{height:238px;clear:both; position:absolute; z-index:9; bottom:50px; right:23px;overflow:hidden;}
+.sy-lunbo .pager .pager-img{width:96px;height:68px;margin-bottom:8px;border:3px solid #333333;}
+.sy-lunbo .pager .pager-img.selected{border:3px solid #ff9900;}
+.sy-lunbo .pager .pager-img img{width:100%;height:100%;}
+.sy-lunbo .prev{ width:102px;height:20px;border-radius:8px 8px 0 0;text-align:center;z-index:99; position:absolute; bottom:288px; right:23px;background:rgba(0,0,0,0.7);}
+.sy-lunbo .next{ width:102px;height:20px;border-radius:0 0 8px 8px;text-align:center;z-index:99; position:absolute; bottom:30px; right:23px;background:rgba(0,0,0,0.7);}
+.sy-lunbo .prev img,.sy-lunbo .next img{width:10px;height:5px;margin:7px auto;}
+.sy-lunbo:hover .prev, .sy-lunbo:hover .next{ display:block!important;}
+.sy-lunbo .prev:hover, .sy-lunbo .next:hover{color:rgba(255,255,255,1); cursor:pointer}
+/*首页轮播其他css*/
+.sy-lunbo .m-carousel li{position:relative;}
+.sy-lunbo .m-carousel li .u-img{height:100% !important}
+.sylb-info{position:absolute;right:400px;bottom:110px;width:550px;}
+.sylb-info h2{color:#FFFFFF;font-size:32px;font-weight:700;line-height:60px;}
+.sylb-info div{color:#FFFFFF;font-size:13px;font-weight:400;line-height:20px;}
+.sylb-info p{margin-top:20px;}
+.sylb-info p span{color:#FFFFFF;font-size:14px;font-weight:700;margin-right:5px;}
+.sylb-info p img{width:20px;height:20px;}
+
+
+/*目的地轮播*/
+.mdd-lunbo{height:672px;position:relative;}
+.mdd-lunbo .m-carousel ul img{width: 100%;height:100%;}
+.mdd-lunbo .prev{ width:118px;height:118px;z-index:99; left:10px; position:absolute; top:50%; margin-top:-59px;}
+.mdd-lunbo .next{ width:118px;height:118px;z-index:99; right:10px; position:absolute; top:50%; margin-top:-59px;}
+.mdd-lunbo .prev img,.mdd-lunbo .next img{width:100%;height:100%;}
+.mdd-lunbo:hover .prev, .mdd-lunbo:hover .next{ display:block!important;}
+.mdd-lunbo .prev:hover, .mdd-lunbo .next:hover{color:rgba(255,255,255,1); cursor:pointer}
+/**/
+.kdd-bottom{position:absolute;z-index:1;bottom:0;left:0;width:100%;height:155px;padding:30px 0;background:rgba(0,0,0,0.7);}
+.kdd-bottom .moreBtn{position:absolute;bottom:5px;left:50%;margin-left:-11px;width:22px;height:22px;background:url(img/u80.png) no-repeat center;cursor:pointer;}
+.kdd-bottom .f-left{padding-left:20px;}
+.kdd-bottom .f-left p{font-size:16px;font-weight:700;color:#FFFFFF;margin:25px 0 10px 0;}
+.kdd-bottom .f-left input{width:328px;height:35px;line-height:35px;margin-right:15px;}
+.kdd-bottom .f-left .u-btn{line-height:35px;height:37px;width:60px;text-align:center;background:#FF9900;color:#FFFFFF;font-size:16px;border-radius:5px;border-color:#FF9900;}
+.kdd-bottom .f-right{width:560px;}
+.mdd-info h2{color:#FFFFFF;font-size:32px;font-weight:700;line-height:40px;margin:0px;margin-bottom:10px;}
+.mdd-info div{color:#FFFFFF;font-size:13px;font-weight:400;line-height:20px;}
+.mdd-info p{margin-top:8px;}
+.mdd-info p span{color:#FFFFFF;font-size:14px;font-weight:700;margin-right:5px;}
+.mdd-info p img{width:20px;height:20px;}
+
+
+/*目的地详情轮播*/
+.mddxq-lunbo1{height:540px;}
+.mddxq-lunbo1 li img{width:100%;height:100%;}
+.mddxq-lunbo2{height:85px;margin:10px 0;padding:0 40px;}
+.mddxq-lunbo2 li{margin:0 10px;}
+.mddxq-lunbo2 li img{width:100%;height:85px;border:3px solid transparent;box-sizing: border-box;}
+.mddxq-lunbo2 li.selected img{border-color:#FF9900;}
+.mddxq-lunbo2 .prev{ width:40px;height:40px;z-index:99; left:-40px; position:absolute; top:50%; margin-top:-20px;}
+.mddxq-lunbo2 .next{ width:40px;height:40px;z-index:99; right:-40px; position:absolute; top:50%; margin-top:-20px;}
+.mddxq-lunbo2 .prev img,.mddxq-lunbo2 .next img{width:100%;height:100%;}
+.mddxq-lunbo2:hover .prev, .mddxq-lunbo2:hover .next{ display:block!important;}
+.mddxq-lunbo2 .prev:hover, .mddxq-lunbo2 .next:hover{color:rgba(255,255,255,1); cursor:pointer}
+
+/*景点购买轮播*/
+.mddxq-lunbo3{height:378px;}
+.mddxq-lunbo3 li img{width:100%;height:100%;}
+.mddxq-lunbo4{height:85px;margin:10px 0;padding:0 40px;}
+.mddxq-lunbo4 li{margin:0 10px;}
+.mddxq-lunbo4 li img{width:120px;height:85px;border:3px solid transparent;box-sizing: border-box;}
+.mddxq-lunbo4 li.selected img{border-color:#FF9900;}
+.mddxq-lunbo4 .prev{ width:40px;height:40px;z-index:99; left:-40px; position:absolute; top:50%; margin-top:-20px;}
+.mddxq-lunbo4 .next{ width:40px;height:40px;z-index:99; right:-40px; position:absolute; top:50%; margin-top:-20px;}
+.mddxq-lunbo4 .prev img,.mddxq-lunbo4 .next img{width:100%;height:100%;}
+.mddxq-lunbo4:hover .prev, .mddxq-lunbo4:hover .next{ display:block!important;}
+.mddxq-lunbo4 .prev:hover, .mddxq-lunbo4 .next:hover{color:rgba(255,255,255,1); cursor:pointer}
+
+/*酒店购买弹窗轮播*/
+.mddxq-lunbo5{height:280px;}
+.mddxq-lunbo5 li img{width:100%;height:100%;}
+.mddxq-lunbo6{height:60px;margin:10px 0;padding:0 40px;}
+.mddxq-lunbo6 li{margin:0 10px;}
+.mddxq-lunbo6 li img{width:100%;height:60px;border:3px solid transparent;box-sizing: border-box;}
+.mddxq-lunbo6 li.selected img{border-color:#FF9900;}
+.mddxq-lunbo6 .prev{ width:40px;height:40px;z-index:99; left:-40px; position:absolute; top:50%; margin-top:-20px;}
+.mddxq-lunbo6 .next{ width:40px;height:40px;z-index:99; right:-40px; position:absolute; top:50%; margin-top:-20px;}
+.mddxq-lunbo6 .prev img,.mddxq-lunbo6 .next img{width:100%;height:100%;}
+.mddxq-lunbo6:hover .prev, .mddxq-lunbo6:hover .next{ display:block!important;}
+.mddxq-lunbo6 .prev:hover, .mddxq-lunbo6 .next:hover{color:rgba(255,255,255,1); cursor:pointer}
+
+/*酒店购买图片轮播*/
+.jd-lunbo .jd-lunbo-slide{overflow:hidden;}
+.jd-lunbo .jd-lunbo-slide .left{width: 850px;height: 460px;overflow: hidden;position: relative}
+.jd-lunbo .jd-lunbo-slide .left .prevjd,.jd-lunbo .jd-lunbo-slide .left .nextjd{width: 48px;height: 48px;position: absolute;z-index: 111;top: 50%;margin-top: -24px;cursor: pointer;}
+.jd-lunbo .jd-lunbo-slide .left .prevjd img,.jd-lunbo .jd-lunbo-slide .left .nextjd img{width:100%;height:100%;}
+.jd-lunbo .jd-lunbo-slide .left .prevjd{left: 20px;}
+.jd-lunbo .jd-lunbo-slide .left .nextjd{right:20px;}
+.jd-lunbo .jd-lunbo-slide .label_number{width: 100px;height: 40px;border-radius: 20px;background: rgba(51, 51, 51, 0.7);position: absolute;top: 15px;right: 20px;text-align: center;line-height: 40px;font-size: 18px;color: #fff;}
+.jd-lunbo .jd-lunbo-slide .label_number img{width:28px;vertical-align: baseline;margin:6px 0;vertical-align: bottom;}
+.jd-lunbo .jd-lunbo-slide .left .ul2{width: 1000000px;height: 460px;position: relative}
+.jd-lunbo .jd-lunbo-slide .left .ul2 li{width: 850px;height: 460px;float: left}
+.jd-lunbo .jd-lunbo-slide .left .ul2 li img{width: 850px;height: 460px;}
+.jd-lunbo .jd-lunbo-slide .right{width: 380px;height: 460px;overflow: hidden;margin-right:-40px;}
+.jd-lunbo .jd-lunbo-slide .right .right_warp{width: 380px;height: 460px;overflow: auto}
+.jd-lunbo .jd-lunbo-slide .right .right_box{width: 360px;height: auto;}
+.jd-lunbo .jd-lunbo-slide .right .right_box li{width: 166px;height: 145px;float: left;margin: 0 10px 10px 0;border: 2px solid transparent;cursor: pointer;background-size: cover !important;}
+.jd-lunbo .jd-lunbo-slide .right .right_box li.right_box_on{border: 2px solid #FF870C !important;}
+
+
+
+/*活动轮播*/
+.hd-lunbo{height:487px;}
+.hd-lunbo li img{width:100%;height:100%;}
+.hd-lunbo .pager{ clear:both; position:absolute; z-index:9; bottom:8px; left:50%;margin-left:-42px;}
+.hd-lunbo .pager a{ width:10px; height:1px; display:block; overflow:hidden; padding-top:9px; float:left; margin:0 2px; border-radius:50%; background-color:#C5C5C5;transform: all 0.5s;}
+.hd-lunbo .pager a.selected{ background-color:#FF9E00;margin-right:0;width:12px;border-radius:50% 0 0 50%;}
+.hd-lunbo .pager a.selected + a{ background-color:#FF9E00;margin-left:0;width:12px;border-radius:0 50% 50% 0;}
+.hd-lunbo .pager a:last-child{border-radius:50%;}
+
+
+/*酒店轮播*/
+.h-lunbo{height:280px;}
+.h-lunbo li img{width:100%;height:100%;}
+.h-lunbo .pager{ clear:both; position:absolute; z-index:9; bottom:10px; right:10px;}
+.h-lunbo .pager a{ width:12px; height:1px;border:2px solid #FFFFFF; display:block; overflow:hidden; padding-top:11px; float:left; margin:0 4px; border-radius:50%; background-color:#0ab0e8;}
+.h-lunbo .pager a.selected{ background-color:#f8cd47;}

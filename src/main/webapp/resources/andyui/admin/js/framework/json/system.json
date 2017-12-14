@@ -1,0 +1,297 @@
+[
+  {
+    "id": "system01",
+    "text": "模板系统",
+    "icons": "&#xe606;",
+    "url": "html",
+    "target": "stage",
+    "children": [
+      {
+        "id": "demo01",
+        "text": "登录模板",
+        "icons": "&#xe757;",
+        "url": "../form/form.html",
+        "target": "stage",
+        "children": [
+          {
+            "id": "demo011",
+            "text": "系统登录Ⅰ",
+            "url": "../login/loginA.html",
+            "target": "stage"
+          },
+          {
+            "id": "demo011",
+            "text": "系统登录Ⅱ",
+            "url": "../login/loginB.html",
+            "target": "stage"
+          },
+			{
+            "id": "demo013",
+            "text": "系统登录Ⅲ",
+            "url": "../login/loginC.html",
+            "target": "stage"
+          }
+        ]
+      },
+      {
+        "id": "demo02",
+        "text": "提示模板",
+        "icons": "&#xe777;",
+        "children": [
+          {
+            "id": "demo021",
+            "text": "404",
+            "url": "../prompt/404.html",
+            "target": "stage"
+          },
+          {
+            "id": "demo022",
+            "text": "错误",
+            "url": "../prompt/unusual.html",
+            "target": "stage"
+          },
+          {
+            "id": "demo023",
+            "text": "维护",
+            "url": "../prompt/construction.html",
+            "target": "stage"
+          }
+        ]
+      },
+      {
+        "id": "demo03",
+        "text": "工作台",
+        "icons": "&#xe7b9;",
+        "children": [
+          {
+            "id": "demo031",
+            "text": "工作台A",
+            "url": "../workbench/workbench.html",
+            "target": "stage"
+          },{
+            "id": "demo032",
+            "text": "工作台B",
+            "url": "../workbench/workbenchB.html",
+            "target": "stage"
+          },{
+            "id": "demo033",
+            "text": "机构门户",
+            "url": "../workbench/workbenchPortal.html",
+            "target": "stage"
+          }
+			,{
+            "id": "demo033",
+            "text": "部门门户",
+            "url": "../workbench/departmentPortal.html",
+            "target": "stage"
+          }
+        ]
+      },
+      {
+        "id": "demo04",
+        "text": "列表模板",
+        "icons": "&#xe634;",
+        "children": [
+          {
+            "id": "demo041",
+            "text": "基础列表",
+            "url": "../datagrid/datagrid.html",
+            "target": "stage"
+          },
+          {
+            "id": "demo042",
+            "text": "页签列表",
+            "url": "../datagrid/tabsdatagrid.html",
+            "target": "stage"
+          },
+          {
+            "id": "demo043",
+            "text": "树表结构",
+            "url": "../datagrid/treeDatagrid.html",
+            "target": "stage"
+          },
+          {
+            "id": "demo044",
+            "text": "双表引导",
+            "url": "../datagrid/tableDatagrid.html",
+            "target": "stage"
+          },
+          {
+            "id": "demo045",
+            "text": "子母表",
+            "url": "../datagrid/tree3Datagrid.html",
+            "target": "stage"
+          },
+          {
+            "id": "demo046",
+            "text": "资讯",
+			"children":[
+				{
+					"id": "demo0461",
+					"text": "列表",
+					"url": "../datagrid/newslist.html",
+					"target": "stage"
+				},
+				{
+					"id": "demo0462",
+					"text": "内页",
+					"url": "../datagrid/newsinfo.html",
+					"target": "stage"
+				}
+			]
+          }
+        ]
+      },
+      {
+        "id": "demo05",
+        "text": "弹出表单模版",
+        "icons": "&#xe606;",
+        "url": "../form/dialogform.html",
+        "target": "stage"
+      },
+      {
+        "id": "demo06",
+        "text": "单页业务表单模板",
+        "icons": "&#xe606;",
+        "url": "",
+        "target": "stage",
+        "children": [
+          {
+            "id": "demo061",
+            "text": "公文发起-企业",
+            "url": "../form/document-qy.html",
+            "target": "stage"
+          },
+          {
+            "id": "demo062",
+            "text": "公文发起-政府",
+            "url": "../form/document.html",
+            "target": "stage"
+          },
+          {
+            "id": "demo063",
+            "text": "项目资料管理",
+            "url": "",
+            "target": "stage"
+          }
+        ]
+      },
+      {
+        "id": "demo07",
+        "text": "图表模板",
+        "icons": "&#xe63a;",
+        "url": "html",
+        "target": "stage"
+      }
+    ]
+  },
+  {
+    "id": "system02",
+    "text": "合同管理",
+    "icons": "&#xe63a;",
+    "url": "html",
+    "target": "stage",
+    "children": [
+      {
+        "id": "sidemenu21",
+        "text": "类型管理",
+        "icons": "&#xe693;",
+        "url": "html",
+        "target": "stage"
+      },
+      {
+        "id": "sidemenu22",
+        "text": "合同登记",
+        "icons": "&#xe693;",
+        "url": "html",
+        "target": "stage"
+      }
+    ]
+  },
+  {
+    "id": "system03",
+    "text": "系统3",
+    "icons": "&#xe63a;",
+	"data": "",
+    "url": "html",
+    "target": "stage",
+    "children": [
+      {
+        "id": "system04",
+        "text": "个人工作台",
+        "icons": "&#xe680;",
+        "url": "http://www.163.com",
+        "show": "top",
+        "target": "stage",
+        "children": [
+          {
+            "id": "sidemenu31",
+            "text": "待办中心fortop",
+            "icons": "&#xe693;",
+            "data": "",
+            "url": "html",
+            "target": "stage"
+          }
+        ]
+      },
+      {
+        "id": "system05",
+        "text": "部门门户",
+        "icons": "&#xe678;",
+        "url": "#",
+        "show": "top",
+        "target": "stage",
+        "children": [
+          {
+            "id": "sidemenu51",
+            "text": "部门门户fortop",
+            "icons": "&#xe693;",
+            "data": "",
+            "url": "html",
+            "target": "stage"
+          },
+          {
+            "id": "sidemenu52",
+            "text": "部门门户fortop",
+            "icons": "&#xe693;",
+            "data": "",
+            "url": "html",
+            "target": "stage"
+          }
+        ]
+      },
+      {
+        "id": "system06",
+        "text": "公司门户",
+        "icons": "&#xe699;",
+        "url": "http://www.163.com",
+        "show": "top",
+        "target": "stage"
+      },
+      {
+        "id": "system07",
+        "text": "应用",
+        "icons": "&#xe6e4;",
+        "url": "#",
+        "show": "top",
+        "target": "stage"
+      },
+      {
+        "id": "sidemenu71",
+        "text": "待办中心1",
+        "icons": "&#xe693;",
+        "data": "",
+        "url": "html",
+        "target": "stage"
+      },
+      {
+        "id": "sidemenu71",
+        "text": "我的日志1",
+        "icons": "&#xe693;",
+        "data": "",
+        "url": "html",
+        "target": "stage"
+      }
+    ]
+  }
+]

@@ -1,0 +1,84 @@
+[
+    {
+        
+        "topnav": "system01",
+        "sidemenu": "system01",
+        "defaultUrl": "../workbench/workbench.html",
+        "online": "12",
+        "sidehead": "hidden",
+        "sidemenuShow": "mix",
+        "version": "1.0",
+        "topoperation": [
+            {
+                "operation": [
+                    {
+                        "name": "search",
+                        "api": "json/search.json",
+                        "list": [
+                            {
+                                "icons": "&#xe6bc;",
+                                "text": "日志填报",
+                                "classColor": "f-bg-info",
+                                "url": "xxxx",
+                                "target": "stage"
+                            },
+                            {
+                                "icons": "&#xe6bc;",
+                                "text": "日志填报",
+                                "classColor": "f-bg-info",
+                                "url": "xxxx",
+                                "target": "stage"
+                            },
+                            {
+                                "icons": "&#xe6bc;",
+                                "text": "日志填报",
+                                "classColor": "f-bg-info",
+                                "url": "xxxx",
+                                "target": "blank"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "message",
+                        "api": "json/message.json",
+                        "deleteApi": "xxx",
+                        "message": [
+                            {
+                                "id": "01",
+                                "title": "消息标题01",
+                                "time": "2017-2-20 9:35"
+                            },
+                            {
+                                "id": "02",
+                                "title": "消息标题02",
+                                "time": "2017-2-20 9:35"
+                            },
+                            {
+                                "id": "03",
+                                "title": "消息标题03",
+                                "time": "2017-2-20 9:35"
+                            },
+                            {
+                                "id": "04",
+                                "title": "消息标题04",
+                                "time": "2017-2-20 9:35"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mainclose",
+                        "api": "xxx"
+                    }
+                ],
+                "more": [
+                    {
+                        "name": "mainstyle",
+                        "templeteId": "2",
+                        "api": "172.16.117.233:8080/switchStructrue.json"
+                    },
+                    "systemhelp"
+                ]
+            }
+        ]
+    }
+]

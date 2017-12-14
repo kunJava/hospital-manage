@@ -1,0 +1,65 @@
+[
+    {
+        "system": "system01",
+        "topnav": "sidemenu1",
+        "sidemenu": "sidemenu1",
+        "defaultUrl": "../workbench/workbench.html",
+        "online": "12",
+        "sidehead": "hidden",
+        "sidemenuShow": "mix",
+        "version": "1.0",
+        "topoperation": [
+            {
+                "operation": [
+                    {
+                        "name": "search",
+                        "api": "json/search.json",
+                        "list": [
+                            {
+                                "icons": "&#xe6bc;",
+                                "text": "日志填报",
+                                "classColor": "f-bg-info",
+                                "url": "xxxx",
+                                "target": "stage"
+                            },
+                            {
+                                "icons": "&#xe6bc;",
+                                "text": "日志填报",
+                                "classColor": "f-bg-info",
+                                "url": "xxxx",
+                                "target": "stage"
+                            },
+                            {
+                                "icons": "&#xe6bc;",
+                                "text": "日志填报",
+                                "classColor": "f-bg-info",
+                                "url": "xxxx",
+                                "target": "blank"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "message",
+                        "api": "json/message.json",
+                        "deleteApi": "xxx",
+                        "viewApi":"json/view.json",
+                        "isView":"true",
+                        "viewTime":"30000",
+                        "time":"30000"
+                    },
+                    {
+                        "name": "mainclose",
+                        "api": "xxx"
+                    }
+                ],
+                "more": [
+                    {
+                        "name": "mainstyle",
+                        "templeteId": "2"
+                    },
+                    "systemhelp"
+                ]
+            }
+        ]
+    }
+]

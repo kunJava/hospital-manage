@@ -1,0 +1,22 @@
+td{
+	height: 80px;width: 120px;border: 1px solid;
+}
+.dateDay{
+	width: 30px;height: 30px;
+}
+.dateDD{
+position: absolute !important; left: 90px !important;top: 3px !important;
+
+}
+.dataText{
+	height: 60px !important;width: 100px !important;
+}
+.dateTd{
+	height: 80px !important;width: 130px !important ;
+}
+.divPic p{
+	padding-bottom: 3px;line-height: 13px;font-size: 13px;
+}
+.divPic{
+	width: 100px;height: 50px;position: absolute;top: 20px;
+}

@@ -1,0 +1,21 @@
+{
+   "list":[{
+      "icons":"&#xe6bc;",
+      "text":"搜索结果1",
+      "class":"f-bg-info",
+      "url":"xxxx",
+      "target":"stage"
+   },{
+      "icons":"&#xe6bc;",
+      "text":"搜索结果2",
+      "class":"f-bg-info",
+      "url":"xxxx",
+      "target":"stage"
+   },{
+      "icons":"&#xe6bc;",
+      "text":"搜索结果3",
+      "class":"f-bg-info",
+      "url":"xxxx",
+      "target":"blank"
+   }]
+}

@@ -1,0 +1,15 @@
+[{
+   "id":"sidemenu1",
+   "text":"待办中心1",
+   "icons":"&#xe693;",
+   "data":"",
+   "url":"html",
+   "target":"stage"
+},{
+   "id":"sidemenu2",
+   "text":"我的日志1",
+   "icons":"&#xe693;",
+   "data":"",
+   "url":"html",
+   "target":"stage"
+}]

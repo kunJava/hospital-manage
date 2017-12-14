@@ -1,0 +1,56 @@
+[
+    {
+        "id": "userid",
+        "username": "林林林",
+        "userhead": "userwomen.png",
+        "jobs": "jobs1",
+        "joblists": [
+            {
+                "id": "jobs1",
+                "name": "设计部 开发",
+                "value": "xxxx"
+            },
+            {
+                "id": "jobs2",
+                "name": "市场部 经理",
+                "value": "xxxx"
+            },
+            {
+                "id": "jobs3",
+                "name": "财务部 出纳",
+                "value": "xxxx"
+            }
+        ],
+        "framestyle": {
+            "color": "c03",
+            "style": "default",
+            "structrue": "st01"
+        },
+        "message": {
+            "api": "json/message.json",
+            "deleteApi": "xxx",
+            "message": [
+                {
+                    "id": "01",
+                    "title": "title01",
+                    "time": "2017-2-20 9:35"
+                },
+                {
+                    "id": "02",
+                    "title": "title02",
+                    "time": "2017-2-20 9:35"
+                },
+                {
+                    "id": "03",
+                    "title": "title03",
+                    "time": "2017-2-20 9:35"
+                },
+                {
+                    "id": "04",
+                    "title": "title04",
+                    "time": "2017-2-20 9:35"
+                }
+            ]
+        }
+    }
+]

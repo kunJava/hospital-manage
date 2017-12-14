@@ -1,0 +1,67 @@
+[
+    {
+        "id": "sidemenu1",
+        "text": "待办中心",
+        "icons": "&#xe693;",
+        "data": "",
+        "url": "html",
+        "target": "stage",
+        "children": [
+            {
+                "id": "sidemenu13",
+                "text": "子页面",
+                "icons": "&#xe693;",
+                "data": "",
+                "url": "http://www.163.com",
+                "target": "stage",
+                "children": [
+                    {
+                        "id": "sidemenu133",
+                        "text": "日志子页面",
+                        "icons": "&#xe693;",
+                        "data": "",
+                        "url": "http://www.163.com",
+                        "target": "stage"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "sidemenu2",
+        "text": "我的日志",
+        "icons": "&#xe693;",
+        "data": "",
+        "url": "html",
+        "target": "stage",
+        "children": [
+            {
+                "id": "sidemenu24",
+                "text": "日志子页面",
+                "icons": "&#xe693;",
+                "data": "",
+                "url": "http://www.163.com",
+                "target": "stage",
+                "children": [
+                    {
+                        "id": "sidemenu223",
+                        "text": "日志子页面",
+                        "icons": "&#xe693;",
+                        "data": "",
+                        "url": "http://www.163.com",
+                        "target": "stage"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "sidemenu3",
+        "text": "顶部菜单",
+        "icons": "&#xe693;",
+        "data": "",
+        "url": "html",
+        "show": "top",
+        "target": "stage"
+    }
+]

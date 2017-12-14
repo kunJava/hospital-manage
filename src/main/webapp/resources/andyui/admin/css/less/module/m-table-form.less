@@ -1,0 +1,468 @@
+@import "../base/deploy";
+@import "../attribute/attribute";
+
+
+.m-table-form { 
+	width: 100%;
+	border-spacing:0px;
+	table-layout: fixed;
+	word-break: break-all;
+	padding: 0px;
+	td{
+		vertical-align: middle;
+		z-index: 1;
+		overflow: visible;
+		&.table-head{
+			text-align: right;
+			padding: 10px 5px;
+			
+		}
+		//内部表单修饰
+		.u-input, .m-tooltip, .u-select, .u-textarea, .u-group {
+			width:100%;
+		}
+		.u-input{
+			*width:99%;
+		}
+		> .u-input{
+			box-sizing: border-box;
+		}
+		.u-group{
+			float:none;
+			.item-r{
+				margin-left: -1px~"\9";
+			}
+		}
+		p,.u-input-span{
+			padding:0 8px 0px 8px;
+		}
+		.m-combo{
+			display: block;
+			width: 100%;
+			*position: static;
+		}
+		
+	}
+	.text{
+		padding-left: 10px;
+		padding-right:10px;
+	}
+	.u-checkbox, .u-label, .u-switch{
+			height:@basesize;
+			line-height:@basesize;
+			width: auto;
+			margin: 0;
+			margin-left:0;
+			z-index: 1;
+			display: block;
+			float: left;
+			//background-color: #fff;
+			border-right:none;
+			//.border-box;
+			font-size: 12px;
+			padding-right: 0;
+			text-align: left;
+			padding-top: 0;
+		}
+	.u-switch{
+		margin-left:10px;
+	}
+	@namesize:120px;
+	&.document{
+		border-collapse: collapse;
+		border-spacing:0;
+		border-left:1px solid #E80C10;
+		td{
+			border-style: solid;
+			border-width: 1px;
+			border-color: #E80C10;
+			padding-left: 5px;
+			padding-right: 5px;
+			color:#E80C10!important;
+			border-left-width: 0;
+			&.table-head{
+				border-right-width: 0;
+				color:#E80C10!important;
+			}
+		}
+	}
+	&.inline, &.table{
+		border-collapse: separate;
+		*border-collapse: collapse;
+		border-spacing:1px;
+		td , th{
+			padding: 0;
+		}
+		th{
+			text-align: right;
+			padding-right: 5px;
+		}
+		td{
+			&.table-head{
+				padding: 5px;
+			}
+			.u-group{
+				margin-bottom: -2px;
+				button{
+					height: 28px;
+				}
+			}
+			table{
+				border-collapse: separate;
+		        *border-collapse: collapse;
+		        border-spacing:1px;
+			}
+		}
+		//对表单圆角与边线
+		.u-input , .u-label , .u-checkbox, .checkbox, .u-select, .u-textarea, .u-btn, .item, .u-btn-eject, .u-inputitem, .m-combo, .u-btn-checkbox{
+			border-width: 0;
+			border-radius: 0;
+		}
+		//对表单组合的修饰
+		.u-group{
+			
+			.item-l{
+				border-left-width:0px!important;
+				//.u-group{
+//					.item-l{
+//						border-left-width:0px!important;
+//					}
+//				}
+			}
+			.u-group{
+				.u-input{
+					border-right-width:0px!important;
+				}
+			}
+			.u-input, .mark, .item{
+				border-right-width:1px;
+				&.item-r, &:last-child{
+					border-right-width:0px!important;
+				}
+				&:first-child, &.item-l{
+					border-left-width:0px!important;
+				}
+			}
+			.item-r{
+				border-right-width:0px!important;
+			}
+			
+		}
+		//对弹出选项菜单的阴影修饰
+		.m-menu,.u-down-menu,.menu{
+			border-radius: 0!important;
+			//box-shadow: 3px -3px 3px #eee;
+			a,li{
+				border-radius: 0!important;
+			}
+		}
+		//对弹出选项菜单的阴影修饰
+		.u-l-select{
+			.u-input{
+				border-radius: 0!important;
+				border-left-width:0!important;
+				border-right-width:1px!important;
+				&:last-child{
+					border-right-width:0!important;
+				}
+			}
+		}
+		.u-formitem{
+			height: 100%;
+			padding: 0;
+			position: relative;
+			display: block;
+			margin-left: @namesize;
+			label{
+				height: 100%;
+				line-height:22px;
+				width: @namesize;
+				margin: 0;
+				margin-left: -@namesize;
+				position: relative;
+				z-index: 1;
+				display: block;
+				float: left;
+				background-color: lighten(@color-base-light, 15%);
+				border-right: 1px #ccc solid;
+				//.border-box;
+				font-size: 12px;
+				padding-right: 5px;
+				text-align: right;
+				padding-top: 4px;
+			}
+		}
+		
+	}
+	//默认样式
+	#table-form > .form-color(120px , lighten(@color-base-light, 18%));
+	
+	&.red{
+	//默认样式
+	#table-form > .form-color(100px , #FFE5E5);
+		tr{
+			td{
+				background-color: #fff!important;
+				.u-input, .u-textarea{
+					&:focus{//获取焦点
+						background-color:#FFE5E5;
+						color: darken(#FFE5E5,40%)
+					}
+					&.nofocus:focus{//不允许获取焦点
+						background-color:darken(#FFE5E5,5%);
+					}
+				}
+				p{
+					color: #333;
+				}
+			}
+		}
+	}
+	//使用div模式，再新版本下基本抛弃DIV模式
+	.u-formitem {
+		padding: 5px;
+		//.border-box;
+		position: relative;
+		label {
+			font-size: 13px;
+			margin-bottom: 8px;
+			margin-top: 8px;
+			display: block;
+			font-weight: normal;
+			color: #000;
+			width: 100%;
+		}
+		.m-tooltip{
+			//.f-clear;
+			float: left;
+		}
+		.u-textarea:hover{
+			height: 80px;
+			line-height: 20px;
+		}
+		//针对IE在.u-group 时出现的溢出将最后一项缩进1个像素
+	}
+
+	
+	
+//废弃样式
+//	&.inline2{
+//		td,th{
+//			padding: 5px 0;
+//		}
+//		td.name, th{
+//			width:@namesize;
+//			text-align: right;
+//			padding-right: 10px;
+//		}
+//		td{
+//			position: relative;
+//			.u-textarea:hover{
+//				height: 80px;
+//				line-height: 20px;
+//			}
+//			.u-group{
+//				width: 100%;
+//			}
+//		}
+//	}
+}	
+//	&.inline{
+//		border: 1px solid #CCCCCC;
+//		th,td{
+//			border: 1px solid #CCCCCC;
+//			background: #fff
+//		}
+//		.u-group {
+//			
+//		}
+//		.u-formitem{
+//			padding: 0px 0px 0px 111px;
+//			z-index: 1;
+//			width: auto;
+//			height: 100%;
+//			p{
+//				color: #808080;
+//				font-size: 12px;
+//				margin-top: 5px;
+//			}
+//			label {
+//				margin-bottom: 0;
+//				*padding-left:0;
+//				float: left;
+//				height: 100%;
+//				width: 100px;
+//				text-align: right;
+//				background-color: #f3f5f6;
+//				line-height: 35px;
+//				padding-right: 10px;
+//				font-size: 12px;
+//				border-right: 1px solid #ccc;
+//				border-left: 1px solid #ccc;
+//				color: #000;
+//				position:relative;
+//				z-index: 500;
+//				margin-left:-112px;
+//				&.u-checkbox {
+//					background: none;
+//					width: auto;
+//					border: none;
+//					height: 32px;
+//					margin-left: 2px;
+//					margin-right: 2px;
+//					padding-right: 5px;
+//					input {
+//						position: relative;
+//						*top:1px;
+//						margin: 0 4px 0 0;
+//						*margin:0 4px 0 -4px;
+//						vertical-align: middle;
+//					}
+//				}
+//			}
+//			.u-input-span{
+//				label {
+//					z-index: 10 !important
+//				}
+//			}
+//			.u-input {
+//				border: 0;
+//				height: 29px;
+//				line-height: 29px;
+//				*height:25px;
+//				*line-height:25px;
+//				border-bottom: none;
+//				border-radius: 0px;
+//				&.select {
+//					border: 0;
+//					height: 33px;
+//				}
+//			}
+//			//新结构下使用 u-group
+//			.u-but-group {
+//				height: 35px;
+//				line-height: 35px;
+//				border: none;
+//				border-radius: 0px;
+//			}
+//			.m-tooltip {
+//				height: 35px;
+//				float: left;
+//			}
+//			.u-upload {
+//				height: 35px;
+//				border: none;
+//				.icon { 
+//					line-height: 36px
+//				}
+//			}
+//		}
+//		.g-combo p { text-align: left; text-indent: 8px; color: #000; margin-top: 0px; line-height: 35px; *line-height:33px;
+//}
+//	}
+//}
+//.m-table-form .u-formitem .u-input-span, .m-table-form .u-formitem .u-input, .m-table-form .u-formitem .m-tooltip, .m-table-form .u-formitem .u-group, .m-table-form .u-formitem .g-combo, .m-table-form .u-formitem .selector, .m-table-form .u-formitem .u-l-select { width: 100%; }
+//
+//
+//.m-table-form.inline .u-formitem .u-input-span, .m-table-form.inline .u-formitem .u-input, .m-table-form.inline .u-formitem .m-tooltip, .m-table-form.inline .u-formitem .u-group, .m-table-form.inline .u-formitem .g-combo, .m-table-form.inline .u-formitem .u-l-select { width: 100%; }
+
+
+
+//.m-table-form.inline .g-combo p { text-align: left; text-indent: 8px; color: #000; margin-top: 0px; line-height: 35px; *line-height:33px;
+//}
+//.m-table-form.inline .u-down-menu, .m-table-form.inline .but-tree { border-radius: 0 !important }
+//.m-table-form.inline .g-combo { float: left; height: 34px;}
+//.m-table-form.inline .g-combo .u-down-menu, .m-table-form.inline .g-combo .but-tree, .laydate_table { margin-left: -1px; }
+//.m-table-form.inline .u-group .u-group-right { margin-left: 0px; margin-right: -1px; }
+//.m-table-form.inline .u-group .u-group-left { border-right: 1px solid #CDCDCD }
+//.m-table-form.inline .u-but-group.u-group-center { border-left: 1px solid #cdcdcd; border-right: 1px solid #cdcdcd; margin-left: 0px; }
+//.m-table-form.inline .u-group .g-combo.u-group-left { margin-top:0px; border-right: none; }
+//.m-table-form.inline .u-l-select .g-combo { margin-left: -1px; }
+//.m-table-form.inline .u-formitem .u-group textarea.u-input.u-group-left { height: 29px; line-height: 28px !important; }
+//.m-table-form.inline .u-formitem textarea.u-input { padding:1%; width:98%; height: 50px; }
+//.m-table-form.inline .g-combo .u-up-menu { display: inline-block; overflow: hidden;}
+//.m-table-form.inline .g-combo .u-up-menu .u-input { height: 29px; }
+//.m-table-form.inline .g-combo .u-up-menu .iconfont { line-height: 35px; }
+//.m-table-form.inline .u-formitem .u-input-span .u-time-group .u-time-span { border: none; height: 35px;}
+//.m-table-form.inline .u-formitem .u-input-span { padding: 0px ; margin-left:0}
+//.m-table-form.inline .u-formitem .u-input-span.text { padding:1%; width:98% }
+//.m-table-form.inline .u-formitem label.u-checkbox { margin: 0 5px!important }
+//.m-table-form.inline .u-formitem .u-switch { margin: 9px 8px }
+//.m-table-form.inline .u-time-group .u-time-span { height: 35px; border: none !important; line-height: 35px; border-left: 1px solid #D7D7D7 !important; border-right: 1px solid #D7D7D7 !important; }
+
+
+
+
+
+//.m-table-form.inline.style01 .u-formitem { padding: 5px 0px 5px 131px; z-index: 1; width: auto; height: 100%; background: none !important }
+//.m-table-form.inline.style01 .u-formitem p { color: #808080; font-size: 12px; margin-top: 5px }
+//.m-table-form.inline.style01 .u-formitem label { margin-bottom: 0; *padding-left:0;
+//float: left; height: 100%; width: 120px; text-align: right; line-height: 35px; padding-right: 10px; font-size: 12px; border: none !important; color: #000; position: relative; z-index: 1000; margin-left: -131px; background: none !important }
+//.m-table-form.inline.style01 { margin-top: 10px; border: none }
+//.m-table-form.inline.style01 td { border: none; background: none !important }
+//.m-table-form.inline.style01 .g-combo { height: auto; }
+//.m-table-form.inline.style01 td { border: none; background: none !important }
+//.m-table-form.inline.style01 .u-formitem .u-input { border: 1px solid #D6D6D6; height: 27px; line-height: 27px; *height:24px;
+//*line-height:24px;
+//border-radius: 3px }
+//.m-table-form.inline.style01 .u-formitem select.u-input { border: 1px solid #D6D6D6; height: 33px; }
+//.m-table-form.inline.style01 .u-formitem label.u-checkbox { background: none; width: auto; border: none; height: 32px; margin-left: 2px; margin-right: 2px; padding-right: 5px; }
+//.m-table-form.inline.style01 .u-formitem label.u-checkbox input { position: relative; *top:1px;
+//margin: 0 4px 0 0; *margin:0 4px 0 -4px;
+//vertical-align: middle; }
+//.m-table-form.inline.style01 .g-combo { margin: 0px; }
+//.m-table-form.inline.style01 .g-combo .u-up-menu { display: inline-block; height: 33px; padding: 0px; margin: 0px; overflow: inherit !important; }
+//.m-table-form.inline.style01 .g-combo .u-up-menu .u-input { height: 27px; float: left }
+//.m-table-form.inline.style01 .g-combo .u-up-menu .iconfont { line-height: 35px; right: 3px; }
+//.m-table-form.inline.style01 .u-down-menu { border-radius: 3px !important }
+//.m-table-form.inline.style01 .u-but-group { height: 33px; line-height: 33px; border: 1px solid #CDCDCD; }
+//.m-table-form.inline.style01 .u-upload.u-input { height: 33px; line-height: 33px; }
+//.m-table-form.inline.style01 .u-time-group .u-time-span { height: 33px; line-height: 33px; border: none !important; border-top: 1px solid #D7D7D7 !important; border-bottom: 1px solid #D7D7D7 !important; margin-left: -1px; border-left: 1px solid #D7D7D7 !important; }
+//.m-table-form.inline.style01 .u-formitem .u-btn-checkbox { padding-top: 3px; }
+//.m-table-form.inline.style01 .u-formitem .u-group .u-but-group.u-group-center { border-left: none }
+//.m-table-form.inline.style01 .u-group .u-group-right { margin-left: -1px; }
+//.m-table-form.inline.style01 .u-formitem .u-group textarea.u-input.u-group-left { height: 27px; line-height: 26px !important; }
+//.m-table-form.inline.style01 .u-formitem .u-btn-checkbox { border: 1px solid #cdcdcd!important; }
+//.m-table-form.inline.style01 .u-group .g-combo.u-group-left { margin-top: 0px; }
+//.m-table-form.inline.style01 .u-but-group { border-radius: 3px; }
+//.m-table-form.inline .g-combo .u-btn-eject u-btn-checkbox { height: 100%; }
+//.m-table-form.inline .u-formitem .u-btn-checkbox { border: none; padding-top: 3px; border-right: 1px solid #cdcdcd }
+//.m-table-forms { width: 100%; border-spacing: 0px; border-collapse: collapse; table-layout: fixed; word-break: break-all; padding: 0px;}
+//.m-table-forms .m-tooltip, .m-table-forms .u-input, .m-table-forms .g-combo, .m-table-forms .u-l-select { width: 100%; }
+//.m-table-forms td { padding: 5px; }
+//.m-table-forms td.table-header, .m-table-forms th.table-header { width: 100px; text-align: right; font-weight: normal; padding-right: 10px; height: 34px; line-height: 34px; color: #000 }
+//.m-table-forms .text { line-height: 20px !important; display: inline-block; padding: 5px; }
+//.m-table-forms .u-l-select .g-combo { margin-left: -1px; }
+//.m-table-forms.inline, .m-table-forms.inline th, .m-table-forms.inline td { border: 1px solid #cdcdcd; }
+//.m-table-forms.inline td.table-header, .m-table-forms.inline th.table-header { width: 100px; text-align: right; font-weight: normal; padding-right: 10px; background-color: #f3f5f6; height: 34px; line-height: 34px; }
+//.m-table-forms.inline td { height: 33px; line-height: 33px; padding: 0px; background: #FFF; }
+//.m-table-forms.inline input, .m-table-forms.inline textarea { border: 0; border-bottom: none; border-radius: 0px; }
+//.m-table-forms.inline input { height: 27px; line-height: 27px; }
+//.m-table-forms.inline .u-switch i, .m-table-forms .u-switch i { height: auto !important }
+//.m-table-forms.inline .u-down-menu, .m-table-forms.inline .but-tree { border-radius: 0 !important }
+//.m-table-forms.inline .u-group { height: 34px; }
+//.m-table-forms.inline .g-combo { float: left; margin-left: -1px; }
+//.m-table-forms.inline .g-combo .u-up-menu { height: 34px; margin-left: 1px; overflow: hidden; }
+//.m-table-forms.inline .g-combo .u-input { height: 29px; }
+//.m-table-forms.inline .g-combo .u-up-menu .iconfont { line-height: 35px; }
+//.m-table-forms.inline .u-btn-checkbox { border: none!important; }
+//.m-table-forms.inline .u-input { width: 100%; *width:95%;
+//}
+//.m-table-forms.inline .u-group .u-but-group.u-group-right { margin-left: 0px; margin-right: -1px; border-right: none !important }
+//.m-table-forms.inline .u-group .u-but-group.u-group-left { border-left: none !important }
+//.m-table-forms.inline .u-time-group .u-input { height: 28px; line-height: 28px; }
+//.m-table-forms.inline .u-time-group .u-time-span { height: 35px; line-height: 35px; border: none; border-left: 1px solid #cdcdcd; border-right: 1px solid #cdcdcd; margin-left: -1px; }
+//.m-table-forms.inline .u-l-select { height: 35px; line-height: 35px; }
+//.m-table-forms.inline select.u-input { height: 34px; line-height: 34px; border: none !important }
+//.m-table-forms.inline .g-combo .u-btn-eject { height: auto; margin-left: 1px; }
+//.m-table-forms.inline .g-combo .u-btn-eject u-btn-checkbox { height: 100%; }
+//.m-table-forms.inline .u-but-group { height: 34px; line-height: 34px; border: none; border-left: 1px solid #CDCDCD; border-right: 1px solid #CDCDCD; border-radius: 0px; }
+//.m-table-forms.inline .selector.u-group { height: 34px!important; }
+//.m-table-forms.inline .selector.u-group .u-btn-checkbox.u-group-left.u-input { height: 31px!important; }
+//.m-table-forms.inline .u-upload { height: 35px; border: none }
+//.m-table-forms.inline .u-upload .icon { line-height: 36px }
+//.m-table-forms .u-group textarea.u-input { height: 27px; line-height: 27px !important; }
+//.selector { display: block; float: left }
+//.m-table-form .u-formitem .u-group .m-tooltip, .m-table-form.inline .u-formitem .u-group .m-tooltip, .m-table-forms .u-group .m-tooltip, .m-table-forms.inline .u-group .m-tooltip { width: auto; float: left }
+//.m-table-forms.inline .ie-placeholder, .m-table-form.inline.style01 .ie-placeholder, .m-table-form.inline .ie-placeholder { line-height: 24px; }
+//.m-table-form .ie-placeholder { line-height: 17px; }
