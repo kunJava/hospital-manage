@@ -188,7 +188,7 @@
                 var redirectUrl = "${base}/user/userCenter?userId="+user_id;
                 setTimeout(function () {
                     window.location.href = redirectUrl;
-                }, 2000);
+                }, 1000);
             }else{
                 LayuiUtil.msg(json.msg);
                 $('#loginA').removeAttr("disabled");
