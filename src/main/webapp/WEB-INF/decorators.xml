@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/layouts/">
+    <!--static目录下的文件将不被装饰器装饰-->
+    <excludes>
+        <pattern>/resources/*</pattern>
+        <pattern>/api/*</pattern>
+
+    </excludes>
+
+    <decorator name="main" page="main.jsp">
+        <pattern>/</pattern>
+    </decorator>
+
+    <decorator name="noNavigation" page="noNavigation.jsp">
+        <pattern>/user/userCenter</pattern>
+    </decorator>
+
+    <decorator name="blank" page="blank.jsp">
+        <pattern>/user/toLoginPage</pattern>
+        <pattern>/user/toRegisterPage</pattern>
+    </decorator>
+
+</decorators>

@@ -126,13 +126,13 @@
         <div class="tName f-clear">
             <div class="u-group">
                 <div class="item item-l"><img src="${base}/resources/andyui/admin/skin/img/user.png"></div>
-                <input type="text" class="item item-r u-input nohover"  placeholder="请输入账号" name="phoneNum">
+                <input type="text" class="item item-r u-input nohover"  placeholder="请输入账号" name="phoneNum" autocomplete="off">
             </div>
         </div>
         <div class="tPwd f-clear">
             <div class="u-group">
                 <div class="item item-l"><img src="${base}/resources/andyui/admin/skin/img/password.png"></div>
-                <input type="password" class="item item-r u-input nohover"  placeholder="请输入密码" name="password">
+                <input type="password" class="item item-r u-input nohover"  placeholder="请输入密码" name="password" autocomplete="off">
             </div>
         </div>
         <div class="yBtn"><a onclick="login();" id="loginA">登 录</a></div>

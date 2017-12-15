@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
-<c:set var="base" value="${pageContext.request.contextPath}" />
 <!doctype html>
 <html>
 <head>
-    <%@ include file="/WEB-INF/common/common_meta.jsp" %>
     <title>VampireKun</title>
-    <%@ include file="/WEB-INF/common/common_tag.jsp" %>
     <style type="text/css">
         .hide_class {
             display: none
@@ -57,93 +54,8 @@
             color: #FF9900
         }
     </style>
-    <script type="text/javascript" src="${base}/resources/andyui/admin/js/cookieUtil.js"></script>
-    <script type="text/javascript" src="${base}/resources/andyui/admin/js/stringUtil.js"></script>
-    <script src="${base}/resources/layui/layui.js"></script>
-    <script>
-        $(function () {
-            if (CookieUtil.checkIsLogin()) {
-                $('.signState').show();
-                $('.noLoginSate').hide();
-                var username = CookieUtil.getUserName();
-                var headimg = CookieUtil.getHeadImg();
-                var userId = CookieUtil.getUserId();
-                var personalLink = "${base}/user/userCenter";
-                /*if (headimg.indexOf(fileBaseUrl) == -1) {
-                    headimg = fileBaseUrl + headimg;
-                }*/
-                $("#userName").text(username);
-                if (StringUtil.isNotNull(headimg)) {
-                    $("#user_head_img").attr("src", headimg);
-                }
-                $('#personalCenter').attr("href", personalLink);
-
-            } else {
-                $('.noLoginSate').show();
-                $('.signState').hide();
-            }
-        });
-
-        /**
-         *退出登录
-         */
-        function logOut() {
-            layui.use('layer', function () {
-                var layer = layui.layer;
-                layer.confirm('确认退出登录？', {
-                    btn: ['确认', '取消'] //按钮
-                }, function () {
-                    CookieUtil.logOut();
-                    layer.closeAll();
-                    window.location.reload();
-                }, function () {
-                    layer.close();
-                });
-            });
-        }
-    </script>
 </head>
 <body>
-<div class="head">
-    <div class="head-top">
-        <div class="f-left"><img src="${base}/resources/andyui/admin/img/u8.png">下载APP客户端</div>
-        <div class="f-right">
-            <span>您好！欢迎来到铁脚板</span>
-            <a href="${base}/user/toRegisterPage" class="c-1 noLoginSate">注册</a>
-            <a href="${base}/user/toLoginPage" class="c-2 noLoginSate">登录</a>
-            <a style="margin-left: 0 !important;" id="personalCenter" class="signState">
-                <div class="signState">
-                    <img id="user_head_img" src="" onerror="this.src='${base}/resources/andyui/admin/img/u230.png'" class="headImg">
-                </div>
-                <span class="signState">
-				<div class="userName" id="userName">会员</div>
-				</span>
-            </a>
-            <span onclick="logOut()" class="loginOut signState">退出</span>
-            <a href="">| &nbsp;&nbsp; 商家中心</a>
-            <a id="sellerDoor" href="">商家入驻</a>
-        </div>
-    </div>
-    <div class="nav"> <img class="logo" src="${base}/resources/andyui/admin/img/u2.png">
-        <div class="area"  an-combo>
-            <div class=""  combo = "xx">
-                <p><a href="">成都</a><img src="${base}/resources/andyui/admin/img/u25.png"></p>
-                <p>目的地</p>
-            </div>
-            <div class="combo-t" combo="xx"><a href="">锦里</a><a href="">宽窄巷子</a><a href="">漫岩网咖</a><a href="">珠江国际</a></div>
-        </div>
-        <ul class="nav-info">
-            <li><a href="" class="current">首页</a></li>
-            <li><a href="">游记攻略</a></li>
-            <li><a href="">目的地</a></li>
-            <li><a href="">线路</a></li>
-            <li><a href="">酒店</a></li>
-            <li><a href="">商城</a></li>
-            <li><a href="">活动</a></li>
-        </ul>
-        <input type="text" class="u-input search" placeholder="输入景点\酒店\美食\兴趣">
-    </div>
-</div>
 <div class="sy-lunbo">
     <div class="syLeft-menu">
         <div class="syLMbox"> <img src="${base}/resources/andyui/admin/skin/tiejiaoban/img/u61.png" alt="" />
@@ -437,49 +349,6 @@
                 </li>
             </ul>
         </div>
-    </div>
-</div>
-<div class="foot">
-    <div class="g-box1200">
-        <ul class="foot-info">
-            <li><strong>新手上路</strong></li>
-            <li><a href="">入驻流程</a></li>
-            <li><a href="">入驻流程注意事项</a></li>
-            <li><a href="">购物流程</a></li>
-            <li><a href="">帮助中心</a></li>
-        </ul>
-        <ul class="foot-info">
-            <li><strong>商家入驻常见问题</strong></li>
-            <li><a href="">常见问题答疑</a></li>
-            <li><a href="">平台规则</a></li>
-            <li><a href="">业态解读</a></li>
-            <li><a href="">扶贫政策</a></li>
-        </ul>
-        <ul class="foot-info">
-            <li><strong>24小时服务热线</strong></li>
-            <li><a href="">0851-24315005</a></li>
-            <li><a href="">QQ：3451253447</a></li>
-            <li><a href="">电子邮箱：kefu@jtb69.com</a></li>
-        </ul>
-        <ul class="foot-info foot-wx" >
-            <li><img src="${base}/resources/andyui/admin/img/weixin1.jpg">
-                <p>铁脚板APP<br>
-                    官方服务号</p>
-            </li>
-            <li><img src="${base}/resources/andyui/admin/img/weixin1.jpg">
-                <p>铁脚板TV<br>
-                    老铁会</p>
-            </li>
-        </ul>
-        <ul class="foot-con">
-            <li><a href="" class="f-b-n-l"><img src="${base}/resources/andyui/admin/img/f-1.jpg">关于我们</a></li>
-            <li><a href=""><img src="${base}/resources/andyui/admin/img/f-2.jpg">帮助</a></li>
-            <li><a href=""><img src="${base}/resources/andyui/admin/img/f-3.jpg">商家入驻</a></li>
-            <li><a href=""><img src="${base}/resources/andyui/admin/img/f-4.jpg">手机APP下载</a></li>
-            <li><a href=""><img src="${base}/resources/andyui/admin/img/f-5.jpg">服务协议</a></li>
-        </ul>
-        <div class="foot-bot"><a href="">贵公网安备 52030002001035号</a>|<a href="">黔ICP 17002359号</a>|<a href="">营业执照</a>|<a href="">网络文化经营许可证</a>|<a href="">视频流通许可证</a> </div>
-        <div class="foot-bot-img"><img src="${base}/resources/andyui/admin/img/f-6.jpg"><img src="${base}/resources/andyui/admin/img/f-7.jpg"></div>
     </div>
 </div>
 <!--侧边栏-->
