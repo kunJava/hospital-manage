@@ -5,20 +5,11 @@
 <html>
 <head>
     <title>会员中心</title>
-    <link rel="stylesheet" type="text/css" href="${base}/resources/andyui/admin/skin/member.css" />
 </head>
 <body>
 <div  class="g-box1200 f-clear">
     <div class="row col-12">
         <div class="col-3">
-            <ul class="u-nav">
-                <li><strong>订单中心</strong></li>
-                <li><a href="#">最新发生的订单</a></li>
-                <li><a href="#">线路订单</a></li>
-                <li><a href="#">酒店订单</a></li>
-                <li><a href="#">门票订单</a></li>
-                <li><a href="#">优惠券（美食、娱乐）</a></li>
-            </ul>
             <ul class="u-nav">
                 <li><strong>个人中心</strong></li>
                 <li><a href="#">我的旅游攻略</a></li>
@@ -26,7 +17,15 @@
                 <li><a href="#">收到的礼品</a></li>
                 <li><a href="#">修改密码</a></li>
                 <li><a href="#">常用联系人</a></li>
-                <li><a href="#">用户信息</a></li>
+                <li><a href="${base}/user/userInfo">用户信息</a></li>
+            </ul>
+            <ul class="u-nav">
+                <li><strong>需求</strong></li>
+                <li><a href="#">功能1</a></li>
+                <li><a href="#">功能2</a></li>
+                <li><a href="#">功能3</a></li>
+                <li><a href="#">功能4</a></li>
+                <li><a href="#">功能5</a></li>
             </ul>
             <img src="#" width="100%" height="200px" /></div>
         <div class="col-9">

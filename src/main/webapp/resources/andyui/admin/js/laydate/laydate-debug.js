@@ -142,8 +142,8 @@
 //事件监听器
     Dates.on = function(elem, even, fn){
         elem.attachEvent ? elem.attachEvent('on'+ even, function(){
-            fn.call(elem, win.even);
-        }) : elem.addEventListener(even, fn, false);
+                fn.call(elem, win.even);
+            }) : elem.addEventListener(even, fn, false);
         return Dates;
     };
 
@@ -242,13 +242,12 @@
 
 //时分秒的有效检测
     Dates.timeVoid = function(times, index){
-        var hms = Dates.hmsin;
         if(Dates.ymd[1]+1 == Dates.mins[1] && Dates.ymd[2] == Dates.mins[2]){
             if(index === 0 && (times < Dates.mins[3])){
                 return 1;
-            } else if(index === 1 && times < Dates.mins[4] && parseInt(hms[0].value) <= Dates.mins[3]){
+            } else if(index === 1 && times < Dates.mins[4]){
                 return 1;
-            } else if(index === 2 && times < Dates.mins[5] && parseInt(hms[0].value) <= Dates.mins[3] && parseInt(hms[1].value) <= Dates.mins[4]){
+            } else if(index === 2 && times < Dates.mins[5]){
                 return 1;
             }
         } else if(Dates.ymd[1]+1 == Dates.maxs[1] && Dates.ymd[2] == Dates.maxs[2]){
@@ -288,7 +287,7 @@
                 } else if(arr[1] > 12){
                     arr[1] = 12;
                     isvoid.auto = 1;
-                } else if(arr[1] && arr[1].length < 2){
+                } else if(arr[1].length < 2){
                     isvoid.auto = 1;
                 }
                 if(arr[2] < 1){
@@ -297,7 +296,7 @@
                 } else if(arr[2] > Dates.months[(arr[1]|0)-1]){
                     arr[2] = 31;
                     isvoid.auto = 1;
-                } else if(arr[2] && arr[2].length < 2){
+                } else if(arr[2].length < 2){
                     isvoid.auto = 1;
                 }
                 if(arr.length > 3){
@@ -453,12 +452,6 @@
                 Dates.on(elem, 'click', function(ev){
                     Dates.stopmp(ev).reshow();
                     Dates.viewDate(this.getAttribute('y')|0, Dates.ymd[1], Dates.ymd[2]);
-                    //ESummer
-                    var temFormat=Dates.options ? Dates.options.format : config.format;
-                    if(temFormat=="YYYY-MM" || temFormat=="YYYY"){
-                        as.year.parentNode.parentNode.parentNode.style.height = "";
-                    }
-                    
                 });
             }
         });
@@ -561,7 +554,7 @@
             div.setAttribute('name', 'laydate-v'+ laydate.v);
 
             div.innerHTML =  log.html = '<div class="laydate_top">'
-                +'<div class="laydate_ym laydate_y" id="laydate_YY" >'
+                +'<div class="laydate_ym laydate_y" id="laydate_YY">'
                 +'<a class="laydate_choose laydate_chprev laydate_tab"><cite></cite></a>'
                 +'<input id="laydate_y" readonly><label></label>'
                 +'<a class="laydate_choose laydate_chnext laydate_tab"><cite></cite></a>'
@@ -571,7 +564,6 @@
                 +'<a class="laydate_tab laydate_chdown"><cite></cite></a>'
                 +'</div>'
                 +'</div>'
-
                 +'<div class="laydate_ym laydate_m" id="laydate_MM">'
                 +'<a class="laydate_choose laydate_chprev laydate_tab"><cite></cite></a>'
                 +'<input id="laydate_m" readonly><label></label>'
@@ -614,32 +606,6 @@
         options.zIndex ? Dates.box.style.zIndex = options.zIndex : Dates.removeCssAttr(Dates.box, 'z-index');
         Dates.stopMosup('click', Dates.box);
 
-        if(Dates.elem[as.elemv] == 0){
-            as.elemv = 'innerHTML';
-        }
-        /*
-         * 解决多格式 XXXX-XX-XX XX:XX:XX 显示问题
-         * 可以设置年选择 年月选择
-         * 解决同一页面多个选择器 冲突问题
-         * jooiForest qq:279282362
-        */
-        var ymd = Dates.elem[as.elemv].match(/\d+/g) || [];
-        if(ymd.length != 0){
-            if(ymd.length < 2){
-                as.month.parentNode.style.display = "none";
-                as.year.parentNode.parentNode.parentNode.style.width = "133px";
-            }else{
-                as.month.parentNode.style.display = "";
-                as.year.parentNode.parentNode.parentNode.style.width = "240px";
-            }
-
-            if(ymd.length < 3){
-                as.year.parentNode.parentNode.parentNode.getElementsByTagName("table")[0].style.display = "none";
-            }else{
-                as.year.parentNode.parentNode.parentNode.getElementsByTagName("table")[0].style.display = "";
-            }
-        }
-
         Dates.initDate();
         Dates.iswrite();
         Dates.check();
@@ -658,11 +624,6 @@
         Dates.reshow();
         Dates.shde(Dates.query('#'+ as[0]), 1);
         Dates.elem = null;
-        //ESummer
-        var temFormat=Dates.options ? Dates.options.format : config.format;
-        if(temFormat=="YYYY-MM" || temFormat=="YYYY"){
-            as.year.parentNode.parentNode.parentNode.style.height = "";
-        }
     };
 
 //转换日期格式
@@ -696,20 +657,11 @@
 
         Dates.addClass(doc.body, 'laydate_body');
 
-        // as.box = S('.laydate_box');
-        // as.td = S('.laydate_table');
         as.tds = S('#laydate_table td');
         as.mms = S('#laydate_ms span');
         as.year = S('#laydate_y');
         as.month = S('#laydate_m');
-        //ESummer
-        $("#laydate_YY").click(function(){
-            as.year.parentNode.parentNode.parentNode.style.height = "220px";
-        });
-       $('#laydate_MM').click(function(){
-            as.year.parentNode.parentNode.parentNode.style.height = "220px";
-        });
-        
+
         //显示更多年月
         Dates.each(S(log.box + ' .laydate_ym'), function(i, elem){
             Dates.on(elem, 'click', function(ev){
@@ -724,7 +676,6 @@
 
         Dates.on(S(log.box), 'click', function(){
             Dates.reshow();
-            as.year.parentNode.parentNode.parentNode.style.height = "";
         });
 
         //切换年
@@ -738,26 +689,17 @@
             } else {
                 log.YY += 14;
             }
-            var temFormat=Dates.options ? Dates.options.format : config.format;
             if(type < 2){
                 Dates.viewDate(Dates.ymd[0], Dates.ymd[1], Dates.ymd[2]);
                 Dates.reshow();
-
-                if(temFormat=="YYYY-MM" || temFormat=="YYYY"){
-                    as.year.parentNode.parentNode.parentNode.style.height = "";
-                }
             } else {
                 Dates.viewYears(log.YY);
-                if(temFormat=="YYYY-MM" || temFormat=="YYYY"){
-                    as.year.parentNode.parentNode.parentNode.style.height = "220px";
-                }
             }
         };
         Dates.each(S('#laydate_YY .laydate_tab'), function(i, elem){
             Dates.on(elem, 'click', function(ev){
                 Dates.stopmp(ev);
                 log.tabYear(i);
-                
             });
         });
 
@@ -783,10 +725,6 @@
             Dates.on(elem, 'click', function(ev){
                 Dates.stopmp(ev).reshow();
                 log.tabMonth(i);
-                var temFormat=Dates.options ? Dates.options.format : config.format;
-                if(temFormat=="YYYY-MM" || temFormat=="YYYY"){
-                    as.year.parentNode.parentNode.parentNode.style.height = "";
-                }
             });
         });
 
@@ -797,12 +735,6 @@
                 if(!Dates.hasClass(this, as[1])){
                     Dates.viewDate(Dates.ymd[0], this.getAttribute('m')|0, Dates.ymd[2]);
                 }
-                
-                var temFormat=Dates.options ? Dates.options.format : config.format;
-                if(temFormat=="YYYY-MM" || temFormat=="YYYY"){
-                    as.year.parentNode.parentNode.parentNode.style.height = "";
-                }
-                
             });
         });
 
@@ -926,8 +858,8 @@
 //返回指定日期
     laydate.now = function(timestamp, format){
         var De = new Date((timestamp|0) ? function(tamp){
-            return tamp < 86400000 ? (+new Date + tamp*86400000) : tamp;
-        }(parseInt(timestamp)) : +new Date);
+                return tamp < 86400000 ? (+new Date + tamp*86400000) : tamp;
+            }(parseInt(timestamp)) : +new Date);
         return Dates.parse(
             [De.getFullYear(), De.getMonth()+1, De.getDate()],
             [De.getHours(), De.getMinutes(), De.getSeconds()],

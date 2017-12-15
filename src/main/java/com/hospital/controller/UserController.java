@@ -114,5 +114,16 @@ public class UserController {
         return "user/userCenter";
     }
 
+    /**
+     * 用户中心 - 个人信息页面
+     * @param userId 用户ID
+     * @return VIEW
+     * @author zhou.zhengkun
+     * @date 2017/12/15 0015 16:26
+     */
+    @RequestMapping(value = "/userInfo")
+    public String userInfo(String userId){
+        return "user/userInfo";
+    }
 
 }

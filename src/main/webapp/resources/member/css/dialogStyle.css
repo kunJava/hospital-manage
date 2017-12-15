@@ -1,0 +1,20 @@
+.m-panel .panel-head .m-toolbar{background:#ffa927;}
+.m-panel .panel-head .m-toolbar .title span{color:#ffffff;font-size:16px;}
+.m-panel .panel-head .m-toolbar .u-group .u-btn{background:#ffa927;border:1px solid #ffa927!important;}
+.m-panel .panel-head .m-toolbar .u-group .u-btn:hover{background:#ffa927;}
+.m-panel .panel-head .m-toolbar .u-group i{font-size:28px!important;color:#ffffff!important;}
+.m-panel.window .panel-body{margin:0;}
+
+
+.m-table-form td.table-head{width:90px!important;}
+.m-table-form input{background-color:#ffffff!important;border:1px solid #eeeeee!important;border-radius:0;}
+
+/*页签样式*/
+.m-tabs-header .m-tabs-nav li.active a{color:#ff9900;font-size:16px;font-weight:700;padding-bottom:0px!important;border-bottom:2px solid #ff9900;}
+/*.m-tabs-header .m-tabs-nav li a{color:#818181;font-size:16px;background:#ffffff;border:0;padding:0 50px!important;}*/
+.m-tabs-header .m-tabs-nav li a{color:#818181;font-size:16px;background:#ffffff;border:0;}
+.m-tabs .m-tabs-content{border:0px;}
+
+/*table样式*/
+.m-table.bootstrap{border:1px solid #eeeeee!important;}
+.m-table.bootstrap td{height:35px;line-height:35px;border:0;}

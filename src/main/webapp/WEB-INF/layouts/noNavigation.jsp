@@ -10,7 +10,7 @@
     <script type="text/javascript" src="${base}/resources/andyui/admin/js/jquery.min.js"></script>
     <script type="text/javascript" src="${base}/resources/andyui/admin/js/holder.js"></script>
     <script type="text/javascript" src="${base}/resources/andyui/admin/js/stringUtil.js"></script>
-    <script type="text/javascript" src="${base}/resources/layui/layuiUtil.js"></script>
+    <script type="text/javascript" src="${base}/resources/layui/layui/layuiUtil.js"></script>
     <script type="text/javascript" src="${base}/resources/andyui/admin/js/cookieUtil.js"></script>
     <sitemesh:head/>
     <style type="text/css">

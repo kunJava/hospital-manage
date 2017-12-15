@@ -68,8 +68,8 @@ h2{padding:0;}
 .m-tabs-list .m-tabs-body .u-order-head .f-right .u-redeem-code.u-use{background: #E4E4E4; color: #949494}
 .m-tabs-list .m-tabs-body .u-order-head .f-right .u-message{ display: block;float: right; height: 20px; line-height: 20px;  color: #007CFF}
 .m-tabs-list .m-tabs-body .u-order-head .f-right .u-message img{ width: 16px; height: 16px; margin: 2px; float: left}
-.m-tabs-list .m-tabs-body .u-order-head .f-right .u-btns{ display:block;float: right; height: 30px; line-height: 30px; padding: 0 20px; background: #FF9900; color: #fff; border-radius: 5px;}
-.m-tabs-list .m-tabs-body .u-title{ display: block; float: left; width: 100%; height: 30px; line-height: 30px; font-weight: normal; font-size: 16px;}
+.m-tabs-list .m-tabs-body .u-order-head .f-right .u-btns{ display:block;float: right; height: 30px; line-height: 30px; padding: 0 20px; background: #FF9900; color: #fff; border-radius: 5px;margin-right: 5px;}
+.m-tabs-list .m-tabs-body .u-title{ display: block; float: left; width: 100%;padding:10px 0px; font-size: 14px; font-weight: normal;}
 .m-tabs-list .m-tabs-body .u-info{ display: block; float: left; width: 100%}
 .m-tabs-list .m-tabs-body .u-info li{  display: block; float: left; width: 100%; height: 23px; line-height: 23px;}
 .m-tabs-list .m-tabs-body .u-info li span{ display: block; float: left; color: #999}
@@ -79,32 +79,9 @@ h2{padding:0;}
 .m-tabs-list .m-tabs-body .u-info li span.u-address{ color: #000000; padding-right: 20px; background: url(img/u207.png) right 5px no-repeat}
 .m-tabs-list .m-tabs-body .u-info li span.u-width{ width: auto; margin-left: 30px;}
 .m-tabs-list .m-tabs-body .u-info li span.u-tel{ color: #3366FF}
-.m-tabs-list .m-tabs-body .u-info li span.f-c0{ font-size: 14px; color: #000}
 .m-tabs-list .m-tabs-body .u-exchange{ float:left; width: 950px; margin-top: 15px;  padding: 10px; background: #F2F2F2;}
 .m-tabs-list .m-tabs-body .u-exchange strong{ display: block; padding-bottom: 5px;}
 .m-tabs-list .m-tabs-body .u-exchange p{ margin-bottom: 0px;}
-
-.m-tabs-list .m-tabs-body .u-order-body .u-btns{ display: block; float: right; padding: 0 25px; height: 35px; line-height: 35px; color: #FFF; background: #FF9900; border-radius: 5px; margin-top: 10px;}
-
-.m-tabs-list .u-evaluate{ width: 968px; background: #EEE; border: 1px solid #CCC; border-top: none; padding: 15px;}
-.m-tabs-list .u-evaluate .u-titles{display: inline-block; padding-bottom: 10px;}
-.m-tabs-list .u-evaluate .u-titles span{ display: inline-block; width: 100%; font-size: 16px; font-weight: normal; padding-bottom: 3px; text-indent: 2px}
-.m-tabs-list .u-evaluate .u-titles img{ width: 85px;}
-
-
-.m-tabs-list .u-evaluate-f{ padding: 20px 0}
-.m-tabs-list .u-evaluate-f h1{ font-size: 20px; font-weight: normal; text-align: center; padding-top: 20px; padding-bottom: 20px;}
-.m-tabs-list .u-evaluate-f .u-xing{ text-align: center; padding-bottom: 20px;}
-.m-tabs-list .u-evaluate-f .u-xing a{ display: inline-block; width: 22px; height: 22px; background: url(../img/u-141-dan-S.png) left top no-repeat; margin: 0 2px;}
-.m-tabs-list .u-evaluate-f .u-xing a.cerrent{background: url(../img/u-141-dan.png) left top no-repeat;}
-.m-tabs-list .u-evaluate-f .u-textareas{ width: 1000px;}
-.m-tabs-list .u-evaluate-f .u-textareas .u-textarea{ width: 998px; height: 200px;}
-.m-tabs-list .u-evaluate-f .u-textareas strong{ display: block; float: left; font-size: 16px; font-weight: normal; margin-bottom: 10px;}
-.m-tabs-list .u-evaluate-f .u-textareas .u-btns{display: block; float: left; width: 120px; text-align: center; height:40px; line-height: 40px; color: #FFF;background: #FF9900; border-radius: 5px; margin-top:20px; font-size: 16px; margin-left: 400px;}
-.m-list-help{ margin-top:10px;}
-.m-list-help li{ line-height: 30px;}
-.m-list-help li a{ height: 30px; line-height: 30px;}
-.u-navs{ height: 30px; line-height: 30px; background: #e5e5e5; margin-bottom: 20PX; text-indent: 10px;}
 
 .m-list-index{ display: block; float: left; width: 1000px;}
 .m-list-index li{ width: 1000px; height: 120px; position: relative; margin-top: 10px;}
