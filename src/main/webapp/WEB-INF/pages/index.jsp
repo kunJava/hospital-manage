@@ -61,7 +61,7 @@
         <div class="syLMbox"> <img src="${base}/resources/andyui/admin/skin/tiejiaoban/img/u61.png" alt="" />
             <div class="syMP">
                 <p>线路</p>
-                <p><a href="#">推荐线路</a><a href="#">推荐线路</a></p>
+                <p><a href="#">推荐线路</a><a href="#">推荐线路1</a></p>
             </div>
         </div>
         <div class="syLMbox"> <img src="${base}/resources/andyui/admin/skin/tiejiaoban/img/u61.png" alt="" />
