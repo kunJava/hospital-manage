@@ -10,7 +10,7 @@
 <script src="${base}/resources/andyui/admin/js/holder.js"></script>
 <script src="${base}/resources/andyui/admin/js/plugins/jquery.carouFredSel.js"></script>
 <script src="${base}/resources/andyui/admin/skin/tiejiaoban/lunbo.js"></script>
-<script src="${base}/resources/layui/layui.js"></script>
+<script src="${base}/resources/layui/layui/layui.js"></script>
 <script type="text/javascript" src="${base}/resources/andyui/admin/js/stringUtil.js"></script>
 <script type="text/javascript" src="${base}/resources/layui/layuiUtil.js"></script>
 <script src="${base}/resources/andyui/admin/js/cookieUtil.js"></script>

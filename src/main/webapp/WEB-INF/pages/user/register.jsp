@@ -10,8 +10,8 @@
     <link rel="stylesheet" type="text/css" href="${base}/resources/andyui/admin/css/parts/unit.css" />
     <link rel="stylesheet" type="text/css" href="${base}/resources/andyui/admin/skin/member.css" />
     <script src="${base}/resources/jquery.min.js"></script>
-    <script src="${base}/resources/layui/layui.js"></script>
-    <script src="${base}/resources/layui/layuiUtil.js"></script>
+    <script src="${base}/resources/layui/layui/layui.js"></script>
+    <script src="${base}/resources/layui/layui/layuiUtil.js"></script>
     <script src="${base}/resources/andyui/admin/js/stringUtil.js"></script>
     <script src="${base}/resources/andyui/admin/js/cookieUtil.js"></script>
     <style>
