@@ -30,6 +30,13 @@ public interface UserService {
     User login(String phoneNum,String password);
 
     /**
+     * @Author: qyj
+     * @Description:修改密码
+     * @Date: 17:14 2017/12/20
+     */
+    String resetPassword(User user);
+
+    /**
      * 更新用户信息
      * @param user user对象
      * @return String 修改结果

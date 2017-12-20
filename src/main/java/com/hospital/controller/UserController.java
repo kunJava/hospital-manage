@@ -128,6 +128,16 @@ public class UserController {
     }
 
     /**
+     * @Author: qyj
+     * @Description: 修改密码
+     * @Date: 16:31 2017/12/20
+     */
+    @RequestMapping(value = "/resetPassword")
+    public String resetPassword(User user){
+        String message = userService.resetPassword(user);
+        return message;
+    }
+    /**
      * 个人中心 -- 选择地图
      * @return 详细地址及经纬度
      * @author zhou.zhengkun

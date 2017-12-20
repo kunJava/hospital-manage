@@ -90,6 +90,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public String resetPassword(User user) {
+        return null;
+    }
+
+    @Override
     public String update(User user) {
         int result = userMapper.updateByPrimaryKeySelective(user);
         if (result > 0){
