@@ -12,6 +12,6 @@
 <script src="${base}/resources/andyui/admin/skin/tiejiaoban/lunbo.js"></script>
 <script src="${base}/resources/layui/layui/layui.js"></script>
 <script type="text/javascript" src="${base}/resources/andyui/admin/js/stringUtil.js"></script>
-<script type="text/javascript" src="${base}/resources/layui/layuiUtil.js"></script>
+<script type="text/javascript" src="${base}/resources/layui/layui/layuiUtil.js"></script>
 <script src="${base}/resources/andyui/admin/js/cookieUtil.js"></script>
 <c:set var="notLoginMsg" value="亲，请先登录。" scope="application"/>
