@@ -88,4 +88,14 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.userLogin(paraMap);
         return user;
     }
+
+    @Override
+    public String update(User user) {
+        int result = userMapper.updateByPrimaryKeySelective(user);
+        if (result > 0){
+            return JsonUtils.turnJson(true,"success",user);
+        }else{
+            return JsonUtils.turnJson(false,"error",null);
+        }
+    }
 }

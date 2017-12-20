@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Kun on 2017/04/25 0025.
@@ -126,4 +127,35 @@ public class UserController {
         return "user/userInfo";
     }
 
+    /**
+     * 个人中心 -- 选择地图
+     * @return 详细地址及经纬度
+     * @author zhou.zhengkun
+     * @date 2017/12/20 0020 17:18
+     */
+    @RequestMapping(value = "/toMap")
+    public String toMap(){
+        return "map/map";
+    }
+
+    /**
+     * 个人中心 - 修改个人信息
+     * @param
+     * @return
+     * @author zhou.zhengkun
+     * @date 2017/12/20 0020 18:02
+     */
+    @RequestMapping(value = "/myInfoSaveOrUpdate",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public String myInfoSaveOrUpdate(User user, HttpServletResponse response){
+        try{
+            if (user == null){
+                return JsonUtils.turnJson(false,"参数异常","user:"+user);
+            }else{
+                return userService.update(user);
+            }
+        }catch (Exception e){
+            return JsonUtils.turnJson(false,"error",e);
+        }
+    }
 }

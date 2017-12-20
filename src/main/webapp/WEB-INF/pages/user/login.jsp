@@ -159,7 +159,7 @@
             LayuiUtil.msg("密码不能为空。");
             return false;
         }
-        var url = location.protocol + "//" + location.host + "/user/login";
+        var url = "${base}/user/login";
         if($("#remeberPwd").is(':checked')){
             CookieUtil.setCookie("user_account",acount);
             CookieUtil.setCookie("user_password",pwd);

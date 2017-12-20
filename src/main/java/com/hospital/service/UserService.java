@@ -28,4 +28,13 @@ public interface UserService {
      * @date 2017/12/14 0014 10:24
      */
     User login(String phoneNum,String password);
+
+    /**
+     * 更新用户信息
+     * @param user user对象
+     * @return String 修改结果
+     * @author zhou.zhengkun
+     * @date 2017/12/20 0020 18:18
+     */
+    String update(User user);
 }

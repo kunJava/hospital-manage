@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="base" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
     <title>用户信息</title>
@@ -47,6 +48,7 @@
     </style>
     <link rel="stylesheet" href="${base}/resources/layui/layui/css/layui.css"  media="all">
     <script src="${base}/resources/layui/layui/layui.js" charset="utf-8"></script>
+    <script src="${base}/resources/andyui/admin/js/andyui-debug.js"></script>
     <script>
         layui.use('laydate', function(){
             var laydate = layui.laydate;
@@ -63,6 +65,56 @@
                 return false;
             });
         });
+
+        function selectMap() {
+            $(document).an_dialog({
+                id: 'addMap',
+                title: '地址',
+                width: 1000,
+                height: 600,
+                url: '${base}/user/toMap'
+            })
+        }
+
+        function saveOrUpdate() {
+            if (andy.fromVerify(document.getElementById("userForm"))) {
+                var date=$("#laydate1").val().split("-");
+                var ndate=new Date();
+                var yy=ndate.getFullYear();
+                var mm=ndate.getMonth()+1;
+                var dd=ndate.getDate();
+                console.log(date[0],date[1],date[2],yy,mm,dd);
+                if(yy<date[0]){
+                    LayuiUtil.msg("出生日期大于今天?你穿越了?");
+                    return false;
+                }else if(yy==date[0]&&mm<date[1]){
+                    LayuiUtil.msg("出生日期大于今天?你穿越了?");
+                    return false;
+                }else if(yy==date[0]&&mm==date[1]&&dd<date[2]){
+                    LayuiUtil.msg("出生日期大于今天?你穿越了?");
+                    return false;
+                }else{
+                    var url = "${base}/user/myInfoSaveOrUpdate";
+                    $.post(url, $("#userForm").serializeArray(), function(result) {
+                        if (result.msg == "success") {
+                            $(document).an_dialog({
+                                massage : {
+                                    type : '成功',
+                                    content : '操作成功！'
+                                }
+                            });
+                        } else {
+                            $(document).an_dialog({
+                                massage : {
+                                    type : '错误',
+                                    content : '修改失败！'
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+        }
     </script>
 </head>
 <body>
@@ -118,7 +170,7 @@
                             <td class="table-head">昵称:</td>
                             <td colspan="7">
                                 <div class=" u-formitem">
-                                    <input type="text" placeholder="8-20个中文/英文或字母" class="u-input nohover nofocus"
+                                    <input type="text" placeholder="请输入昵称" class="u-input nohover nofocus"
                                            name="nickName" style="width: 100%;"
                                            value="${bean.NICK_NAME}"/>
                                 </div>
@@ -128,9 +180,39 @@
                             <td class="table-head">姓名:</td>
                             <td colspan="7">
                                 <div class=" u-formitem">
-                                    <input type="text" placeholder="8-20个中文/英文或字母" class="u-input nohover nofocus"
+                                    <input type="text" placeholder="请输入真实姓名" class="u-input nohover nofocus"
                                            name="realName" style="width: 100%;"
                                            value="${bean.REAL_NAME}"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table-head">QQ:</td>
+                            <td colspan="7">
+                                <div class=" u-formitem">
+                                    <input type="text" placeholder="请输入QQ号" class="u-input nohover nofocus"
+                                           name="qq" style="width: 100%;"
+                                           value="${bean.QQ}"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table-head">微信:</td>
+                            <td colspan="7">
+                                <div class=" u-formitem">
+                                    <input type="text" placeholder="请输入微信号" class="u-input nohover nofocus"
+                                           name="weixin" style="width: 100%;"
+                                           value="${bean.WEIXIN}"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table-head">邮箱:</td>
+                            <td colspan="7">
+                                <div class=" u-formitem">
+                                    <input type="text" placeholder="请输入邮箱" class="u-input nohover nofocus"
+                                           name="email" style="width: 100%;"
+                                           value="${bean.EMAIL}"/>
                                 </div>
                             </td>
                         </tr>
@@ -139,8 +221,8 @@
                             <td colspan="7">
                                 <div class="layui-form-item" style="margin-bottom: 2px;margin-left: -102px;">
                                     <div class="layui-input-block">
-                                        <input type="radio" name="sex" value="男" title="男" checked="">
-                                        <input type="radio" name="sex" value="女" title="女">
+                                        <input type="radio" name="gender" value="男" title="男" checked="">
+                                        <input type="radio" name="gender" value="女" title="女">
                                     </div>
                                 </div>
                             </td>
@@ -155,10 +237,36 @@
                             </td>
                         </tr>
                         <tr>
+                            <td class="table-head">地址:</td>
+                            <td colspan="7">
+                                <div style="margin-left: 5px;">
+                                    <input id="companyAddress" name="address" value="${bean.ADDRESS}" style="height: 30px;width: 80%;"
+                                           type="text" class="u-input" readonly="readonly" >
+                                </div>
+                                <div style="float: left;margin-left: 20px">
+                                    <a href="javascript:void (0);" onclick="selectMap();" class="u-btn full dark"
+                                       style="width:100%;">查看地图
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="display: none;">
+                            <td class="table-head">经度：</td>
+                            <td>
+                                <input id="lon" name="lon" readonly="readonly" type="text" class="u-input" value="${bean.lon}"
+                                       placeholder="">
+                            </td>
+                            <td class="table-head">纬度：</td>
+                            <td>
+                                <input id="lat" name="lat" readonly="readonly" type="text" class="u-input" value="${bean.lat}"
+                                       placeholder="">
+                            </td>
+                        </tr>
+                        <tr>
                             <td class="table-head">个人简介:</td>
                             <td colspan="7">
                                 <div class=" u-formitem">
-                                    <textarea class="u-textarea" style="height:100px;width: 100%;border-radius:0;background:#ffffff;" name="profile">${bean.USER_DESC}</textarea>
+                                    <textarea class="u-textarea" style="height:100px;width: 100%;border-radius:0;background:#ffffff;" name="userDesc" placeholder="此用户很懒尚未填写任何个人介绍">${bean.USER_DESC}</textarea>
                                 </div>
                             </td>
                         </tr>

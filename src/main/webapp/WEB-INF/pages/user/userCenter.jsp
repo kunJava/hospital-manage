@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<c:set var="base" value="${pageContext.request.contextPath}"/>
 <!doctype html>
 <html>
 <head>
     <title>会员中心</title>
+    <script src="${base}/resources/andyui/admin/js/andyui-debug.js"></script>
 </head>
 <body>
 <div  class="g-box1200 f-clear">

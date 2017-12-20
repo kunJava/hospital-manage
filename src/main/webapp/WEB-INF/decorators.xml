@@ -19,6 +19,7 @@
     <decorator name="blank" page="blank.jsp">
         <pattern>/user/toLoginPage</pattern>
         <pattern>/user/toRegisterPage</pattern>
+        <pattern>/user/toMap</pattern>
     </decorator>
 
 </decorators>
