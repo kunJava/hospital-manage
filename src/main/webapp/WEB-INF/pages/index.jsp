@@ -4,7 +4,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>VampireKun</title>
+    <title>首页</title>
     <style type="text/css">
         .hide_class {
             display: none
