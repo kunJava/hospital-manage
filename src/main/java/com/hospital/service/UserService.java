@@ -28,4 +28,11 @@ public interface UserService {
      * @date 2017/12/14 0014 10:24
      */
     User login(String phoneNum,String password);
+
+    /**
+     * @Author: qyj
+     * @Description:修改密码
+     * @Date: 17:14 2017/12/20
+     */
+    String resetPassword(User user);
 }

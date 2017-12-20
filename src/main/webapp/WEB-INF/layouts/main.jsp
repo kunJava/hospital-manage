@@ -83,9 +83,9 @@
             </li>
             <li><a href="">0851-24315005</a>
             </li>
-            <li><a href="">QQ：3451253447</a>
+            <li><a href="">QQ：454153534</a>
             </li>
-            <li><a href="">电子邮箱：kefu@jtb69.com</a>
+            <li><a href="">电子邮箱：kefu@kunkun.com</a>
             </li>
         </ul>
         <ul class="foot-info foot-wx">

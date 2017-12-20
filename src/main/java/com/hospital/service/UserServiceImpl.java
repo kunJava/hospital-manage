@@ -88,4 +88,9 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.userLogin(paraMap);
         return user;
     }
+
+    @Override
+    public String resetPassword(User user) {
+        return null;
+    }
 }

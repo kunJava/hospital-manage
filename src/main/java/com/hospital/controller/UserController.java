@@ -126,4 +126,14 @@ public class UserController {
         return "user/userInfo";
     }
 
+    /**
+     * @Author: qyj
+     * @Description: 修改密码
+     * @Date: 16:31 2017/12/20
+     */
+    @RequestMapping(value = "/resetPassword")
+    public String resetPassword(User user){
+        String message = userService.resetPassword(user);
+        return message;
+    }
 }
