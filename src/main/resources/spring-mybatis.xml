@@ -25,8 +25,6 @@ http://www.springframework.org/schema/tx       http://www.springframework.org/sc
         <property name="password" value="${jdbc.password}"/>
     </bean>
 
-
-
     <!-- 2. mybatis 的 SqlSession 的工厂: SqlSessionFactoryBean
             dataSource : 引用数据源
             typeAliasesPackage : 配置使用简单类名的包(一般这里设置的是放pojo的地方)
