@@ -1,16 +1,15 @@
 package com.hospital.service;
 
 
-import com.hospital.common.DateUtils;
-import com.hospital.common.JsonUtils;
-import com.hospital.common.PasswordEncoder;
-import com.hospital.common.StringUtils;
+import com.hospital.common.*;
 import com.hospital.dao.UserMapper;
 import com.hospital.model.User;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -95,12 +94,59 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String update(User user) {
+    public String update(HttpServletRequest request) {
+        //检查登录
+        String userId = CookieUtil.getCookie(request,"user_id_cd");
+        if (StringUtils.isBlank(userId)){
+            return JsonUtils.turnJson(false,"请先登录",null);
+        }
+        User user = getUserBeanFromRequest(request);
+        user.setId(userId);
         int result = userMapper.updateByPrimaryKeySelective(user);
         if (result > 0){
-            return JsonUtils.turnJson(true,"success",user);
+            JSONObject jsonObject = JSONObject.fromObject(user);
+            return JsonUtils.turnJson(true,"修改成功",jsonObject);
         }else{
-            return JsonUtils.turnJson(false,"error",null);
+            return JsonUtils.turnJson(false,"修改失败",null);
         }
+    }
+
+    @Override
+    public User selectById(String id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    private User getUserBeanFromRequest(HttpServletRequest request){
+
+        String nickName = ParamUtil.getString(request,"nickName");
+        String realName = ParamUtil.getString(request,"realName");
+        String headImg = ParamUtil.getString(request,"headImg");
+        String qq = ParamUtil.getString(request,"qq");
+        String weixin = ParamUtil.getString(request,"weixin");
+        String email = ParamUtil.getString(request,"email");
+        int gender = ParamUtil.getInt(request,"gender",1);
+        Date birthday = ParamUtil.getDate(request,"birthday");
+        String address = ParamUtil.getString(request,"address");
+        String lon = ParamUtil.getString(request,"lon");
+        String lat = ParamUtil.getString(request,"lat");
+        String userDesc = ParamUtil.getString(request,"userDesc");
+        Integer age = DateUtils.getAge(birthday);
+
+        User user = new User();
+        user.setNickName(nickName);
+        user.setRealName(realName);
+        user.setQq(qq);
+        user.setWeixin(weixin);
+        user.setEmail(email);
+        user.setGender(gender);
+        user.setBirthday(birthday);
+        user.setAddress(address);
+        user.setLon(lon);
+        user.setLat(lat);
+        user.setUserDesc(userDesc);
+        user.setAge(age);
+        user.setUpdateTime(new Date());
+
+        return user;
     }
 }

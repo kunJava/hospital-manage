@@ -40,40 +40,40 @@ var CookieUtil={
 		 * 获取用户ID
 		 */
 		getUserId:function(){
-			return this.getCookie("user_id");
+			return this.getCookie("user_id_cd");
 		},
 		/**
 		 * 获取用户名
 		 * @returns
 		 */
 		getUserName:function(){
-			return this.getCookie("user_name");
+			return this.getCookie("user_name_cd");
 		},
 		/**
 		 * 获取头像
 		 * @returns
 		 */
 		getHeadImg:function(){
-			return this.getCookie("head_img");
+			return this.getCookie("head_img_cd");
 		},
 		/**
 		 * 检查是否 存在cookie userId
 		 * @returns
 		 */
 		checkIsLogin:function(){
-			var userId = this.getCookie("user_id");
+			var userId = this.getCookie("user_id_cd");
 			return StringUtil.isNotNull(userId);
 		},
 		/**
 		 * 注销
 		 */
 		logOut:function(){
-			this.delCookie("tjb_token");
-			this.delCookie("tjb_user");
-			this.delCookie("user_name");
-			this.delCookie("user_id");
-			this.delCookie("head_img");
-			this.delCookie("seller_id");
+			this.delCookie("tjb_token_cd");
+			this.delCookie("tjb_user_cd");
+			this.delCookie("user_name_cd");
+			this.delCookie("user_id_cd");
+			this.delCookie("head_img_cd");
+			this.delCookie("seller_id_cd");
 		},
 		/**
 		 * 检查地图数据
@@ -93,13 +93,13 @@ var CookieUtil={
 		 * 获取站点ID
 		 */
 		getSiteId:function(){
-			return this.getCookie("siteId");
+			return this.getCookie("siteId_cd");
 		},
 		/**
 		 * 获取站点名称
 		 * @returns
 		 */
 		getSiteName:function(){
-			return this.getCookie("siteName");
+			return this.getCookie("siteName_cd");
 		}
 };

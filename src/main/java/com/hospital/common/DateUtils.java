@@ -88,10 +88,12 @@ public class DateUtils {
      */
     public static Date changeStrToDate(String dateStr) {
         Date temp1 = null;
-        if (dateStr == null)
+        if (dateStr == null){
             return null;
-        if (dateStr.equals(""))
+        }
+        if (dateStr.equals("")){
             return null;
+        }
         SimpleDateFormat formatter = null;
         try {
             if (dateStr.indexOf(" ") != -1) {

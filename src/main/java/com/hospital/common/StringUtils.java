@@ -58,4 +58,24 @@ public class StringUtils {
             return "";
         }
     }
+
+    /**
+     * 转utf8格式
+     * @param str 参数
+     * @return String
+     * @author zhou.zhengkun
+     * @date 2017/12/21 0021 16:07
+     */
+    public static String toUTF8(String str) {
+        try {
+            if (str == null){
+                return null;
+            }
+            str = new String(str.getBytes("ISO-8859-1"), "UTF-8");
+            return str;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return null;
+    }
 }

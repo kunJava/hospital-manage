@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="base" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
@@ -78,7 +79,7 @@
 
         function saveOrUpdate() {
             if (andy.fromVerify(document.getElementById("userForm"))) {
-                var date=$("#laydate1").val().split("-");
+                var date=$("#laydate").val().split("-");
                 var ndate=new Date();
                 var yy=ndate.getFullYear();
                 var mm=ndate.getMonth()+1;
@@ -96,24 +97,36 @@
                 }else{
                     var url = "${base}/user/myInfoSaveOrUpdate";
                     $.post(url, $("#userForm").serializeArray(), function(result) {
-                        if (result.msg == "success") {
-                            $(document).an_dialog({
-                                massage : {
-                                    type : '成功',
-                                    content : '操作成功！'
-                                }
-                            });
-                        } else {
-                            $(document).an_dialog({
-                                massage : {
-                                    type : '错误',
-                                    content : '修改失败！'
-                                }
-                            });
+                        if (result.state){
+                            var user = result.result;
+                            var nickName = user.nickName || '';
+                            var headImg = user.headImg||'';
+                            var phoneNum = user.phoneNum||'';
+                            CookieUtil.setCookie("user_name_cd",nickName);
+                            CookieUtil.setCookie("head_img_cd",headImg);
+                            CookieUtil.setCookie("phoneNum_cd",phoneNum);
                         }
+                        LayuiUtil.msg(result.msg);
                     });
                 }
             }
+        }
+        /**
+         *退出登录
+         */
+        function logOut() {
+            layui.use('layer', function () {
+                var layer = layui.layer;
+                layer.confirm('确认退出登录？', {
+                    btn: ['确认', '取消'] //按钮
+                }, function () {
+                    CookieUtil.logOut();
+                    layer.closeAll();
+                    window.location.reload();
+                }, function () {
+                    layer.close();
+                });
+            });
         }
     </script>
 </head>
@@ -143,16 +156,17 @@
         <div class="col-9">
             <div class="m-box">
                 <form id="userForm" target="_self" method="post" class="myinfo-right layui-form">
+                    <input type="hidden" name="headImg" value="${bean.headImg}">
                     <table class="m-table-form">
                         <tr>
                             <td class="table-head">头像:</td>
                             <td colspan="7">
                                 <div class=" u-formitem tx-up" style="width: 482px;">
-                                    <c:if test="${empty bean.HEAD_IMG}">
+                                    <c:if test="${empty bean.headImg}">
                                         <img id="img_head" src="${base}/resources/member/img/mu07.jpg">
                                     </c:if>
-                                    <c:if test="${not empty bean.HEAD_IMG}">
-                                        <img id="img_head" src="${bean.HEAD_IMG}">
+                                    <c:if test="${not empty bean.headImg}">
+                                        <img id="img_head" src="${bean.headImg}">
                                     </c:if>
                                     <div>
                                         <a href="javascript:void(0)" class="tx-upload">选择图片</a>
@@ -172,7 +186,7 @@
                                 <div class=" u-formitem">
                                     <input type="text" placeholder="请输入昵称" class="u-input nohover nofocus"
                                            name="nickName" style="width: 100%;"
-                                           value="${bean.NICK_NAME}"/>
+                                           value="${bean.nickName}"/>
                                 </div>
                             </td>
                         </tr>
@@ -182,7 +196,7 @@
                                 <div class=" u-formitem">
                                     <input type="text" placeholder="请输入真实姓名" class="u-input nohover nofocus"
                                            name="realName" style="width: 100%;"
-                                           value="${bean.REAL_NAME}"/>
+                                           value="${bean.realName}"/>
                                 </div>
                             </td>
                         </tr>
@@ -192,7 +206,7 @@
                                 <div class=" u-formitem">
                                     <input type="text" placeholder="请输入QQ号" class="u-input nohover nofocus"
                                            name="qq" style="width: 100%;"
-                                           value="${bean.QQ}"/>
+                                           value="${bean.qq}"/>
                                 </div>
                             </td>
                         </tr>
@@ -202,7 +216,7 @@
                                 <div class=" u-formitem">
                                     <input type="text" placeholder="请输入微信号" class="u-input nohover nofocus"
                                            name="weixin" style="width: 100%;"
-                                           value="${bean.WEIXIN}"/>
+                                           value="${bean.weixin}"/>
                                 </div>
                             </td>
                         </tr>
@@ -212,7 +226,7 @@
                                 <div class=" u-formitem">
                                     <input type="text" placeholder="请输入邮箱" class="u-input nohover nofocus"
                                            name="email" style="width: 100%;"
-                                           value="${bean.EMAIL}"/>
+                                           value="${bean.email}"/>
                                 </div>
                             </td>
                         </tr>
@@ -221,8 +235,8 @@
                             <td colspan="7">
                                 <div class="layui-form-item" style="margin-bottom: 2px;margin-left: -102px;">
                                     <div class="layui-input-block">
-                                        <input type="radio" name="gender" value="男" title="男" checked="">
-                                        <input type="radio" name="gender" value="女" title="女">
+                                        <input type="radio" name="gender" value="1" title="男" <c:if test="${bean.gender == 1}">checked="checked"</c:if> >
+                                        <input type="radio" name="gender" value="2" title="女" <c:if test="${bean.gender == 2}">checked="checked"</c:if>>
                                     </div>
                                 </div>
                             </td>
@@ -232,7 +246,7 @@
                             <td colspan="7">
                                 <div class="u-formitem">
                                     <input type="text" class="u-input nohover nofocus laydate-icon" style="height: 30px;width: 100%;"
-                                           readonly="readonly" id="laydate" placeholder="请选择日期" name="birthday" value="${bean.BIRTHDAY}">
+                                           readonly="readonly" id="laydate" placeholder="请选择日期" name="birthday" value="<fmt:formatDate value="${bean.birthday}" pattern="yyyy-MM-dd" ></fmt:formatDate>">
                                 </div>
                             </td>
                         </tr>
@@ -240,7 +254,7 @@
                             <td class="table-head">地址:</td>
                             <td colspan="7">
                                 <div style="margin-left: 5px;">
-                                    <input id="companyAddress" name="address" value="${bean.ADDRESS}" style="height: 30px;width: 80%;"
+                                    <input id="companyAddress" name="address" value="${bean.address}" style="height: 30px;width: 80%;"
                                            type="text" class="u-input" readonly="readonly" >
                                 </div>
                                 <div style="float: left;margin-left: 20px">
@@ -266,7 +280,7 @@
                             <td class="table-head">个人简介:</td>
                             <td colspan="7">
                                 <div class=" u-formitem">
-                                    <textarea class="u-textarea" style="height:100px;width: 100%;border-radius:0;background:#ffffff;" name="userDesc" placeholder="此用户很懒尚未填写任何个人介绍">${bean.USER_DESC}</textarea>
+                                    <textarea class="u-textarea" style="height:100px;width: 100%;border-radius:0;background:#ffffff;" name="userDesc" placeholder="此用户很懒尚未填写任何个人介绍">${bean.userDesc}</textarea>
                                 </div>
                             </td>
                         </tr>

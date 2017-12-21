@@ -207,11 +207,11 @@
                 var headImg = user.headImg||'';
                 var phoneNum = user.phoneNum||'';
                 var userType = user.userType;
-                CookieUtil.setCookie("user_name",nickName);
-                CookieUtil.setCookie("user_id", user_id);
-                CookieUtil.setCookie("head_img",headImg);
-                CookieUtil.setCookie("phoneNum",phoneNum);
-                CookieUtil.setCookie("userType",userType);
+                CookieUtil.setCookie("user_name_cd",nickName);
+                CookieUtil.setCookie("user_id_cd", user_id);
+                CookieUtil.setCookie("head_img_cd",headImg);
+                CookieUtil.setCookie("phoneNum_cd",phoneNum);
+                CookieUtil.setCookie("userType_cd",userType);
                 var redirectUrl = "${base}/user/userCenter?userId="+user_id;
                 window.location.href = redirectUrl;
             }else{

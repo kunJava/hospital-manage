@@ -161,8 +161,8 @@
         }
         var url = "${base}/user/login";
         if($("#remeberPwd").is(':checked')){
-            CookieUtil.setCookie("user_account",acount);
-            CookieUtil.setCookie("user_password",pwd);
+            CookieUtil.setCookie("user_account_cd",acount);
+            CookieUtil.setCookie("user_password_cd",pwd);
         }
         $('#loginA').attr('disabled',"true");
         $.post(url, $("#loginForm").serializeArray(), function (json) {
@@ -177,12 +177,12 @@
                 var phoneNum = user.phoneNum||'';
                 var userType = user.userType;
                 var seller_id = user.merchatId || '';
-                CookieUtil.setCookie("user_name",nickName);
-                CookieUtil.setCookie("user_id", user_id);
-                CookieUtil.setCookie("head_img",headImg);
-                CookieUtil.setCookie("phoneNum",phoneNum);
-                CookieUtil.setCookie("userType",userType);
-                CookieUtil.setCookie("seller_id",seller_id);
+                CookieUtil.setCookie("user_name_cd",nickName);
+                CookieUtil.setCookie("user_id_cd", user_id);
+                CookieUtil.setCookie("head_img_cd",headImg);
+                CookieUtil.setCookie("phoneNum_cd",phoneNum);
+                CookieUtil.setCookie("userType_cd",userType);
+                CookieUtil.setCookie("seller_id_cd",seller_id);
                 var redirectUrl = "${base}/user/userCenter?userId="+user_id;
                 setTimeout(function () {
                     window.location.href = redirectUrl;

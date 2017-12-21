@@ -210,7 +210,7 @@ public class User{
         this.userDesc=userDesc== null ? null : userDesc.trim();
     }
     /**
-     *
+     * 真实姓名
      */
     private String realName;
     public String getRealName(){
@@ -218,5 +218,15 @@ public class User{
     }
     public void setRealName(String realName){
         this.realName=realName== null ? null : realName.trim();
+    }
+    /**
+     * 头像
+     */
+    private String headImg;
+    public String getHeadImg() {
+        return headImg;
+    }
+    public void setHeadImg(String headImg) {
+        this.headImg = headImg;
     }
 }

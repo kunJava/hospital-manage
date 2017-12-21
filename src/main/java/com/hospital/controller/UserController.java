@@ -1,12 +1,15 @@
 package com.hospital.controller;
 
+import com.hospital.common.CookieUtil;
 import com.hospital.common.JsonUtils;
+import com.hospital.common.ParamUtil;
 import com.hospital.model.User;
 import com.hospital.service.UserService;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -117,13 +120,15 @@ public class UserController {
 
     /**
      * 用户中心 - 个人信息页面
-     * @param userId 用户ID
      * @return VIEW
      * @author zhou.zhengkun
      * @date 2017/12/15 0015 16:26
      */
     @RequestMapping(value = "/userInfo")
-    public String userInfo(String userId){
+    public String userInfo(HttpServletRequest request,Model model) {
+        String userId = CookieUtil.getCookie(request,"user_id_cd");
+        User bean = userService.selectById(userId);
+        model.addAttribute("bean",bean);
         return "user/userInfo";
     }
 
@@ -174,12 +179,12 @@ public class UserController {
      */
     @RequestMapping(value = "/myInfoSaveOrUpdate",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String myInfoSaveOrUpdate(User user, HttpServletResponse response){
+    public String myInfoSaveOrUpdate(HttpServletRequest request){
         try{
-            if (user == null){
-                return JsonUtils.turnJson(false,"参数异常","user:"+user);
+            if (request == null){
+                return JsonUtils.turnJson(false,"参数异常","request:"+request);
             }else{
-                return userService.update(user);
+                return userService.update(request);
             }
         }catch (Exception e){
             return JsonUtils.turnJson(false,"error",e);

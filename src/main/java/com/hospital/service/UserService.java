@@ -2,6 +2,8 @@ package com.hospital.service;
 
 import com.hospital.model.User;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by Kun on 2017/04/25 0025.
  */
@@ -38,10 +40,19 @@ public interface UserService {
 
     /**
      * 更新用户信息
-     * @param user user对象
+     * @param request request
      * @return String 修改结果
      * @author zhou.zhengkun
      * @date 2017/12/20 0020 18:18
      */
-    String update(User user);
+    String update(HttpServletRequest request);
+
+    /**
+     * 通过ID查询User
+     * @param id userId
+     * @return USER
+     * @author zhou.zhengkun
+     * @date 2017/12/21 0021 16:48
+     */
+    User selectById(String id);
 }
