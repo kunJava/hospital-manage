@@ -128,11 +128,22 @@ public class UserController {
     }
 
     /**
+     * 跳转修改密码页面
+     * @return view
+     * @author zhou.zhengkun
+     * @date 2017/12/21 0021 10:33
+     */
+    @RequestMapping(value = "/toChangePasswordPage")
+    public String toChangePasswordPage(){
+        return "user/changePassword";
+    }
+    /**
      * @Author: qyj
      * @Description: 修改密码
      * @Date: 16:31 2017/12/20
      */
     @RequestMapping(value = "/resetPassword")
+    @ResponseBody
     public String resetPassword(User user){
         String message = userService.resetPassword(user);
         return message;

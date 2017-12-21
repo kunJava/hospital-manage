@@ -14,6 +14,7 @@
     <decorator name="noNavigation" page="noNavigation.jsp">
         <pattern>/user/userCenter</pattern>
         <pattern>/user/userInfo</pattern>
+        <pattern>/user/toChangePasswordPage</pattern>
     </decorator>
 
     <decorator name="blank" page="blank.jsp">
