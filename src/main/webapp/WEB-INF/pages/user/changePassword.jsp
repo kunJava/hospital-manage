@@ -60,7 +60,7 @@
                         <tr>
                             <td class="table-head">输入手机验证码</td>
                             <td><input type="text" class="u-input"></td>
-                            <td style="width: 120px"><a href="" class="u-btn">获取验证码</a></td>
+                            <td style="width: 120px"><a href="${base}/user/sentCode" class="u-btn">获取验证码</a></td>
                         </tr>
                     </table>
                     <div class="f-p f-right">
