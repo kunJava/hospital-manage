@@ -128,11 +128,6 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/toResetPwdPage")
-    public String toResetPwdPage(){
-        return "user/resetPwd";
-    }
-
     /**
      * 跳转修改密码页面
      * @return view
@@ -148,10 +143,10 @@ public class UserController {
      * @Description: 修改密码
      * @Date: 16:31 2017/12/20
      */
-    @RequestMapping(value = "/resetPassword")
+    @RequestMapping(value = "/changePassword")
     @ResponseBody
     public String resetPassword(User user){
-        String message = userService.resetPassword(user);
+        String message = userService.changePassword(user);
         return message;
     }
     /**

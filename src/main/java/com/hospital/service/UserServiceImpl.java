@@ -90,7 +90,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String resetPassword(User user) {
+    public String changePassword(User user) {
         return null;
     }
 

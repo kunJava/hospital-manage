@@ -34,7 +34,7 @@ public interface UserService {
      * @Description:修改密码
      * @Date: 17:14 2017/12/20
      */
-    String resetPassword(User user);
+    String changePassword(User user);
 
     /**
      * 更新用户信息
