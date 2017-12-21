@@ -127,6 +127,12 @@ public class UserController {
         return "user/userInfo";
     }
 
+
+    @RequestMapping(value = "/toResetPwdPage")
+    public String toResetPwdPage(){
+        return "user/resetPwd";
+    }
+
     /**
      * 跳转修改密码页面
      * @return view
