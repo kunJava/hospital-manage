@@ -185,4 +185,14 @@ public class UserController {
             return JsonUtils.turnJson(false,"error",e);
         }
     }
+
+    /**
+     * fastDFS测试
+     * @author zhou.zhengkun
+     * @date 2017/12/22 0022 11:02
+     */
+    @RequestMapping(value = "fastDFSTest")
+    public String fastDFSTest(){
+        return "testPages/fastDFSTest";
+    }
 }

@@ -139,8 +139,8 @@
                 <%--<li><a href="#">我的旅游攻略</a></li>
                 <li><a href="#">我的好友</a></li>
                 <li><a href="#">收到的礼品</a></li>
-                <li><a href="#">修改密码</a></li>
-                <li><a href="#">常用联系人</a></li>--%>
+                <li><a href="#">修改密码</a></li>--%>
+                <li><a href="${base}/user/fastDFSTest">文件上传测试</a></li>
                 <li><a href="${base}/user/userInfo">用户信息</a></li>
             </ul>
             <%--<ul class="u-nav">
