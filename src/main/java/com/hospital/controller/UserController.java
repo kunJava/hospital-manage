@@ -129,9 +129,6 @@ public class UserController {
     public String userInfo(HttpServletRequest request,Model model) {
         String userId = CookieUtil.getCookie(request,"user_id_cd");
         User bean = userService.selectById(userId);
-        String headImg = bean.getHeadImg();
-        String realUrl = UploadUtils.getFileUrl(headImg);
-        bean.setHeadImg(realUrl);
         model.addAttribute("bean",bean);
         return "user/userInfo";
     }

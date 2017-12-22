@@ -52,7 +52,6 @@
     <script src="${base}/resources/andyui/admin/js/andyui-debug.js"></script>
     <script src="${base}/resources/ajaxfileupload.js"></script>
     <script>
-        var fastUrl = "http://111.231.209.74:8888/";
         layui.use('laydate', function(){
             var laydate = layui.laydate;
             laydate.render({
@@ -124,7 +123,7 @@
                             var headImg = user.headImg||'';
                             var phoneNum = user.phoneNum||'';
                             CookieUtil.setCookie("user_name_cd",nickName);
-                            CookieUtil.setCookie("head_img_cd",fastUrl + headImg);
+                            CookieUtil.setCookie("head_img_cd",headImg);
                             CookieUtil.setCookie("phoneNum_cd",phoneNum);
                         }
                         LayuiUtil.msg(result.msg);
