@@ -133,6 +133,7 @@ public class UserServiceImpl implements UserService {
         Integer age = DateUtils.getAge(birthday);
 
         User user = new User();
+        user.setHeadImg(headImg);
         user.setNickName(nickName);
         user.setRealName(realName);
         user.setQq(qq);

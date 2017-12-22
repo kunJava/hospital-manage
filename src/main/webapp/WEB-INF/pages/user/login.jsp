@@ -146,6 +146,7 @@
 <div class="login-title"></div>
 <div class="login-bg"></div>
 <script>
+    var fastUrl = "http://111.231.209.74:8888/";
     function login() {
         var acount = $("input[name='phoneNum']").val();
         acount = $.trim(acount);
@@ -179,7 +180,7 @@
                 var seller_id = user.merchatId || '';
                 CookieUtil.setCookie("user_name_cd",nickName);
                 CookieUtil.setCookie("user_id_cd", user_id);
-                CookieUtil.setCookie("head_img_cd",headImg);
+                CookieUtil.setCookie("head_img_cd",fastUrl + headImg);
                 CookieUtil.setCookie("phoneNum_cd",phoneNum);
                 CookieUtil.setCookie("userType_cd",userType);
                 CookieUtil.setCookie("seller_id_cd",seller_id);

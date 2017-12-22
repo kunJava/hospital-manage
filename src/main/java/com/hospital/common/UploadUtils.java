@@ -76,7 +76,7 @@ public class UploadUtils {
             if (StringUtils.isBlank(fileId)){
                 return null;
             }else{
-                return FILE_READ_URL +"/"+ fileId;
+                return "http://"+FILE_READ_URL +"/"+ fileId;
             }
         } catch (Exception e) {
             e.printStackTrace();

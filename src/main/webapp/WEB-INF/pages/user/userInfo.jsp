@@ -50,7 +50,9 @@
     <link rel="stylesheet" href="${base}/resources/layui/layui/css/layui.css"  media="all">
     <script src="${base}/resources/layui/layui/layui.js" charset="utf-8"></script>
     <script src="${base}/resources/andyui/admin/js/andyui-debug.js"></script>
+    <script src="${base}/resources/ajaxfileupload.js"></script>
     <script>
+        var fastUrl = "http://111.231.209.74:8888/";
         layui.use('laydate', function(){
             var laydate = layui.laydate;
             laydate.render({
@@ -75,6 +77,25 @@
                 height: 600,
                 url: '${base}/user/toMap'
             })
+        }
+
+        function chooseImg() {
+            $.ajaxFileUpload({
+                url: '${base}/upload/uploadImage',
+                fileElementId: 'headImgUp',
+                dataType: "json",
+                success: function (data) {
+                    var result = data.result;
+                    if(result.fileUrl!="" && result.fileUrl!="null") {
+                        document.getElementById("img_head").src = result.fileUrl;
+                        document.getElementById("headImg").value = result.fileId;
+                        LayuiUtil.msg("上传成功");
+                    }
+                },
+                error: function () {
+                    LayuiUtil.msg("上传失败");
+                }
+            });
         }
 
         function saveOrUpdate() {
@@ -103,7 +124,7 @@
                             var headImg = user.headImg||'';
                             var phoneNum = user.phoneNum||'';
                             CookieUtil.setCookie("user_name_cd",nickName);
-                            CookieUtil.setCookie("head_img_cd",headImg);
+                            CookieUtil.setCookie("head_img_cd",fastUrl + headImg);
                             CookieUtil.setCookie("phoneNum_cd",phoneNum);
                         }
                         LayuiUtil.msg(result.msg);
@@ -155,8 +176,8 @@
         </div>
         <div class="col-9">
             <div class="m-box">
-                <form id="userForm" target="_self" method="post" class="myinfo-right layui-form">
-                    <input type="hidden" name="headImg" value="${bean.headImg}">
+                <form id="userForm" target="_self" method="post" class="myinfo-right layui-form" >
+                    <input type="hidden" name="headImg" id="headImg" value="${bean.headImg}">
                     <table class="m-table-form">
                         <tr>
                             <td class="table-head">头像:</td>
@@ -172,7 +193,7 @@
                                         <a href="javascript:void(0)" class="tx-upload">选择图片</a>
                                         <a href="javascript:void(0)" class="tx-upload" onclick="">上传图片</a>
                                         <input style="position:absolute;left:157px;top: 134px;width:97px;height:26px;z-index:999;opacity:0;border:0px solid red;"
-                                               onchange=""
+                                               onchange="chooseImg(this)"
                                                id="headImgUp" type="file" name="headImgUp"/>
                                     </div>
                                     <div>支持jpg、png、bmp，图片大小5M以内</div>
@@ -291,7 +312,5 @@
         </div>
     </div>
 </div>
-
-
 </body>
 </html>

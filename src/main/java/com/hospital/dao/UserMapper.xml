@@ -8,6 +8,7 @@
         <id column="NICK_NAME" jdbcType="VARCHAR" property="nickName" />
         <id column="PHONE" jdbcType="VARCHAR" property="phone" />
         <id column="ADDRESS" jdbcType="VARCHAR" property="address" />
+        <id column="HEAD_IMG" jdbcType="VARCHAR" property="headImg" />
         <id column="LAT" jdbcType="VARCHAR" property="lat" />
         <id column="LON" jdbcType="VARCHAR" property="lon" />
         <id column="GENDER" jdbcType="INTEGER" property="gender" />
@@ -29,9 +30,9 @@
     </select>
     <insert id="insertUser" parameterType="com.hospital.model.User">
         insert into client_user
-		(ID,ACCOUNT,PASSWORD,NICK_NAME,PHONE,ADDRESS,LAT,LON,GENDER,BIRTHDAY,AGE,EMAIL,WEIXIN,QQ,CREATE_TIME,UPDATE_TIME,STATUS,DEPARTMENT_ID,ROLE_ID,USER_DESC,REAL_NAME)
+		(ID,HEAD_IMG,ACCOUNT,PASSWORD,NICK_NAME,PHONE,ADDRESS,LAT,LON,GENDER,BIRTHDAY,AGE,EMAIL,WEIXIN,QQ,CREATE_TIME,UPDATE_TIME,STATUS,DEPARTMENT_ID,ROLE_ID,USER_DESC,REAL_NAME)
 		values
-		(#{id,jdbcType=VARCHAR},#{account,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{nickName,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR},#{lat,jdbcType=VARCHAR},#{lon,jdbcType=VARCHAR},#{gender,jdbcType=INTEGER},#{birthday,jdbcType=TIMESTAMP},#{age,jdbcType=INTEGER},#{email,jdbcType=VARCHAR},#{weixin,jdbcType=VARCHAR},#{qq,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateTime,jdbcType=TIMESTAMP},#{status,jdbcType=INTEGER},#{departmentId,jdbcType=VARCHAR},#{roleId,jdbcType=VARCHAR},#{userDesc,jdbcType=VARCHAR},#{realName,jdbcType=VARCHAR}
+		(#{id,jdbcType=VARCHAR},#{headImg,jdbcType=VARCHAR},#{account,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{nickName,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR},#{lat,jdbcType=VARCHAR},#{lon,jdbcType=VARCHAR},#{gender,jdbcType=INTEGER},#{birthday,jdbcType=TIMESTAMP},#{age,jdbcType=INTEGER},#{email,jdbcType=VARCHAR},#{weixin,jdbcType=VARCHAR},#{qq,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updateTime,jdbcType=TIMESTAMP},#{status,jdbcType=INTEGER},#{departmentId,jdbcType=VARCHAR},#{roleId,jdbcType=VARCHAR},#{userDesc,jdbcType=VARCHAR},#{realName,jdbcType=VARCHAR}
 		)
     </insert>
     <insert id="insertSelective" parameterType="com.hospital.model.User">
@@ -43,6 +44,7 @@
             <if test="nickName != null">NICK_NAME,</if>
             <if test="phone != null">PHONE,</if>
             <if test="address != null">ADDRESS,</if>
+            <if test="headImg != null">HEAD_IMG,</if>
             <if test="lat != null">LAT,</if>
             <if test="lon != null">LON,</if>
             <if test="gender != null">GENDER,</if>
@@ -66,6 +68,7 @@
             <if test="nickName != null">#{nickName,jdbcType=VARCHAR},</if>
             <if test="phone != null">#{phone,jdbcType=VARCHAR},</if>
             <if test="address != null">#{address,jdbcType=VARCHAR},</if>
+            <if test="headImg != null">#{headImg,jdbcType=VARCHAR},</if>
             <if test="lat != null">#{lat,jdbcType=VARCHAR},</if>
             <if test="lon != null">#{lon,jdbcType=VARCHAR},</if>
             <if test="gender != null">#{gender,jdbcType=INTEGER},</if>
@@ -93,6 +96,7 @@
             <if test="address != null">ADDRESS =#{address,jdbcType=VARCHAR},</if>
             <if test="lat != null">LAT =#{lat,jdbcType=VARCHAR},</if>
             <if test="lon != null">LON =#{lon,jdbcType=VARCHAR},</if>
+            <if test="headImg != null">HEAD_IMG =#{headImg,jdbcType=VARCHAR},</if>
             <if test="gender != null">GENDER =#{gender,jdbcType=INTEGER},</if>
             <if test="birthday != null">BIRTHDAY =#{birthday,jdbcType=TIMESTAMP},</if>
             <if test="age != null">AGE =#{age,jdbcType=INTEGER},</if>

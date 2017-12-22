@@ -1,10 +1,7 @@
 package com.hospital.controller;
 
 import com.cloopen.rest.sdk.CCPRestSmsSDK;
-import com.hospital.common.CookieUtil;
-import com.hospital.common.JsonUtils;
-import com.hospital.common.ParamUtil;
-import com.hospital.common.RedisUtil;
+import com.hospital.common.*;
 import com.hospital.model.User;
 import com.hospital.service.UserService;
 import net.sf.json.JSONObject;
@@ -132,6 +129,9 @@ public class UserController {
     public String userInfo(HttpServletRequest request,Model model) {
         String userId = CookieUtil.getCookie(request,"user_id_cd");
         User bean = userService.selectById(userId);
+        String headImg = bean.getHeadImg();
+        String realUrl = UploadUtils.getFileUrl(headImg);
+        bean.setHeadImg(realUrl);
         model.addAttribute("bean",bean);
         return "user/userInfo";
     }
