@@ -186,7 +186,7 @@
                     $('#loginA').removeAttr("disabled");
                     return false;
                 }
-                register();
+            register();
             }else if($("#agreeCheckbox").is(':checked')==false){
                 $('#loginA').removeAttr("disabled");
                 LayuiUtil.msg("请阅读并同意《隐私声明，使用协议》!");

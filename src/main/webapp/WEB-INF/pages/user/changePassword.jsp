@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css" href="${base}/resources/andyui/admin/css/parts/module.css" />
     <link rel="stylesheet" type="text/css" href="${base}/resources/andyui/admin/css/parts/attribute.css" />
     <script src="${base}/resources/andyui/admin/js/andyui.js"></script>
+    <script src="${base}/resources/layui/layui/layui.js"></script>
+    <script src="${base}/resources/layui/layui/layuiUtil.js"></script>
 </head>
 <body>
 <div  class="g-box1200 f-clear">
@@ -59,8 +61,8 @@
                         </tr>
                         <tr>
                             <td class="table-head">输入手机验证码</td>
-                            <td><input type="text" class="u-input"></td>
-                            <td style="width: 120px"><a href="${base}/user/sentCode" class="u-btn">获取验证码</a></td>
+                            <td><input type="text" class="u-input" name="phoneNumber"></td>
+                            <td style="width: 120px"><a onclick="sendCode();" class="u-btn" id="getCode">获取验证码</a></td>
                         </tr>
                     </table>
                     <div class="f-p f-right">
@@ -72,6 +74,35 @@
         </div>
     </div>
 </div>
+<script>
+    function sendCode() {
+        $('#getCode').attr('disabled',"true");
+        var phoneNumber = $("input[name='phoneNumber']").val();
+        phoneNumber = $.trim(phoneNumber);
+        if(StringUtil.isNull(phoneNumber)){
+            LayuiUtil.msg("手机号不能为空。");
+            return false;
+        }
+        var reg = /^1[3|4|5|7|8][0-9]{9}$/;
+        var flag = reg.test(phoneNumber); //true
+        if(!flag){
+            LayuiUtil.msg("手机号码有误！");
+            return false;
+        }
+        $.ajax({
+            type:"POST",
+            dataType:"text",
+            url:"${base}/user/sendCode",
+            data:"phoneNum="+phoneNumber,
+            success:function () {
+
+            },
+            error:function () {
+                LayuiUtil.msg("手机验证码发送失败，请重新发送。");
+            }
+        });
+    }
+</script>
 </body>
 </html>
 

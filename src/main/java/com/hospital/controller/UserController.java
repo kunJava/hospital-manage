@@ -158,12 +158,12 @@ public class UserController {
 
     /**
      * @Author: qyj
-     * @Description: 修改密码
+     * @Description: 发送验证码
      * @Date: 16:31 2017/12/20
      */
-    @RequestMapping(value = "/sentCode", produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "/sendCode")
     @ResponseBody
-    public String sentCode(HttpServletRequest req, String phoneNum) {
+    public String sendCode(HttpServletRequest req, String phoneNum) {
         try {
 
             HashMap<String, Object> result = null;
