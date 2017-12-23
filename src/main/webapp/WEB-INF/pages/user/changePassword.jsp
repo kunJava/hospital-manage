@@ -49,20 +49,20 @@
                     <table class="m-table-form" width="100%">
                         <tr>
                             <td class="table-head">输入原密码</td>
-                            <td colspan="2"><input type="text" class="u-input"></td>
+                            <td colspan="2"><input type="text" class="u-input" id="oldPassword"></td>
                         </tr>
                         <tr>
                             <td class="table-head">输入原密码</td>
-                            <td colspan="2"><input type="password" class="u-input"></td>
+                            <td colspan="2"><input type="password" class="u-input" id="repeatOldPassword"></td>
                         </tr>
                         <tr>
                             <td class="table-head">输入新密码</td>
-                            <td colspan="2"><input type="password" class="u-input"></td>
+                            <td colspan="2"><input type="password" class="u-input" id="newPassword"></td>
                         </tr>
                         <tr>
                             <td class="table-head">输入手机验证码</td>
                             <td><input type="text" class="u-input" name="phoneNumber"></td>
-                            <td style="width: 120px"><a onclick="sendCode();" class="u-btn" id="getCode">获取验证码</a></td>
+                            <td style="width: 120px">&nbsp;&nbsp;<input id="getCode" class="u-btn" type="button" value="获取验证码"></td>
                         </tr>
                     </table>
                     <div class="f-p f-right">
@@ -75,33 +75,65 @@
     </div>
 </div>
 <script>
-    function sendCode() {
-        $('#getCode').attr('disabled',"true");
-        var phoneNumber = $("input[name='phoneNumber']").val();
-        phoneNumber = $.trim(phoneNumber);
-        if(StringUtil.isNull(phoneNumber)){
-            LayuiUtil.msg("手机号不能为空。");
-            return false;
-        }
-        var reg = /^1[3|4|5|7|8][0-9]{9}$/;
-        var flag = reg.test(phoneNumber); //true
-        if(!flag){
-            LayuiUtil.msg("手机号码有误！");
-            return false;
-        }
-        $.ajax({
-            type:"POST",
-            dataType:"text",
-            url:"${base}/user/sendCode",
-            data:"phoneNum="+phoneNumber,
-            success:function () {
 
-            },
-            error:function () {
-                LayuiUtil.msg("手机验证码发送失败，请重新发送。");
+    $(function () {
+        $("#getCode").removeAttr("disabled");
+        //发送验证码
+        $("#getCode").click(function () {
+            $("#getCode").attr("disabled","true");
+            var abc = $("#getCode").val();
+            console.log(abc);
+            var phoneNumber = $("input[name='phoneNumber']").val();
+            phoneNumber = $.trim(phoneNumber);
+            if(StringUtil.isNull(phoneNumber)){
+                LayuiUtil.msg("手机号不能为空。");
+                $("#getCode").removeAttr("disabled");
+                return false;
+            }
+            var reg = /^1[3|4|5|7|8][0-9]{9}$/;
+            var flag = reg.test(phoneNumber); //true
+            if(!flag){
+                LayuiUtil.msg("手机号码有误！");
+                $("#getCode").removeAttr("disabled");
+                return false;
+            }
+            $.ajax({
+                type:"POST",
+                dataType:"json",
+                url:"${base}/user/sendCode",
+                data:{"phoneNum":phoneNumber},
+                success:function (json) {
+                    LayuiUtil.msg(json.msg);
+                    time(this);
+                },
+                error:function () {
+                    LayuiUtil.msg("手机验证码发送失败，请重新发送。");
+                    $("#getCode").removeAttr("disabled");
+                }
+            });
+
+            //验证码倒计时
+            var wait = 30;
+            function time(obj) {
+                console.log(333);
+                if(wait==0) {
+                    $("#getCode").removeAttr("disabled");
+                    $("#getCode").val("获取验证码");
+                    wait = 30;
+                }else {
+                    $("#getCode").attr("disabled","true");
+                    $("#getCode").val(wait+"秒后重新发送");
+                    wait--;
+                    setTimeout(function() {     //倒计时方法
+                        time(obj);
+                    },1000);//间隔为1s
+                }
             }
         });
-    }
+    });
+
+
+
 </script>
 </body>
 </html>

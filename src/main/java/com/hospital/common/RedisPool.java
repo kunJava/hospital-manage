@@ -9,7 +9,8 @@ import redis.clients.jedis.JedisPoolConfig;
 import java.util.ResourceBundle;
 public class RedisPool {
     private static JedisPool pool =null;
-    /*使用静态代码块，优先加载顺序在static方法之前
+    /*
+     * 使用静态代码块，优先加载顺序在static方法之前
      * 初始化redis连接配置
      */
     static {
