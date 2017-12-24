@@ -82,14 +82,11 @@
         $("#getCode").click(function () {
 //            $("#getCode").attr("disabled","true");
             var phoneNumber = CookieUtil.getCookie("phoneNum_cd");
-            var phoneNumber = "18382404470";
-            console.log(phoneNumber);
-            phoneNumber = $.trim(phoneNumber);
             $.ajax({
                 type:"POST",
                 dataType:"json",
                 url:"${base}/user/sendCode",
-                data:{"phoneNum":phoneNumber},
+                data:{},
                 success:function (json) {
                     LayuiUtil.msg(json.msg);
                     time(this);
