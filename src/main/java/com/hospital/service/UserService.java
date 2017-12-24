@@ -36,7 +36,7 @@ public interface UserService {
      * @return String 修改结果
      * @Date: 17:14 2017/12/20
      */
-    String changePassword(String phoneNum,String oldPassword,String newPassword);
+    String changePassword(String phoneNum,String newPassword);
 
     /**
      * 更新用户信息

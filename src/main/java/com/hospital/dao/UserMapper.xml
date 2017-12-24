@@ -123,10 +123,6 @@
         SELECT * FROM client_user where ACCOUNT = '${account}' AND PASSWORD = '${password}' AND STATUS = 1
     </select>
 
-    <select id="queryUser" parameterType="java.util.Map" resultMap="BaseResultMap">
-        SELECT * FROM client_user where ACCOUNT = '${account}' AND PASSWORD = '${oldPassword}' AND STATUS = 1
-    </select>
-
     <update id="userChangePassword" parameterType="java.util.Map">
         update client_user set password= '${newPassword}' where ACCOUNT='${account}'
     </update>

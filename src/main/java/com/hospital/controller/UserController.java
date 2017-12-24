@@ -152,13 +152,18 @@ public class UserController {
      */
     @RequestMapping(value = "/changePassword",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String changePassword(HttpServletRequest request,String oldPassword,String newPassword,String zymCode){
-        String phoneNum = "18382404470";
-//        String phoneNum = CookieUtil.getCookie(request,"phoneNum_cd");
-        if ((RedisUtil.getValueByKey(phoneNum).equals(zymCode))){
-            return userService.changePassword(phoneNum,oldPassword,newPassword);
+    public String changePassword(HttpServletRequest request,String oldPassword,String newPassword){
+//        String phoneNum = "18382404470";
+        String phoneNum = CookieUtil.getCookie(request,"phoneNum_cd");
+        if (StringUtils.isBlank(oldPassword)){
+            return JsonUtils.turnJson(false,"参数错误",null);
+        }else{
+            User user = userService.login(phoneNum,oldPassword);
+            if (user == null){
+                return JsonUtils.turnJson(false,"旧密码输入错误",null);
+            }
+            return userService.changePassword(phoneNum,newPassword);
         }
-        return JsonUtils.turnJson(false,"验证码错误",null);
     }
 
     /**

@@ -123,6 +123,24 @@
         }
 
     });
+
+//    /**
+//     *退出登录
+//     */
+//    function logOut() {
+//        layui.use('layer', function () {
+//            var layer = layui.layer;
+//            layer.confirm('确认退出登录？', {
+//                btn: ['确认', '取消'] //按钮
+//            }, function () {
+//                CookieUtil.logOut();
+//                layer.closeAll();
+//                window.location.reload();
+//            }, function () {
+//                layer.close();
+//            });
+//        });
+//    }
 </script>
 </body>
 </html>

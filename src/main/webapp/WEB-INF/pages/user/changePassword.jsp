@@ -56,14 +56,14 @@
                             <td colspan="2"><input type="password" class="u-input" id="newPassword"></td>
                         </tr>
                         <tr>
-                            <td class="table-head">输入确认新密码</td>
+                            <td class="table-head">再次输入新密码</td>
                             <td colspan="2"><input type="password" class="u-input" id="repeatNewPassword"></td>
                         </tr>
-                        <tr>
-                            <td class="table-head">输入手机验证码</td>
-                            <td><input type="text" class="u-input" id="zymCode"></td>
-                            <td style="width: 120px">&nbsp;&nbsp;<input id="getCode" class="u-btn" type="button" value="获取验证码"></td>
-                        </tr>
+                        <%--<tr>--%>
+                            <%--<td class="table-head">输入手机验证码</td>--%>
+                            <%--<td><input type="text" class="u-input" id="zymCode"></td>--%>
+                            <%--<td style="width: 120px">&nbsp;&nbsp;<input id="getCode" class="u-btn" type="button" value="获取验证码"></td>--%>
+                        <%--</tr>--%>
                     </table>
                     <div class="f-p f-right">
                         <input type="button" onclick="submitChange()" id="submitChange" class="u-btn warning f-ng-p-md" value="提交修改"/>
@@ -80,8 +80,7 @@
         $("#getCode").removeAttr("disabled");
         //发送验证码
         $("#getCode").click(function () {
-//            $("#getCode").attr("disabled","true");
-            var phoneNumber = CookieUtil.getCookie("phoneNum_cd");
+            $("#getCode").attr("disabled","true");
             $.ajax({
                 type:"POST",
                 dataType:"json",
@@ -134,43 +133,49 @@
                 $('#submitChange').removeAttr("disabled");
                 return false;
             }
+            changePassword(oldPassword,newPassword);
         }else{
             LayuiUtil.msg("密码位数不正确。");
             $('#submitChange').removeAttr("disabled");
             return false;
         }
-        if(StringUtil.isNull(zymCode)){
-            LayuiUtil.msg("请输入验证码。");
-            $('#submitChange').removeAttr("disabled");
-            return false;
-        }
-        if(zymCode.length != 6){
-            LayuiUtil.msg("验证码位数不正确。");
-            $('#submitChange').removeAttr("disabled");
-            return false;
-        }
-        changePassword(oldPassword,newPassword,zymCode);
+//        if(StringUtil.isNull(zymCode)){
+//            LayuiUtil.msg("请输入验证码。");
+//            $('#submitChange').removeAttr("disabled");
+//            return false;
+//        }
+//        if(zymCode.length != 6){
+//            LayuiUtil.msg("验证码位数不正确。");
+//            $('#submitChange').removeAttr("disabled");
+//            return false;
+//        }
+
 
     }
 
-    function changePassword(oldPassword,newPassword,zymCode) {
+    function changePassword(oldPassword,newPassword) {
         $.ajax({
             type:"POST",
             dataType:"json",
-            url:"${base}/user/changePasswords",
-            data:{"oldPassword":oldPassword,"newPassword":newPassword,"zymCode":zymCode},
+            url:"${base}/user/changePassword",
+            data:{"oldPassword":oldPassword,"newPassword":newPassword},
             success:function (json) {
                 if(json.state) {
                     LayuiUtil.msg(json.msg);
                     //跳转到登录页并清除登录的cookie
+                    CookieUtil.logOut();
+                    var redirectUrl = "${base}/user/toLoginPage";
+                    setTimeout(function () {
+                        window.location.href = redirectUrl;
+                    }, 1000);
                 }else{
                     LayuiUtil.msg(json.msg);
-                    $("#getCode").removeAttr("disabled");
+                    $('#submitChange').removeAttr("disabled");
                 }
             },
             error:function () {
                 LayuiUtil.msg("系统异常，请稍后再试。");
-                $("#getCode").removeAttr("disabled");
+                $('#submitChange').removeAttr("disabled");
             }
         });
 
