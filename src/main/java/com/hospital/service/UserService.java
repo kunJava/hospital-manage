@@ -1,7 +1,6 @@
 package com.hospital.service;
 
 import com.hospital.model.User;
-
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -34,9 +33,10 @@ public interface UserService {
     /**
      * @Author: qyj
      * @Description:修改密码
+     * @return String 修改结果
      * @Date: 17:14 2017/12/20
      */
-    String changePassword(User user);
+    String changePassword(String phoneNum,String oldPassword,String newPassword);
 
     /**
      * 更新用户信息

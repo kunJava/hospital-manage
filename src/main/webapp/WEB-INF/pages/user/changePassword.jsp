@@ -49,24 +49,24 @@
                     <table class="m-table-form" width="100%">
                         <tr>
                             <td class="table-head">输入原密码</td>
-                            <td colspan="2"><input type="text" class="u-input" id="oldPassword"></td>
-                        </tr>
-                        <tr>
-                            <td class="table-head">输入原密码</td>
-                            <td colspan="2"><input type="password" class="u-input" id="repeatOldPassword"></td>
+                            <td colspan="2"><input type="password" class="u-input" id="oldPassword"></td>
                         </tr>
                         <tr>
                             <td class="table-head">输入新密码</td>
                             <td colspan="2"><input type="password" class="u-input" id="newPassword"></td>
                         </tr>
                         <tr>
+                            <td class="table-head">输入确认新密码</td>
+                            <td colspan="2"><input type="password" class="u-input" id="repeatNewPassword"></td>
+                        </tr>
+                        <tr>
                             <td class="table-head">输入手机验证码</td>
-                            <td><input type="text" class="u-input" name="phoneNumber"></td>
+                            <td><input type="text" class="u-input" id="zymCode"></td>
                             <td style="width: 120px">&nbsp;&nbsp;<input id="getCode" class="u-btn" type="button" value="获取验证码"></td>
                         </tr>
                     </table>
                     <div class="f-p f-right">
-                        <button class="u-btn warning f-ng-p-md">提交修改</button>
+                        <input type="button" onclick="submitChange()" id="submitChange" class="u-btn warning f-ng-p-md" value="提交修改"/>
                     </div>
                 </div>
 
@@ -80,23 +80,11 @@
         $("#getCode").removeAttr("disabled");
         //发送验证码
         $("#getCode").click(function () {
-            $("#getCode").attr("disabled","true");
-            var abc = $("#getCode").val();
-            console.log(abc);
-            var phoneNumber = $("input[name='phoneNumber']").val();
+//            $("#getCode").attr("disabled","true");
+            var phoneNumber = CookieUtil.getCookie("phoneNum_cd");
+            var phoneNumber = "18382404470";
+            console.log(phoneNumber);
             phoneNumber = $.trim(phoneNumber);
-            if(StringUtil.isNull(phoneNumber)){
-                LayuiUtil.msg("手机号不能为空。");
-                $("#getCode").removeAttr("disabled");
-                return false;
-            }
-            var reg = /^1[3|4|5|7|8][0-9]{9}$/;
-            var flag = reg.test(phoneNumber); //true
-            if(!flag){
-                LayuiUtil.msg("手机号码有误！");
-                $("#getCode").removeAttr("disabled");
-                return false;
-            }
             $.ajax({
                 type:"POST",
                 dataType:"json",
@@ -115,7 +103,6 @@
             //验证码倒计时
             var wait = 30;
             function time(obj) {
-                console.log(333);
                 if(wait==0) {
                     $("#getCode").removeAttr("disabled");
                     $("#getCode").val("获取验证码");
@@ -131,6 +118,66 @@
             }
         });
     });
+
+    function submitChange() {
+        $('#submitChange').attr('disabled',"true");
+        var oldPassword = $("#oldPassword").val();
+        var repeatNewPassword = $("#repeatNewPassword").val();
+        var newPassword = $("#newPassword").val();
+        var zymCode = $("#zymCode").val();
+
+        if (oldPassword == '' || newPassword == ''){
+            LayuiUtil.msg("请输入旧密码和新密码。");
+            $('#submitChange').removeAttr("disabled");
+            return false;
+        }
+        if(oldPassword.length>5 && newPassword.length>5 ){
+            if(newPassword != repeatNewPassword){
+                LayuiUtil.msg("两次输入的新密码不一致。");
+                $('#submitChange').removeAttr("disabled");
+                return false;
+            }
+        }else{
+            LayuiUtil.msg("密码位数不正确。");
+            $('#submitChange').removeAttr("disabled");
+            return false;
+        }
+        if(StringUtil.isNull(zymCode)){
+            LayuiUtil.msg("请输入验证码。");
+            $('#submitChange').removeAttr("disabled");
+            return false;
+        }
+        if(zymCode.length != 6){
+            LayuiUtil.msg("验证码位数不正确。");
+            $('#submitChange').removeAttr("disabled");
+            return false;
+        }
+        changePassword(oldPassword,newPassword,zymCode);
+
+    }
+
+    function changePassword(oldPassword,newPassword,zymCode) {
+        $.ajax({
+            type:"POST",
+            dataType:"json",
+            url:"${base}/user/changePasswords",
+            data:{"oldPassword":oldPassword,"newPassword":newPassword,"zymCode":zymCode},
+            success:function (json) {
+                if(json.state) {
+                    LayuiUtil.msg(json.msg);
+                    //跳转到登录页并清除登录的cookie
+                }else{
+                    LayuiUtil.msg(json.msg);
+                    $("#getCode").removeAttr("disabled");
+                }
+            },
+            error:function () {
+                LayuiUtil.msg("系统异常，请稍后再试。");
+                $("#getCode").removeAttr("disabled");
+            }
+        });
+
+    }
 
 
 

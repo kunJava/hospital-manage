@@ -5,6 +5,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
 import java.io.*;
@@ -16,6 +17,9 @@ public class RedisUtil {
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;
+
+    @Resource
+    private RedisPool redisPool;
 
     /**
      * 将对象序列化:要求对象要实现序列化接口
@@ -96,7 +100,49 @@ public class RedisUtil {
         return result;
     }
 
+
     /***
+     * redis中设置值
+     * @param key 键
+     * @param value 值
+     * @param expired key的过期时间 单位:秒
+     * @return
+     */
+    public static boolean setValueByKey(final String key, final String value, final int expired){
+        boolean result=false;
+        if(StringUtils.isBlank(key)||StringUtils.isBlank(value)){
+            return result;
+        }
+        Jedis jedis = RedisPool.getJedis();
+        String setStatus = null;
+        Long expireCode = 0L;
+        if (jedis != null){
+            setStatus = jedis.set(key,value);
+        }
+        int exTmp=expired<0?0:expired;
+        if (exTmp > 0){
+            expireCode = jedis.expire(key, exTmp);
+        }
+        if ("OK".equals(setStatus) && expireCode==1){
+            result=true;
+        }
+        return result;
+    }
+
+    /**
+     * redis中取值
+     */
+    public static String getValueByKey(final String key) {
+        if(StringUtils.isBlank(key)){
+            return null;
+        }
+        Jedis jedis = RedisPool.getJedis();
+        String result = jedis.get(key);
+        return result==null?"":result;
+    }
+
+
+    /**
      * redis 中获取值
      */
     public String getDataByKey(final String key){
@@ -131,4 +177,8 @@ public class RedisUtil {
         });
         return result;
     }
+
+
+
+
 }
