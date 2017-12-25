@@ -5,6 +5,7 @@ package com.hospital.common;
  */
 import net.mikesu.fastdfs.FastdfsClient;
 import net.mikesu.fastdfs.FastdfsClientFactory;
+import net.mikesu.fastdfs.client.StorageClient;
 import net.mikesu.fastdfs.client.TrackerClient;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.configuration.Configuration;

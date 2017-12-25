@@ -139,7 +139,7 @@
             var personalLink = "${base}/user/userCenter";
             $("#userName").text(username);
             if (StringUtil.isNotNull(headimg)) {
-                $("#user_head_img").attr("src", headimg);
+                $("#user_head_img").attr("src", '${ImgUrl}' + headimg);
             }
             $('#personalCenter').attr("href", personalLink);
 

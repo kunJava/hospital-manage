@@ -15,3 +15,4 @@
 <script type="text/javascript" src="${base}/resources/layui/layui/layuiUtil.js"></script>
 <script src="${base}/resources/andyui/admin/js/cookieUtil.js"></script>
 <c:set var="notLoginMsg" value="亲，请先登录。" scope="application"/>
+<c:set var="ImgUrl" value="http://111.231.209.74:8888/"/>
