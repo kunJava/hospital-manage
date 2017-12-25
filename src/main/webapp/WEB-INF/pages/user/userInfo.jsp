@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<c:set var="base" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
     <title>用户信息</title>
+    <%@ include file="/WEB-INF/common/common_tag2.jsp" %>
     <style>
         /*个人资料-我的信息*/
         .myinfo-right {width:600px;min-height:600px;padding:45px 200px;border:1px solid #eeeeee;background:#ffffff;border-radius:3px;}
@@ -186,7 +186,7 @@
                                         <img id="img_head" src="${base}/resources/member/img/mu07.jpg">
                                     </c:if>
                                     <c:if test="${not empty bean.headImg}">
-                                        <img id="img_head" src="${bean.headImg}">
+                                        <img id="img_head" src="${ImgUrl}${bean.headImg}">
                                     </c:if>
                                     <div>
                                         <a href="javascript:void(0)" class="tx-upload">选择图片</a>

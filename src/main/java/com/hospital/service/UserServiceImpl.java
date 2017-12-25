@@ -115,8 +115,7 @@ public class UserServiceImpl implements UserService {
         if (StringUtils.isBlank(userId)){
             return JsonUtils.turnJson(false,"请先登录",null);
         }
-        User user = getUserBeanFromRequest(request);
-        user.setId(userId);
+        User user = getUserBeanFromRequest(request,userId);
         int result = userMapper.updateByPrimaryKeySelective(user);
         if (result > 0){
             JSONObject jsonObject = JSONObject.fromObject(user);
@@ -131,7 +130,7 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectByPrimaryKey(id);
     }
 
-    private User getUserBeanFromRequest(HttpServletRequest request){
+    private User getUserBeanFromRequest(HttpServletRequest request,String userId){
 
         String nickName = ParamUtil.getString(request,"nickName");
         String realName = ParamUtil.getString(request,"realName");
@@ -147,7 +146,13 @@ public class UserServiceImpl implements UserService {
         String userDesc = ParamUtil.getString(request,"userDesc");
         Integer age = DateUtils.getAge(birthday);
 
-        User user = new User();
+        User user = userMapper.selectByPrimaryKey(userId);
+        //todo 这里删除了旧文件仍能访问,需要后期研究fastDFS的文件删除逻辑
+        if(StringUtils.isNotBlank(headImg)){
+            /*若用户上传了新的头像,就删除旧图片*/
+            String oldImg = user.getHeadImg();
+            UploadUtils.removeFileById(oldImg);
+        }
         user.setHeadImg(headImg);
         user.setNickName(nickName);
         user.setRealName(realName);
