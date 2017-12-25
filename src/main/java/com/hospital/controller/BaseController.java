@@ -24,4 +24,14 @@ public class BaseController {
         return "index";
     }
 
+    /**
+     * vue测试页面
+     * @author zhou.zhengkun
+     * @date 2017/12/25 0025 09:48
+     */
+    @RequestMapping("/vue")
+    public String vue(){
+        return "testPages/vueTest";
+    }
+
 }
