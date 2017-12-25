@@ -112,7 +112,6 @@
         </div>
     </div>
 </div>
-</body>
 
 <script type="text/javascript">
     var sellerId = CookieUtil.getCookie("seller_id");
@@ -153,7 +152,7 @@
     function checked(obj) {
         $(obj).find("a").addClass("active");
         $(obj).siblings().each(function (i, e) {
-        $(e).find("a").removeClass("active");
+            $(e).find("a").removeClass("active");
         });
     }
 
@@ -175,4 +174,5 @@
         });
     }
 </script>
+</body>
 </html>
