@@ -89,8 +89,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String changePassword(User user) {
-        return null;
+    public String changePassword(String phoneNum,String newPassword) {
+        newPassword = PasswordEncoder.getMd5Str(newPassword);
+        Map<String, Object> paraMap = new HashMap<String, Object>(4);
+        paraMap.put("account", phoneNum);
+        paraMap.put("newPassword", newPassword);
+        int result = userMapper.userChangePassword(paraMap);
+        if (result > 0){
+            return JsonUtils.turnJson(true,"修改成功",null);
+        }else{
+            return JsonUtils.turnJson(false,"修改失败",null);
+        }
+
     }
 
     @Override

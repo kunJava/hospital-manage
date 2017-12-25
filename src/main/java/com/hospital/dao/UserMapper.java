@@ -15,6 +15,8 @@ public interface UserMapper {
 
     User userLogin(Map map);
 
+    int userChangePassword(Map map);
+
     int insertSelective(User record);
 
     int updateByPrimaryKeySelective(User record);

@@ -144,54 +144,71 @@ public class UserController {
     public String toChangePasswordPage(){
         return "user/changePassword";
     }
+
     /**
      * @Author: qyj
      * @Description: 修改密码
      * @Date: 16:31 2017/12/20
      */
-    @RequestMapping(value = "/changePassword")
+    @RequestMapping(value = "/changePassword",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String resetPassword(User user){
-        String message = userService.changePassword(user);
-        return message;
+    public String changePassword(HttpServletRequest request,String oldPassword,String newPassword){
+        String phoneNum = CookieUtil.getCookie(request,"phoneNum_cd");
+        if (StringUtils.isBlank(oldPassword)){
+            return JsonUtils.turnJson(false,"参数错误",null);
+        }else{
+            User user = userService.login(phoneNum,oldPassword);
+            if (user == null){
+                return JsonUtils.turnJson(false,"旧密码输入错误",null);
+            }
+            return userService.changePassword(phoneNum,newPassword);
+        }
     }
 
     /**
      * @Author: qyj
-     * @Description: 修改密码
+     * @Description: 发送验证码
      * @Date: 16:31 2017/12/20
      */
-    @RequestMapping(value = "/sentCode", produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "/sendCode",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String sentCode(HttpServletRequest req, String phoneNum) {
+    public String sendCode(HttpServletRequest req, String phoneNum) {
         try {
-
-            HashMap<String, Object> result = null;
-            CCPRestSmsSDK restAPI = new CCPRestSmsSDK();
+//            HashMap<String, Object> result = null;
+//            CCPRestSmsSDK restAPI = new CCPRestSmsSDK();
             // *沙盒环境（用于应用开发调试）：restAPI.init("sandboxapp.cloopen.com", "8883");*
             // *生产环境（用户应用上线使用）：restAPI.init("app.cloopen.com", "8883"); *
             // *******************************************************************************
             //短信接口调用准备:1 初始化,2 设置账户,3 设置应用ID
-            restAPI.init("sandboxapp.cloopen.com", "8883");
+            /*restAPI.init("sandboxapp.cloopen.com", "8883");
             restAPI.setAccount("8aaf07085af9176d015afb5428de0045", "e7ceed5b6a55489f8c605a6a0cd7da3a");
             restAPI.setAppId("8aaf07085af9176d015afb542a91004b");
-            String yzmStr = String.valueOf(((Math.random() * 9 + 1) * 100000));//使用随机数生成一个6位数验证码
-//            new RedisUtil().setDataByKey(phoneNum, yzmStr, 10000);
-            // 参数说明:1:电话号码 2短信模版ID(免费测试模版为1) 3第一个为短信内容,第二个是几分钟之内输入
-            result = restAPI.sendTemplateSMS(phoneNum, "165211", new String[]{yzmStr, "10"});
-            String statusCode = MapUtils.getString(result, "statusCode", "");
-            if (StringUtils.equals("000000", statusCode)) {
-                return JsonUtils.turnJson(true, "验证短信已下发", null);
-            } else if (StringUtils.equals("160040", statusCode)) {
-                return JsonUtils.turnJson(false, "同一手机一天发送验证码次数超过限制", null);
-            } else if (StringUtils.equals("160038", statusCode)) {
-                return JsonUtils.turnJson(false, "短信验证码发送过频繁", null);
-            } else {
-                // 异常返回输出错误码和错误信息
-                System.err.println("错误码=" + result.get("statusCode") + " 错误信息= "
-                        + result.get("statusMsg"));
-                return JsonUtils.turnJson(false, "验证短信发送不成功", null);
+            */
+            String yzmStr = String.valueOf((int)((Math.random() * 9 + 1) * 100000));//使用随机数生成一个6位数验证码
+            System.out.println("六位数验证码："+yzmStr);
+            boolean isOk = RedisUtil.setValueByKey(phoneNum, yzmStr, 300);
+//            if(isOk) {
+                // 参数说明:1:电话号码 2短信模版ID(免费测试模版为1) 3第一个为短信内容,第二个是几分钟之内输入
+                /*result = restAPI.sendTemplateSMS(phoneNum, "165211", new String[]{yzmStr, "10"});
+                String statusCode = MapUtils.getString(result, "statusCode", "");
+                if (StringUtils.equals("000000", statusCode)) {
+                    return JsonUtils.turnJson(true, "验证短信已下发，请在30秒内输入。", null);
+                } else if (StringUtils.equals("160040", statusCode)) {
+                    return JsonUtils.turnJson(false, "同一手机一天发送验证码次数超过限制", null);
+                } else if (StringUtils.equals("160038", statusCode)) {
+                    return JsonUtils.turnJson(false, "短信验证码发送过频繁", null);
+                } else {
+                    // 异常返回输出错误码和错误信息
+                    System.err.println("错误码=" + result.get("statusCode") + " 错误信息= "
+                            + result.get("statusMsg"));
+                    return JsonUtils.turnJson(false, "验证短信发送不成功", null);
+                }
+
             }
+            return JsonUtils.turnJson(true, "验证短信已下发，请在30秒内输入。", null);
+            */
+            return JsonUtils.turnJson(true, "验证短信已下发，请在30秒内输入。", null);
+
         } catch (Exception e) {
             e.printStackTrace();
             return JsonUtils.turnJson(false, "验证短信发送不成功,内部异常", e.getMessage());

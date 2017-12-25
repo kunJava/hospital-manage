@@ -86,6 +86,7 @@
             <if test="realName != null">#{realName,jdbcType=VARCHAR},</if>
         </trim>
     </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="com.hospital.model.User">
         update client_user
         <set>
@@ -121,4 +122,9 @@
     <select id="userLogin" parameterType="java.util.Map" resultMap="BaseResultMap">
         SELECT * FROM client_user where ACCOUNT = '${account}' AND PASSWORD = '${password}' AND STATUS = 1
     </select>
+
+    <update id="userChangePassword" parameterType="java.util.Map">
+        update client_user set password= '${newPassword}' where ACCOUNT='${account}'
+    </update>
+
 </mapper>

@@ -186,7 +186,7 @@
                     $('#loginA').removeAttr("disabled");
                     return false;
                 }
-                register();
+            register();
             }else if($("#agreeCheckbox").is(':checked')==false){
                 $('#loginA').removeAttr("disabled");
                 LayuiUtil.msg("请阅读并同意《隐私声明，使用协议》!");
@@ -205,7 +205,7 @@
                 var nickName = user.nickName||'';
                 var user_id = user.id||'';
                 var headImg = user.headImg||'';
-                var phoneNum = user.phoneNum||'';
+                var phoneNum = user.phone||'';
                 var userType = user.userType;
                 CookieUtil.setCookie("user_name_cd",nickName);
                 CookieUtil.setCookie("user_id_cd", user_id);

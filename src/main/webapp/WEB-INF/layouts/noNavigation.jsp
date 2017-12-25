@@ -11,6 +11,7 @@
     <script type="text/javascript" src="${base}/resources/andyui/admin/js/jquery.min.js"></script>
     <script type="text/javascript" src="${base}/resources/andyui/admin/js/holder.js"></script>
     <script type="text/javascript" src="${base}/resources/andyui/admin/js/stringUtil.js"></script>
+    <script type="text/javascript" src="${base}/resources/layui/layui/layui.js"></script>
     <script type="text/javascript" src="${base}/resources/layui/layui/layuiUtil.js"></script>
     <script type="text/javascript" src="${base}/resources/andyui/admin/js/cookieUtil.js"></script>
     <sitemesh:head/>
@@ -40,7 +41,7 @@
 				<div class="userName" id="userName">会员</div>
 				</span>
             </a>
-            <span onclick="logOut()" class="loginOut signState">退出</span>
+            <span onclick="logOut()" class="loginOut signState">退出1</span>
             <a href="">| &nbsp;&nbsp; 商家中心</a>
             <a id="sellerDoor" href="">商家入驻</a>
         </div>
@@ -121,8 +122,25 @@
             $('.noLoginSate').show();
             $('.signState').hide();
         }
-
     });
+
+    /**
+     *退出登录
+     */
+    function logOut() {
+        layui.use('layer', function () {
+            var layer = layui.layer;
+            layer.confirm('确认退出登录？', {
+                btn: ['确认', '取消'] //按钮
+            }, function () {
+                CookieUtil.logOut();
+                layer.closeAll();
+                window.location.reload();
+            }, function () {
+                layer.close();
+            });
+        });
+    }
 </script>
 </body>
 </html>
