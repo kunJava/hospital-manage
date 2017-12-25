@@ -67,7 +67,9 @@
         .u-group .item.item-r{
             width: 297px;
         }
-        .yBtn a{
+        .yBtn input{
+            border: none;
+            width: 350px;
             display: block;
             height: 40px;
             line-height: 40px;
@@ -135,7 +137,6 @@
                 <input type="password" class="item item-r u-input nohover" name="password" id="password" placeholder="请输入密码">
             </div>
         </div>
-
         <div class="tPwd f-clear">
             <div class="u-group">
                 <div class="item item-l"><img src="${base}/resources/andyui/admin/skin/img/password.png"></div>
@@ -153,29 +154,31 @@
             <label class="f-left u-checkbox">
                 <input name="a" id="agreeCheckbox" type="checkbox">我已阅读并同意<a href="#" style="color: #CF4749">《隐私声明，使用协议》</a></label>
         </div>
-        <div class="yBtn"><a href="javascript:void(0);" id="loginA">注 册</a></div>
-
-
+        <%--<div class="yBtn"><a href="javascript:void(0);" id="loginA">注 册</a></div>--%>
+        <div class="yBtn"><input type="button"  id="loginA"  value="注 册"/></div>
     </form>
 </div>
 <div class="login-title"></div>
 <div class="login-bg"></div>
 <script>
     $("#loginA").click(function() {
-        $('#loginA').attr('disabled',"true");
+        $('#loginA').attr('disabled',"true").css('background-color',"grey");
         var password = $("#password").val();
         var repeatPassword = $("#repeatPassword").val();
         var account = $("#account").val();
         if (account == '' || password == ''){
             LayuiUtil.msg("请输入账号和密码。");
+            $('#loginA').removeAttr("disabled").css('background-color',"#F04043");
             return false;
         }
         if(password.length>5){
             if(StringUtil.isNull(repeatPassword)){
                 LayuiUtil.msg("请输入确认密码。");
+                $('#loginA').removeAttr("disabled").css('background-color',"#F04043");
                 return false;
             }else if(password != repeatPassword){
                 LayuiUtil.msg("两次密码不一致。");
+                $('#loginA').removeAttr("disabled").css('background-color',"#F04043");
                 return false;
             }
             if($("#agreeCheckbox").is(':checked')==true){
@@ -183,17 +186,17 @@
                 var flag = reg.test(account); //true
                 if(!flag){
                     LayuiUtil.msg("手机号码有误！");
-                    $('#loginA').removeAttr("disabled");
+                    $('#loginA').removeAttr("disabled").css('background-color',"#F04043");
                     return false;
                 }
             register();
             }else if($("#agreeCheckbox").is(':checked')==false){
-                $('#loginA').removeAttr("disabled");
+                $('#loginA').removeAttr("disabled").css('background-color',"#F04043");
                 LayuiUtil.msg("请阅读并同意《隐私声明，使用协议》!");
             }
         }else{
             LayuiUtil.msg("密码位数不低于6位。");
-            $('#loginA').removeAttr("disabled");
+            $('#loginA').removeAttr("disabled").css('background-color',"#F04043");
             return false;
         }
     });

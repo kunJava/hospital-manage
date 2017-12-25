@@ -166,13 +166,59 @@ public class UserController {
     }
 
     /**
+     * 跳转重置密码页面
+     * @return view
+     * @author qyj
+     * @date 2017/12/25
+     */
+    @RequestMapping(value = "/toResetPasswordPage")
+    public String toResetPasswordPage(){
+        return "user/resetPassword";
+    }
+
+    /**
+     * @Author: qyj
+     * @Description: 重置密码
+     * @Date: 16:31 2017/12/20
+     */
+    @RequestMapping(value = "/resetPassword",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public String resetPassword(String account,String newPassword,String zymCode){
+        if (StringUtils.isBlank(account) || StringUtils.isBlank(newPassword) ||  StringUtils.isBlank(zymCode)){
+            return JsonUtils.turnJson(false,"参数错误",null);
+        }else{
+            User user = userService.getUserByAccount(account);
+            if (user == null){
+                return JsonUtils.turnJson(false,"此用户不存在",null);
+            }
+            String phoneNum = user.getPhone();
+            if (zymCode.equals(RedisUtil.getValueByKey(phoneNum))){
+                return userService.changePassword(phoneNum,newPassword);
+            }else {
+                return JsonUtils.turnJson(false,"验证码不正确",null);
+            }
+
+        }
+    }
+
+    /**
      * @Author: qyj
      * @Description: 发送验证码
      * @Date: 16:31 2017/12/20
      */
     @RequestMapping(value = "/sendCode",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String sendCode(HttpServletRequest req, String phoneNum) {
+    public String sendCode(String account) {
+        String phoneNum;
+        if (StringUtils.isBlank(account)){
+            return JsonUtils.turnJson(false,"账户不能为空",null);
+        }else{
+            User user = userService.getUserByAccount(account);
+            if (user == null){
+                return JsonUtils.turnJson(false,"此用户不存在",null);
+            }
+            phoneNum = user.getPhone();
+        }
         try {
 //            HashMap<String, Object> result = null;
 //            CCPRestSmsSDK restAPI = new CCPRestSmsSDK();

@@ -137,7 +137,7 @@
         <div class="yCheck f-clear">
             <label class="f-left u-checkbox">
                 <input name="a" id="remeberPwd" type="checkbox">记住密码</label>
-            <a class="f-right forgetPW" href="javascript:void(0)" id="setNewWord">忘记密码?</a></div>
+            <a class="f-right forgetPW" href="${base}/user/toResetPasswordPage" id="setNewWord">忘记密码?</a></div>
         <div class="kjLogin"><span>快捷登录</span></div>
         <div class="kjBox" style="width: 66px;padding-left: 157px;">
             <a href="javascript:void(0)"><img src="http://tjb69.com/trip-mall/resources/mall/img/wxdl.png" alt=""></a></div>

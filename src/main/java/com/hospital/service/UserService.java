@@ -20,6 +20,8 @@ public interface UserService {
 
     String selectByAccount(String account);
 
+    User getUserByAccount(String account);
+
     /**
      * 用户登录
      * @param phoneNum 电话(登录帐号)

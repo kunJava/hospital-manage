@@ -79,6 +79,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserByAccount(String account) {
+        return userMapper.getUserByAccount(account);
+        }
+
+    @Override
     public User login(String phoneNum, String password) {
         password = PasswordEncoder.getMd5Str(password);
         Map<String,Object> paraMap = new HashMap<String,Object>(4);

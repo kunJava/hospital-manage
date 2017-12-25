@@ -41,7 +41,7 @@
 				<div class="userName" id="userName">会员</div>
 				</span>
             </a>
-            <span onclick="logOut()" class="loginOut signState">退出1</span>
+            <span onclick="logOut()" class="loginOut signState">退出</span>
             <a href="">| &nbsp;&nbsp; 商家中心</a>
             <a id="sellerDoor" href="">商家入驻</a>
         </div>
