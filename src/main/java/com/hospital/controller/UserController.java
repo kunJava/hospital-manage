@@ -153,7 +153,6 @@ public class UserController {
     @RequestMapping(value = "/changePassword",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String changePassword(HttpServletRequest request,String oldPassword,String newPassword){
-//        String phoneNum = "18382404470";
         String phoneNum = CookieUtil.getCookie(request,"phoneNum_cd");
         if (StringUtils.isBlank(oldPassword)){
             return JsonUtils.turnJson(false,"参数错误",null);
