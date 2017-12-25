@@ -10,6 +10,7 @@
 <body>
 <div id="firstVue">
     <p>{{ message }}</p>
+    <input v-model="message">
 </div>
 
 <div id="app-2">
