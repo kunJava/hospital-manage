@@ -6,6 +6,7 @@
 <html>
 <head>
     <title>首页</title>
+    <script src="${base}/resources/andyui/admin/skin/tiejiaoban/lunbo.js"></script>
     <style type="text/css">
         .hide_class {
             display: none

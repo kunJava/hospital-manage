@@ -47,10 +47,10 @@
             text-align: center;
         }
     </style>
-    <link rel="stylesheet" href="${base}/resources/layui/layui/css/layui.css"  media="all">
-    <script src="${base}/resources/layui/layui/layui.js" charset="utf-8"></script>
     <script src="${base}/resources/andyui/admin/js/andyui-debug.js"></script>
     <script src="${base}/resources/ajaxfileupload.js"></script>
+    <link rel="stylesheet" href="${base}/resources/layui/layui/css/layui.css"  media="all">
+    <script src="${base}/resources/layui/layui/layui.js" charset="utf-8"></script>
     <script>
         layui.use('laydate', function(){
             var laydate = layui.laydate;
@@ -75,6 +75,16 @@
                 width: 1000,
                 height: 600,
                 url: '${base}/user/toMap'
+            })
+        }
+
+        function onlineCutImage() {
+            $(document).an_dialog({
+                id: 'cutImg',
+                title: '裁剪图片',
+                width: 1200,
+                height: 700,
+                url: 'http://www.atool.org/imgcrop.php'
             })
         }
 
@@ -158,10 +168,10 @@
                 <li><strong>个人中心</strong></li>
                 <%--<li><a href="#">我的旅游攻略</a></li>
                 <li><a href="#">我的好友</a></li>
-                <li><a href="#">收到的礼品</a></li>
-                <li><a href="#">修改密码</a></li>--%>
+                <li><a href="#">收到的礼品</a></li>--%>
                 <li><a href="${base}/user/fastDFSTest">文件上传测试</a></li>
                 <li><a href="${base}/user/userInfo">用户信息</a></li>
+                <li><a href="${base}/jCropTest">图片裁剪测试</a></li>
             </ul>
             <%--<ul class="u-nav">
                 <li><strong>需求</strong></li>
@@ -178,6 +188,9 @@
                 <form id="userForm" target="_self" method="post" class="myinfo-right layui-form" >
                     <input type="hidden" name="headImg" id="headImg" value="${bean.headImg}">
                     <table class="m-table-form">
+                        <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+                            <button data-method="setTop" data-type="auto" class="layui-btn">弹出层</button>
+                        </div>
                         <tr>
                             <td class="table-head">头像:</td>
                             <td colspan="7">
@@ -190,7 +203,7 @@
                                     </c:if>
                                     <div>
                                         <a href="javascript:void(0)" class="tx-upload">选择图片</a>
-                                        <a href="javascript:void(0)" class="tx-upload" onclick="">上传图片</a>
+                                        <a href="javascript:void(0)" class="tx-upload" onclick="onlineCutImage()">在线裁剪</a>
                                         <input style="position:absolute;left:157px;top: 134px;width:97px;height:26px;z-index:999;opacity:0;border:0px solid red;"
                                                onchange="chooseImg(this)"
                                                id="headImgUp" type="file" name="headImgUp"/>
@@ -311,5 +324,45 @@
         </div>
     </div>
 </div>
+<script>
+    layui.use('layer', function(){ //独立版的layer无需执行这一句
+        var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+        //触发事件
+        var active = {
+            setTop: function(){
+                var that = this;
+                layer.open({
+                    type: 2 //此处以iframe举例
+                    ,title: '弹出窗口'
+                        ,shadeClose: false
+                    ,area: ['390px', '260px']
+                    ,shade: 0
+                    ,maxmin: true
+                    ,offset: type
+                    ,content: 'http://layer.layui.com/test/settop.html'
+                    ,btn: ['继续弹出', '全部关闭'] //只是为了演示
+                    ,yes: function(){
+                        $(that).click();
+                    }
+                    ,btn2: function(){
+                        layer.closeAll();
+                    }
+
+                    ,zIndex: layer.zIndex //重点1
+                    ,success: function(layero){
+                        layer.setTop(layero); //重点2
+                    }
+                });
+            }
+        };
+
+        $('#layerDemo .layui-btn').on('click', function(){
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
+
+    });
+</script>
 </body>
 </html>

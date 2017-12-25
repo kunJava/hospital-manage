@@ -34,4 +34,23 @@ public class BaseController {
         return "testPages/vueTest";
     }
 
+    /**
+     * 图片裁剪测试
+     * @author zhou.zhengkun
+     * @date 2017/12/25 0025 17:18
+     */
+    @RequestMapping(value = "/jCropTest")
+    public String jCropTest(){
+        return "testPages/tutorial5";
+    }
+
+    /**
+     * 图片裁剪测试
+     * @author zhou.zhengkun
+     * @date 2017/12/25 0025 17:18
+     */
+    @RequestMapping(value = "/layuiTest")
+    public String layuiTest(){
+        return "testPages/layuiTest";
+    }
 }

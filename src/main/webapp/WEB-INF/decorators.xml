@@ -21,6 +21,7 @@
         <pattern>/user/toLoginPage</pattern>
         <pattern>/user/toRegisterPage</pattern>
         <pattern>/user/toMap</pattern>
+        <pattern>/jCropTest</pattern>
     </decorator>
 
 </decorators>

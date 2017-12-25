@@ -14,21 +14,22 @@
         <div class="col-3">
             <ul class="u-nav">
                 <li><strong>个人中心</strong></li>
-                <li><a href="#">我的旅游攻略</a></li>
+                <%--<li><a href="#">我的旅游攻略</a></li>
                 <li><a href="#">我的好友</a></li>
-                <li><a href="#">收到的礼品</a></li>
-                <li><a href="${base}/user/toChangePasswordPage">修改密码</a></li>
-                <li><a href="#">常用联系人</a></li>
+                <li><a href="#">收到的礼品</a></li>--%>
                 <li><a href="${base}/user/userInfo">用户信息</a></li>
+                <li><a href="${base}/user/fastDFSTest">文件上传测试</a></li>
+                <li><a href="${base}/jCropTest">图片裁剪测试</a></li>
+                <li><a href="${base}/layuiTest">layui测试</a></li>
             </ul>
-            <ul class="u-nav">
+            <%--<ul class="u-nav">
                 <li><strong>需求</strong></li>
                 <li><a href="#">功能1</a></li>
                 <li><a href="#">功能2</a></li>
                 <li><a href="#">功能3</a></li>
                 <li><a href="#">功能4</a></li>
                 <li><a href="#">功能5</a></li>
-            </ul>
+            </ul>--%>
             <img src="#" width="100%" height="200px" /></div>
         <div class="col-9">
             <div class="m-box">

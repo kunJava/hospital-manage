@@ -9,7 +9,6 @@
 <script src="${base}/resources/andyui/admin/js/andyui.js"></script>
 <script src="${base}/resources/andyui/admin/js/holder.js"></script>
 <script src="${base}/resources/andyui/admin/js/plugins/jquery.carouFredSel.js"></script>
-<script src="${base}/resources/andyui/admin/skin/tiejiaoban/lunbo.js"></script>
 <script src="${base}/resources/layui/layui/layui.js"></script>
 <script type="text/javascript" src="${base}/resources/andyui/admin/js/stringUtil.js"></script>
 <script type="text/javascript" src="${base}/resources/layui/layui/layuiUtil.js"></script>
