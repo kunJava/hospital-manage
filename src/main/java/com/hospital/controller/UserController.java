@@ -160,9 +160,13 @@ public class UserController {
             return JsonUtils.turnJson(false,"请先登录",null);
         }else{
             User user = userService.selectById(userId);
+            if (user == null){
+                return JsonUtils.turnJson(false,"此用户不存在，请联系管理员。",null);
+            }
             if (!oldPassword.equals(user.getPassword())){
                 return JsonUtils.turnJson(false,"旧密码输入错误",null);
             }
+            //重设密码
             return userService.changePassword(user.getPhone(),newPassword);
         }
     }
