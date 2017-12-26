@@ -220,22 +220,22 @@ public class UserController {
             phoneNum = user.getPhone();
         }
         try {
-//            HashMap<String, Object> result = null;
-//            CCPRestSmsSDK restAPI = new CCPRestSmsSDK();
+            HashMap<String, Object> result = null;
+            CCPRestSmsSDK restAPI = new CCPRestSmsSDK();
             // *沙盒环境（用于应用开发调试）：restAPI.init("sandboxapp.cloopen.com", "8883");*
             // *生产环境（用户应用上线使用）：restAPI.init("app.cloopen.com", "8883"); *
             // *******************************************************************************
             //短信接口调用准备:1 初始化,2 设置账户,3 设置应用ID
-            /*restAPI.init("sandboxapp.cloopen.com", "8883");
+            restAPI.init("sandboxapp.cloopen.com", "8883");
             restAPI.setAccount("8aaf07085af9176d015afb5428de0045", "e7ceed5b6a55489f8c605a6a0cd7da3a");
             restAPI.setAppId("8aaf07085af9176d015afb542a91004b");
-            */
+
             String yzmStr = String.valueOf((int)((Math.random() * 9 + 1) * 100000));//使用随机数生成一个6位数验证码
             System.out.println("六位数验证码："+yzmStr);
-            boolean isOk = RedisUtil.setValueByKey(phoneNum, yzmStr, 300);
-//            if(isOk) {
+            boolean isOk = RedisUtil.setValueByKey(phoneNum, yzmStr, 30);
+            if(isOk) {
                 // 参数说明:1:电话号码 2短信模版ID(免费测试模版为1) 3第一个为短信内容,第二个是几分钟之内输入
-                /*result = restAPI.sendTemplateSMS(phoneNum, "165211", new String[]{yzmStr, "10"});
+                result = restAPI.sendTemplateSMS(phoneNum, "165211", new String[]{yzmStr, "30秒"});
                 String statusCode = MapUtils.getString(result, "statusCode", "");
                 if (StringUtils.equals("000000", statusCode)) {
                     return JsonUtils.turnJson(true, "验证短信已下发，请在30秒内输入。", null);
@@ -251,9 +251,7 @@ public class UserController {
                 }
 
             }
-            return JsonUtils.turnJson(true, "验证短信已下发，请在30秒内输入。", null);
-            */
-            return JsonUtils.turnJson(true, "验证短信已下发，请在30秒内输入。", null);
+            return JsonUtils.turnJson(true, "短信系统错误，请稍后再试。", null);
 
         } catch (Exception e) {
             e.printStackTrace();
