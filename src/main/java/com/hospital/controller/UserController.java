@@ -156,7 +156,7 @@ public class UserController {
         String userId = CookieUtil.getCookie(request,"user_id_cd");
         if (StringUtils.isBlank(oldPassword) || StringUtils.isBlank(newPassword)){
             return JsonUtils.turnJson(false,"参数错误",null);
-        }else if(StringUtils.isEmpty(userId)){
+        }else if(StringUtils.isBlank(userId)){
             return JsonUtils.turnJson(false,"请先登录",null);
         }else{
             User user = userService.selectById(userId);
@@ -199,7 +199,6 @@ public class UserController {
             }else {
                 return JsonUtils.turnJson(false,"验证码不正确",null);
             }
-
         }
     }
 
