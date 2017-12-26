@@ -45,7 +45,7 @@
             <a id="sellerDoor" href="">商家入驻</a>
         </div>
     </div>
-    <div class="nav"> <img class="logo" src="${base}/resources/andyui/admin/skin/img/u2.png">
+    <div class="nav"> <img class="logo" src="${base}/resources/andyui/admin/skin/img/u2.png" onclick="toIndexPage()">
         <strong class="u-title">会员中心</strong>
     </div>
 </div>
@@ -139,6 +139,10 @@
                 layer.close();
             });
         });
+    }
+
+    function toIndexPage(){
+        window.location.href="${base}";
     }
 </script>
 </body>
