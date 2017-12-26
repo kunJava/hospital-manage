@@ -46,6 +46,14 @@
         .myinfo-right .tx-up {
             text-align: center;
         }
+        .onlineCutImgBtn{
+            height: 27px;
+            line-height: 23px;
+            width: 97px;
+            color: #03a9f4;
+            background-color: #FFFFFF;
+            border: 1px solid #c6e3fc;
+        }
     </style>
     <script src="${base}/resources/andyui/admin/js/andyui-debug.js"></script>
     <script src="${base}/resources/ajaxfileupload.js"></script>
@@ -188,9 +196,9 @@
                 <form id="userForm" target="_self" method="post" class="myinfo-right layui-form" >
                     <input type="hidden" name="headImg" id="headImg" value="${bean.headImg}">
                     <table class="m-table-form">
-                        <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
-                            <button data-method="setTop" data-type="auto" class="layui-btn">弹出层</button>
-                        </div>
+                        <%--<div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">--%>
+                            <%--<button type="button" data-method="setTop" data-type="auto" class="layui-btn">弹出层</button>--%>
+                        <%--</div>--%>
                         <tr>
                             <td class="table-head">头像:</td>
                             <td colspan="7">
@@ -203,7 +211,7 @@
                                     </c:if>
                                     <div>
                                         <a href="javascript:void(0)" class="tx-upload">选择图片</a>
-                                        <a href="javascript:void(0)" class="tx-upload" onclick="onlineCutImage()">在线裁剪</a>
+                                        <button type="button" data-method="setTop" class="onlineCutImgBtn" style="">在线裁剪</button>
                                         <input style="position:absolute;left:157px;top: 134px;width:97px;height:26px;z-index:999;opacity:0;border:0px solid red;"
                                                onchange="chooseImg(this)"
                                                id="headImgUp" type="file" name="headImgUp"/>
@@ -327,28 +335,23 @@
 <script>
     layui.use('layer', function(){ //独立版的layer无需执行这一句
         var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
-
         //触发事件
         var active = {
             setTop: function(){
                 var that = this;
                 layer.open({
-                    type: 2 //此处以iframe举例
-                    ,title: '弹出窗口'
-                        ,shadeClose: false
-                    ,area: ['390px', '260px']
+                    type: 2
+                    ,title: '在线裁剪'
+                    ,shadeClose: false
+                    ,area: ['1100px', '900px']
                     ,shade: 0
                     ,maxmin: true
-                    ,offset: type
-                    ,content: 'http://layer.layui.com/test/settop.html'
-                    ,btn: ['继续弹出', '全部关闭'] //只是为了演示
-                    ,yes: function(){
-                        $(that).click();
-                    }
+                    ,offset: 'auto'
+                    ,content: 'http://www.atool.org/imgcrop.php'
+                    ,btn: ['关闭']
                     ,btn2: function(){
                         layer.closeAll();
                     }
-
                     ,zIndex: layer.zIndex //重点1
                     ,success: function(layero){
                         layer.setTop(layero); //重点2
@@ -357,7 +360,7 @@
             }
         };
 
-        $('#layerDemo .layui-btn').on('click', function(){
+        $('.onlineCutImgBtn').on('click', function(){
             var othis = $(this), method = othis.data('method');
             active[method] ? active[method].call(this, othis) : '';
         });
