@@ -337,7 +337,7 @@
                     ,shade: 0
                     ,maxmin: true
                     ,offset: 'auto'
-                    ,content: 'http://www.atool.org/imgcrop.php'
+                    ,content: 'http://fengyuanchen.github.io/cropper/'
                     ,btn: ['关闭']
                     ,btn2: function(){
                         layer.closeAll();
