@@ -94,7 +94,7 @@
             </ul>
             <img src="#" width="100%" height="200px"/>
         </div>
-        <div class="col-9" style="margin-top: 100px;">
+        <div class="col-9" style="margin-top: 50px;">
             <div class="m-box">
                 <div class="save-btn-ff6600"><a onclick="lotteryDraw()">抽奖</a></div>
             </div>
