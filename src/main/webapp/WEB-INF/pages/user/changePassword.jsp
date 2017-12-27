@@ -31,7 +31,12 @@
                 <li><a href="${base}/user/toChangePasswordPage">修改密码</a></li>
                 <li><a href="">联系人</a></li>
             </ul>
-            <img src="#" width="100%" height="200px" /></div>
+            <ul class="u-nav">
+                <li><strong>小程序</strong></li>
+                <li><a href="${base}/prize/lotteryDrawPage">娱乐抽奖</a></li>
+            </ul>
+            <img src="#" width="100%" height="200px"/>
+        </div>
         <div class="col-9">
             <div class="m-box">
                 <div style="height: 45px; line-height: 45px; border-bottom: 1px solid #ccc; overflow: visible"><span style="font-size: 18px;height: 44px; line-height: 45px;border-bottom:#FF8E00 2px solid; display: block; float: left; padding: 0 15px;">修改密码</span></div>

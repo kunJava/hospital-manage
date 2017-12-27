@@ -179,6 +179,10 @@
                 <li><a href="${base}/user/toChangePasswordPage">修改密码</a></li>
                 <li><a href="">联系人</a></li>
             </ul>
+            <ul class="u-nav">
+                <li><strong>小程序</strong></li>
+                <li><a href="${base}/prize/lotteryDrawPage">娱乐抽奖</a></li>
+            </ul>
             <img src="#" width="100%" height="200px"/>
         </div>
         <div class="col-9">
@@ -186,9 +190,6 @@
                 <form id="userForm" target="_self" method="post" class="myinfo-right layui-form" >
                     <input type="hidden" name="headImg" id="headImg" value="${bean.headImg}">
                     <table class="m-table-form">
-                        <%--<div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">--%>
-                            <%--<button type="button" data-method="setTop" data-type="auto" class="layui-btn">弹出层</button>--%>
-                        <%--</div>--%>
                         <tr>
                             <td class="table-head">头像:</td>
                             <td colspan="7">

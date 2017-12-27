@@ -14,10 +14,17 @@
         <div class="col-3">
             <ul class="u-nav">
                 <li><strong>个人中心</strong></li>
+                <li><a href="${base}/user/userCenter">用户首页</a></li>
                 <li><a href="${base}/user/userInfo">用户信息</a></li>
                 <li><a href="${base}/user/toChangePasswordPage">修改密码</a></li>
+                <li><a href="">联系人</a></li>
             </ul>
-            <img src="#" width="100%" height="200px" /></div>
+            <ul class="u-nav">
+                <li><strong>小程序</strong></li>
+                <li><a href="${base}/prize/lotteryDrawPage">娱乐抽奖</a></li>
+            </ul>
+            <img src="#" width="100%" height="200px"/>
+        </div>
         <div class="col-9">
             <div class="m-box">
                 <div class="m-box-head"><strong class="u-title">最新发生的订单</strong>

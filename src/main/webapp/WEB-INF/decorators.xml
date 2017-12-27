@@ -15,6 +15,7 @@
         <pattern>/user/userCenter</pattern>
         <pattern>/user/userInfo</pattern>
         <pattern>/user/toChangePasswordPage</pattern>
+        <pattern>/prize/lotteryDrawPage</pattern>
     </decorator>
 
     <decorator name="blank" page="blank.jsp">
