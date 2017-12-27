@@ -153,15 +153,21 @@ public class UserController {
     @RequestMapping(value = "/changePassword",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String changePassword(HttpServletRequest request,String oldPassword,String newPassword){
-        String phoneNum = CookieUtil.getCookie(request,"phoneNum_cd");
-        if (StringUtils.isBlank(oldPassword)){
+        String userId = CookieUtil.getCookie(request,"user_id_cd");
+        if (StringUtils.isBlank(oldPassword) || StringUtils.isBlank(newPassword)){
             return JsonUtils.turnJson(false,"参数错误",null);
+        }else if(StringUtils.isBlank(userId)){
+            return JsonUtils.turnJson(false,"请先登录",null);
         }else{
-            User user = userService.login(phoneNum,oldPassword);
+            User user = userService.selectById(userId);
             if (user == null){
+                return JsonUtils.turnJson(false,"此用户不存在，请联系管理员。",null);
+            }
+            if (!oldPassword.equals(user.getPassword())){
                 return JsonUtils.turnJson(false,"旧密码输入错误",null);
             }
-            return userService.changePassword(phoneNum,newPassword);
+            //重设密码
+            return userService.changePassword(user.getPhone(),newPassword);
         }
     }
 
@@ -197,7 +203,6 @@ public class UserController {
             }else {
                 return JsonUtils.turnJson(false,"验证码不正确",null);
             }
-
         }
     }
 
