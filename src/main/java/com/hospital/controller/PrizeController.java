@@ -46,8 +46,8 @@ public class PrizeController {
     @ResponseBody
     public String lotteryDraw(){
         try{
-//            List<Prize> prizeList = prizeService.getPrizeList();
-            List<Prize> prizeList = virtualList();
+            List<Prize> prizeList = prizeService.getPrizeList();
+//            List<Prize> prizeList = virtualList();
             if (CollectionUtils.isEmpty(prizeList)){
                 return JsonUtils.turnJson(false,"奖品池中还未放进任何奖品...",null);
             }
