@@ -6,16 +6,19 @@
 <head>
     <title>layUI测试</title>
     <link rel="stylesheet" href="${base}/resources/layui/layui/css/layui.css"  media="all">
-    <script src="${base}/resources/layui/layer.min.js" charset="utf-8"></script>
     <script>
-        function layWindow() {
-            layer.open({
-                type: 2,
-                title: '查看详情',
-                skin: 'layui-layer-rim',
-                area: ['800px', '600px'],
-                content: 'http://baidu.com'
+        function layWindow () {
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                layer.open({
+                    type: 1,
+                    title: '查看详情',
+                    skin: 'layui-layer-rim',
+                    area: ['800px', '600px'],
+                    content: 'exo?'
+                });
             });
+
         }
     </script>
 </head>
